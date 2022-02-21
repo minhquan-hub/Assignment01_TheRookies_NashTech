@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Rookie.CustomerSite.Models;
 
-namespace Rookie.CustomerSite.Controllers
+namespace CustomerSite.Controllers
 {
     public class HomeController : Controller
     {
@@ -18,6 +18,7 @@ namespace Rookie.CustomerSite.Controllers
             _logger = logger;
         }
 
+        //[Route("index")]
         public IActionResult Index()
         {
             return View();
