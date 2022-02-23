@@ -15,6 +15,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Models;
+using Rookie.BackendAPI.Services;
+using Rookie.BackendAPI.Services.IntefaceServices;
 
 namespace Rookie.BackendAPI
 {
@@ -35,10 +37,14 @@ namespace Rookie.BackendAPI
                 options.UseSqlServer(stringConnection);
             });
 
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
+
             services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllers();
+            services.AddRazorPages();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rookie.BackendAPI", Version = "v1" });
@@ -51,20 +57,30 @@ namespace Rookie.BackendAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rookie.BackendAPI v1"));
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthorization();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.OAuthClientId("swagger");
+                c.OAuthClientSecret("secret");
+                c.OAuthUsePkce();
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rookie Shop API V1");
+            });
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
+            
         }
     }
 }

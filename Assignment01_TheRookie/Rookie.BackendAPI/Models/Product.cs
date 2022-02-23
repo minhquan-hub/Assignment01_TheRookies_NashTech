@@ -24,5 +24,10 @@ namespace Rookie.BackendAPI.Models{
 
         [Column("price", TypeName = "decimal")]
         public decimal Price { get; set; }
+
+        public int CateId { get; set; }
+
+        [Required, ForeignKey("CateId"), Column("cate_id")]
+        public Category Category { get; set; }
     }
 }

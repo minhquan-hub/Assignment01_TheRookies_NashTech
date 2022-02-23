@@ -164,12 +164,38 @@ namespace Rookie.BackendAPI.Migrations
                         .HasColumnName("category_name");
 
                     b.Property<string>("Description")
-                        .HasColumnType("varchar")
+                        .HasColumnType("ntext")
                         .HasColumnName("description");
 
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Vegatables",
+                            Description = "Vegetables are parts of plants that are consumed by humans or other animals as food"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Fruits",
+                            Description = "a fruit is the seed-bearing structure in flowering plants that is formed from the ovary after flowering"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Juice",
+                            Description = "Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Dried",
+                            Description = "Dried fruit is fruit from which the majority of the original water content has been removed either naturally, through sun drying, or through the use of specialized dryers or dehydrators"
+                        });
                 });
 
             modelBuilder.Entity("Rookie.BackendAPI.Models.Product", b =>
@@ -179,6 +205,9 @@ namespace Rookie.BackendAPI.Migrations
                         .HasColumnType("int")
                         .HasColumnName("product_id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CateId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -204,7 +233,51 @@ namespace Rookie.BackendAPI.Migrations
 
                     b.HasKey("ProductId");
 
+                    b.HasIndex("CateId");
+
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            CateId = 1,
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 32m,
+                            ProductName = "Mint"
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            CateId = 2,
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 24m,
+                            ProductName = "Ginger"
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            CateId = 4,
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 30m,
+                            ProductName = "Celery"
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            CateId = 1,
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 50m,
+                            ProductName = "Mint"
+                        });
                 });
 
             modelBuilder.Entity("Rookie.BackendAPI.Models.User", b =>
@@ -332,6 +405,17 @@ namespace Rookie.BackendAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Rookie.BackendAPI.Models.Product", b =>
+                {
+                    b.HasOne("Rookie.BackendAPI.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

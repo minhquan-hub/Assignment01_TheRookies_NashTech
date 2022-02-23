@@ -15,7 +15,7 @@ namespace Rookie.BackendAPI.Models
         [Required, Column("category_name", TypeName = "varchar(255)")]
         public string CategoryName { get; set; }
 
-        [Column("description", TypeName = "varchar")]
+        [Column("description", TypeName = "ntext")]
         public string Description { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Rookie.BackendAPI.Data
         {
         }
 
-        protected void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.SeedProductData();
             builder.SeedCategoryData();

@@ -12,7 +12,8 @@ namespace Rookie.BackendAPI.Data.SeedData {
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
-                    Price = 32
+                    Price = 32,
+                    CateId = 1 
                 },
                 new Product{
                     ProductId = 2,
@@ -20,7 +21,8 @@ namespace Rookie.BackendAPI.Data.SeedData {
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
-                    Price = 24
+                    Price = 24,
+                    CateId = 2
                 },
                 new Product{
                     ProductId = 3,
@@ -28,7 +30,8 @@ namespace Rookie.BackendAPI.Data.SeedData {
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
-                    Price = 30
+                    Price = 30,
+                    CateId = 4
                 },
                 new Product{
                     ProductId = 4,
@@ -36,7 +39,8 @@ namespace Rookie.BackendAPI.Data.SeedData {
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
-                    Price = 50
+                    Price = 50,
+                    CateId = 1
                 }
             );
         }
