@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj": {}
+    "F:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj": {}
   },
   "projects": {
-    "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj": {
+    "F:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj",
+        "projectUniqueName": "F:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj",
         "projectName": "Rookie.BackendAPI",
-        "projectPath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj",
+        "projectPath": "F:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj",
         "packagesPath": "C:\\Users\\minhquan\\.nuget\\packages\\",
-        "outputPath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\obj\\",
+        "outputPath": "F:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\minhquan\\AppData\\Roaming\\NuGet\\NuGet.Config",

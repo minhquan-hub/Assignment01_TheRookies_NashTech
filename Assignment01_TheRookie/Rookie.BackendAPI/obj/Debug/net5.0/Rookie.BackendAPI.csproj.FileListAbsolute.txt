@@ -28,6 +28,10 @@ F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\obj\Debug\net5.0\Rookie.BackendAPI.pdb
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\obj\Debug\net5.0\Rookie.BackendAPI.genruntimeconfig.cache
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Rookie.BackendAPI.StaticWebAssets.xml
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Rookie.BackendAPI.Views.dll
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Rookie.BackendAPI.Views.pdb
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\AutoMapper.dll
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Humanizer.dll
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -149,8 +153,6 @@ F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Rookie.BackendAPI.Views.dll
-F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Rookie.BackendAPI.Views.pdb
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\obj\Debug\net5.0\Rookie.BackendAPI.RazorAssemblyInfo.cache
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\obj\Debug\net5.0\Rookie.BackendAPI.RazorAssemblyInfo.cs
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\obj\Debug\net5.0\Rookie.BackendAPI.TagHelpers.input.cache

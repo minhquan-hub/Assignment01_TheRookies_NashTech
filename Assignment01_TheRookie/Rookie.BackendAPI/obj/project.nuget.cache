@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7a1b2HrpWUDder/mdmhjykqAdHLD/haOwkmD5Y5iM1p0MDb3xflYWOtPLEh2R8BgUz1CDz+6IIqi4QQvQLJohA==",
+  "dgSpecHash": "xkSDErVc7iKKREQxwgF0D0LWYJ/PgKOmij6H6vQYIBPafKb0azkoGUhKKVJYdG+rmSo5XFiCyL9DZjCey4PEMg==",
   "success": true,
-  "projectFilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj",
+  "projectFilePath": "F:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\minhquan\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\minhquan\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
