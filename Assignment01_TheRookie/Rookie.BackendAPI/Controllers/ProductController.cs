@@ -6,7 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Rookie.BackendAPI.Data;
 
 namespace Rookie.BackendAPI.Controllers{
-    public class ProductController : Controller {
+
+    [Route("api/[controller]")]
+    [EnableCors("AllowOrigins")]
+    [ApiController]
+    public class ProductController : ControllerBase {
         
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
