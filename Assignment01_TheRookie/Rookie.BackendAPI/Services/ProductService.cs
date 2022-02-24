@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -17,13 +18,11 @@ namespace Rookie.BackendAPI.Services
             _context = context;
         }
 
-        [HttpGet]
         public async Task<int> CreateProduct(Product product)
         {
             return 1;
         }
 
-        [HttpDelete]
         public async Task<int> DeleteProduct(int productId)
         {
             var product = _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
@@ -35,25 +34,39 @@ namespace Rookie.BackendAPI.Services
             return await _context.SaveChangesAsync();
         }
 
-        [HttpPut]
         public async Task<int> UpdateProduct(int productId, Product product)
         {
             return 1;
         }
 
-        [HttpGet]
         public async Task<Product> GetAllById(int productId)
         {
             var product = _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
             return product;
         }
 
-        [HttpGet]
-        public async Task<IQueryable<Product>> GetAllByName(string productName)
+        public async Task<IQueryable<Product>> GetAllByNameAndPage(string productName)
         {
             var product = _context.Products.Where(p => p.ProductName == productName);
             
             return await Task.FromResult(product);
+        }
+
+        public List<Product> GetAllByName(string productName)
+        {
+           var product = _context.Products.Where(p => p.ProductName == productName).ToList();
+           return product;
+        }
+
+        public List<Product> GetAllByCategory(string productCategory)
+        {
+            var product = (from p in _context.Products 
+                          join c in _context.Categories 
+                          on p.CateId equals c.CategoryId
+                          where c.CategoryName == productCategory
+                          select p).ToList();
+
+            return product;
         }
     }
 }

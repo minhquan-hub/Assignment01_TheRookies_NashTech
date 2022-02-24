@@ -16,7 +16,6 @@ namespace Rookie.BackendAPI.Services{
             _context = context;
         }
 
-        [HttpGet]
         public async Task<int> CreateCategory(Category createCategory)
         {
             var newCategory = new Category {
@@ -29,7 +28,6 @@ namespace Rookie.BackendAPI.Services{
             return await _context.SaveChangesAsync();
         }
 
-        [HttpDelete]
         public async Task<int> DeleteCategory(int categoryId)
         {
              var category = _context.Categories.Where(c => c.CategoryId == categoryId).FirstOrDefault();
@@ -40,7 +38,6 @@ namespace Rookie.BackendAPI.Services{
             return await _context.SaveChangesAsync();
         }
 
-        [HttpGet]
         public async Task<Category> GetAllById(int categoryId)
         {
             var category =  _context.Categories.Where(c => c.CategoryId == categoryId).FirstOrDefault();
@@ -48,7 +45,6 @@ namespace Rookie.BackendAPI.Services{
             return category;
         }
 
-        [HttpPut]
         public async Task<int> UpdateCategory(int CategoryId, Category category)
         {
             return 1;

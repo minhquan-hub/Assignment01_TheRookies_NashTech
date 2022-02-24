@@ -42,9 +42,9 @@ namespace Rookie.BackendAPI.Controllers
 
         [HttpGet]
         //[AllowAnonymous]
-        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProduct([FromQuery]ProductCriteriaDto productCriteriaDto)
+        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
-            var product = _productService.GetAllByName(productCriteriaDto.Search);
+            var product = _productService.GetAllByNameAndPage(productCriteriaDto.Search);
             var productQuery =  ProductFilter(await product, productCriteriaDto) ;
             var pageProducts = await productQuery.AsNoTracking().PaginateAsync(productCriteriaDto);
             var productDto = _mapper.Map<IEnumerable<ProductDto>>(pageProducts.Items);
@@ -60,6 +60,22 @@ namespace Rookie.BackendAPI.Controllers
             };
         }
 
+        [HttpGet("{nameProduct}")]
+        public  ActionResult<ProductDto> GetProductByName(string nameProduct)
+        {
+            var product = _productService.GetAllByName(nameProduct);
+
+            var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
+            return Ok(productDto);
+        }
+
+        [HttpPost("Category")]
+        public ActionResult<ProductDto> GetProductByCategory(string categoryName){
+            var product = _productService.GetAllByCategory(categoryName);
+
+            var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
+            return Ok(product);
+        }
         #region Private Method
         private  IQueryable<Product> ProductFilter(
             IQueryable<Product> productQuery,
