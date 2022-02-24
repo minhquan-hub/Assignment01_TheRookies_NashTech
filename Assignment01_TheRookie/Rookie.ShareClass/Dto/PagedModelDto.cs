@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RookieShop.Shared.Dto
+namespace Rookie.ShareClass.Dto
 {
      public class PagedModelDto<TModel>
     {

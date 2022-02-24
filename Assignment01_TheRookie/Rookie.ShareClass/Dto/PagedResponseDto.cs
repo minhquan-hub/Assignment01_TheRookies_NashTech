@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Rookie.ShareClass.Dto;
 
 namespace RookieShop.Shared.Dto
 {

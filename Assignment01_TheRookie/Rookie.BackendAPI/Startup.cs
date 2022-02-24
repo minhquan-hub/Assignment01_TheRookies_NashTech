@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Rookie.BackendAPI.Services;
+using Rookie.BackendAPI.Services.IntefaceServices;
 
 namespace Rookie.BackendAPI
 {
@@ -28,6 +30,12 @@ namespace Rookie.BackendAPI
         {
 
             services.AddControllers();
+            
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rookie.BackendAPI", Version = "v1" });

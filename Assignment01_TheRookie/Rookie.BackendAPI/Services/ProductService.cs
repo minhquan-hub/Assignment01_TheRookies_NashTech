@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Models;
 using Rookie.BackendAPI.Services.IntefaceServices;
+using Rookie.ShareClass.Dto.Product;
 
 namespace Rookie.BackendAPI.Services{
 
@@ -30,15 +31,23 @@ namespace Rookie.BackendAPI.Services{
             return await _context.SaveChangesAsync();
         }
 
+        public Task<int> UpdateProduct(int productId, Product product)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<Product> GetAllById(int productId)
         {
             var product = _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
             return product;
         }
 
-        public Task<int> UpdateProduct(int productId, Product product)
+        public async Task<PagedResponseDto<ProductDto>>> GetAllByName(string productName)
         {
-            throw new System.NotImplementedException();
+            var product = _context.Products.Where(p => p.ProductName == productName).AsQueryable();
+            var productQuery = ProductFilter(product, productCriteriaDto) ;
+            var pageProduct = await product.AsNoTracking().PaginateAsync(productCriteriaDto, cancellationToken);
+            return new PagedResponseDto<ProductDto>;
         }
     }
 }

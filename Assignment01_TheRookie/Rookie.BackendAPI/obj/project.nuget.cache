@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xkSDErVc7iKKREQxwgF0D0LWYJ/PgKOmij6H6vQYIBPafKb0azkoGUhKKVJYdG+rmSo5XFiCyL9DZjCey4PEMg==",
+  "dgSpecHash": "+njTXAoZCfQxiMBQjxEjqimwGZWFf4bY9mznrjyOb9TW2Xnyo64gS+QAnvf8YoUj8skhcFo6/kvZrtuWCKd/mg==",
   "success": true,
-  "projectFilePath": "F:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj",
+  "projectFilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.BackendAPI\\Rookie.BackendAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\minhquan\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\minhquan\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
@@ -129,6 +129,7 @@
     "C:\\Users\\minhquan\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\minhquan\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\minhquan\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
+    "C:\\Users\\minhquan\\.nuget\\packages\\system.linq.dynamic.core\\1.2.10\\system.linq.dynamic.core.1.2.10.nupkg.sha512",
     "C:\\Users\\minhquan\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\minhquan\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\minhquan\\.nuget\\packages\\system.net.nameresolution\\4.3.0\\system.net.nameresolution.4.3.0.nupkg.sha512",

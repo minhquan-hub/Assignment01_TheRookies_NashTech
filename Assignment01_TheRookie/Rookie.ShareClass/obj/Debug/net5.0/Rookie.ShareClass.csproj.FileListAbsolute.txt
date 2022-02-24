@@ -1,0 +1,5 @@
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.ShareClass\obj\Debug\net5.0\Rookie.ShareClass.csproj.AssemblyReference.cache
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.ShareClass\obj\Debug\net5.0\Rookie.ShareClass.GeneratedMSBuildEditorConfig.editorconfig
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.ShareClass\obj\Debug\net5.0\Rookie.ShareClass.AssemblyInfoInputs.cache
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.ShareClass\obj\Debug\net5.0\Rookie.ShareClass.AssemblyInfo.cs
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.ShareClass\obj\Debug\net5.0\Rookie.ShareClass.csproj.CoreCompileInputs.cache

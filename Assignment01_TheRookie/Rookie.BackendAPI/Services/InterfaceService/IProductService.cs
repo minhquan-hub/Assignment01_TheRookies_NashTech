@@ -6,6 +6,7 @@ namespace Rookie.BackendAPI.Services.IntefaceServices{
     public interface IProductService{
 
         public Task<Product> GetAllById(int productId);
+        public Task<Product> GetAllByName(string productName);
         public Task<int> CreateProduct(Product product);
         public Task<int> DeleteProduct(int productId);
 
