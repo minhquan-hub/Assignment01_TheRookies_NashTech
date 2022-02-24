@@ -6,11 +6,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Rookie.BackendAPI.Data;
+using Rookie.BackendAPI.Services;
+using Rookie.BackendAPI.Services.InterfaceServices;
 
 namespace Rookie.BackendAPI
 {
@@ -28,9 +32,28 @@ namespace Rookie.BackendAPI
         {
 
             services.AddControllers();
+            services.AddControllersWithViews();
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DatabaseConnectString")));
+            services.AddScoped<IProductService,ProductService>();
+            services.AddScoped<ICategoryService,CategoryService>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rookie.BackendAPI", Version = "v1" });
+            });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigins",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
             });
         }
 
@@ -45,9 +68,9 @@ namespace Rookie.BackendAPI
             }
 
             app.UseHttpsRedirection();
-
+            
             app.UseRouting();
-
+            app.UseCors("AllowOrigins");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
