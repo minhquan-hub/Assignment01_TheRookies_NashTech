@@ -2,8 +2,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Models;
-using Rookie.BackendAPI.Services.IntefaceServices;
+using Rookie.BackendAPI.Services.InterfaceServices;
 using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Rookie.BackendAPI.Services{
 
@@ -14,6 +15,8 @@ namespace Rookie.BackendAPI.Services{
         {
             _context = context;
         }
+
+        [HttpGet]
         public async Task<int> CreateCategory(Category createCategory)
         {
             var newCategory = new Category {
@@ -26,6 +29,7 @@ namespace Rookie.BackendAPI.Services{
             return await _context.SaveChangesAsync();
         }
 
+        [HttpDelete]
         public async Task<int> DeleteCategory(int categoryId)
         {
              var category = _context.Categories.Where(c => c.CategoryId == categoryId).FirstOrDefault();
@@ -36,6 +40,7 @@ namespace Rookie.BackendAPI.Services{
             return await _context.SaveChangesAsync();
         }
 
+        [HttpGet]
         public async Task<Category> GetAllById(int categoryId)
         {
             var category =  _context.Categories.Where(c => c.CategoryId == categoryId).FirstOrDefault();
@@ -43,9 +48,10 @@ namespace Rookie.BackendAPI.Services{
             return category;
         }
 
-        public Task<int> UpdateCategory(int CategoryId, Category category)
+        [HttpPut]
+        public async Task<int> UpdateCategory(int CategoryId, Category category)
         {
-            throw new System.NotImplementedException();
+            return 1;
         }
     }
 }

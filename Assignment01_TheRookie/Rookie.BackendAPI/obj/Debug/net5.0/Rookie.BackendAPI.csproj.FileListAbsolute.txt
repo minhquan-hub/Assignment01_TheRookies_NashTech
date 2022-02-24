@@ -166,3 +166,6 @@ F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\obj\Debug\net5.0\Razor\Views\Shared\_ValidationSummary.cshtml.g.cs
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\obj\Debug\net5.0\Rookie.BackendAPI.RazorTargetAssemblyInfo.cs
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\obj\Debug\net5.0\Rookie.BackendAPI.Views.pdb
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Rookie.ShareClass.dll
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.BackendAPI\bin\Debug\net5.0\Rookie.ShareClass.pdb

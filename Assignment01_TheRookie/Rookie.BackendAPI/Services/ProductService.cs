@@ -1,12 +1,13 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Models;
-using Rookie.BackendAPI.Services.IntefaceServices;
-using Rookie.ShareClass.Dto.Product;
+using Rookie.BackendAPI.Services.InterfaceServices;
 
-namespace Rookie.BackendAPI.Services{
+namespace Rookie.BackendAPI.Services
+{
 
     public class ProductService : IProductService
     {
@@ -15,11 +16,14 @@ namespace Rookie.BackendAPI.Services{
         {
             _context = context;
         }
-        public Task<int> CreateProduct(Product product)
+
+        [HttpGet]
+        public async Task<int> CreateProduct(Product product)
         {
-            throw new System.NotImplementedException();
+            return 1;
         }
 
+        [HttpDelete]
         public async Task<int> DeleteProduct(int productId)
         {
             var product = _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
@@ -31,23 +35,25 @@ namespace Rookie.BackendAPI.Services{
             return await _context.SaveChangesAsync();
         }
 
-        public Task<int> UpdateProduct(int productId, Product product)
+        [HttpPut]
+        public async Task<int> UpdateProduct(int productId, Product product)
         {
-            throw new System.NotImplementedException();
+            return 1;
         }
 
+        [HttpGet]
         public async Task<Product> GetAllById(int productId)
         {
             var product = _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
             return product;
         }
 
-        public async Task<PagedResponseDto<ProductDto>>> GetAllByName(string productName)
+        [HttpGet]
+        public Task<IQueryable<Product>> GetAllByName(string productName)
         {
-            var product = _context.Products.Where(p => p.ProductName == productName).AsQueryable();
-            var productQuery = ProductFilter(product, productCriteriaDto) ;
-            var pageProduct = await product.AsNoTracking().PaginateAsync(productCriteriaDto, cancellationToken);
-            return new PagedResponseDto<ProductDto>;
+            var product = _context.Products.Where(p => p.ProductName == productName);
+            
+            return Task.FromResult(product);
         }
     }
 }

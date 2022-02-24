@@ -7,20 +7,23 @@ using AutoMapper;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Rookie.BackendAPI.Data;
-using Rookie.BackendAPI.Services.IntefaceServices;
+using Rookie.BackendAPI.Services.InterfaceServices;
 using Rookie.ShareClass.Dto.Product;
 using RookieShop.Shared.Dto;
 using Rookie.BackendAPI.Extensions;
 using System.Linq;
 using Rookie.BackendAPI.Models;
 using System;
+using System.Collections.Generic;
 
-namespace Rookie.BackendAPI.Controllers{
+namespace Rookie.BackendAPI.Controllers
+{
 
     [Route("api/[controller]")]
     [EnableCors("AllowOrigins")]
     [ApiController]
-    public class ProductController : ControllerBase {
+    public class ProductController : ControllerBase 
+    {
         
         private readonly ApplicationDbContext _context;
         private readonly IProductService _productService;
@@ -37,15 +40,26 @@ namespace Rookie.BackendAPI.Controllers{
         }
 
         [HttpGet]
-        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProduct(ProductCriteriaDto productCriteriaDto, 
+        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProduct([FromQuery]ProductCriteriaDto productCriteriaDto, 
         CancellationToken cancellationToken)
         {
             var product = _productService.GetAllByName(productCriteriaDto.Search);
-            var productQuery = ProductFilter(product, productCriteriaDto) ;
-            var pageProduct = await product.AsNoTracking().PaginateAsync(productCriteriaDto, cancellationToken);
-            return new PagedResponseDto<ProductDto>();
+            var productQuery =  ProductFilter(await product, productCriteriaDto) ;
+            var pageProducts = await productQuery.AsNoTracking().PaginateAsync(productCriteriaDto, cancellationToken);
+            var productDto = _mapper.Map<IEnumerable<ProductDto>>(pageProducts.Items);
+            return new PagedResponseDto<ProductDto>{
+                CurrentPage = pageProducts.CurrentPage,
+                TotalItems = pageProducts.TotalItems,
+                TotalPages = pageProducts.TotalPages,
+                SortOrder = productCriteriaDto.SortOrder,
+                SortColumn = productCriteriaDto.SortColumn,
+                Limit = productCriteriaDto.Limit,
+                Page = productCriteriaDto.Page,
+                Items = productDto
+            };
         }
 
+        #region Private Method
         private IQueryable<Product> ProductFilter(
             IQueryable<Product> productQuery,
             ProductCriteriaDto productCriteriaDto)
@@ -66,5 +80,6 @@ namespace Rookie.BackendAPI.Controllers{
 
             return productQuery;
         }
+        #endregion
     }
 }
