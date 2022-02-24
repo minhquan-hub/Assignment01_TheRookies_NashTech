@@ -2,8 +2,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Models;
-using Rookie.BackendAPI.Services.IntefaceServices;
+using Rookie.BackendAPI.Services.InterfaceServices;
 using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Rookie.BackendAPI.Services{
 
@@ -14,6 +15,7 @@ namespace Rookie.BackendAPI.Services{
         {
             _context = context;
         }
+
         public async Task<int> CreateCategory(Category createCategory)
         {
             var newCategory = new Category {
@@ -43,9 +45,9 @@ namespace Rookie.BackendAPI.Services{
             return category;
         }
 
-        public Task<int> UpdateCategory(int CategoryId, Category category)
+        public async Task<int> UpdateCategory(int CategoryId, Category category)
         {
-            throw new System.NotImplementedException();
+            return 1;
         }
     }
 }

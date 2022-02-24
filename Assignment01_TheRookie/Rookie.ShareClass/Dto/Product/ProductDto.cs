@@ -2,7 +2,8 @@ using System;
 
 namespace Rookie.ShareClass.Dto.Product {
 
-    public class ProductDto : BaseQueryCriteriaDto {
+    public class ProductDto 
+    {
         
         public int ProductId { get; set; }
         public string ProductName { get; set; }

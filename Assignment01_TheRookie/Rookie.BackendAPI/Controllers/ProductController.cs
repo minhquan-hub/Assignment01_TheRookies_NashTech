@@ -7,20 +7,24 @@ using AutoMapper;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Rookie.BackendAPI.Data;
-using Rookie.BackendAPI.Services.IntefaceServices;
+using Rookie.BackendAPI.Services.InterfaceServices;
 using Rookie.ShareClass.Dto.Product;
 using RookieShop.Shared.Dto;
 using Rookie.BackendAPI.Extensions;
 using System.Linq;
 using Rookie.BackendAPI.Models;
 using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
-namespace Rookie.BackendAPI.Controllers{
+namespace Rookie.BackendAPI.Controllers
+{
 
     [Route("api/[controller]")]
     [EnableCors("AllowOrigins")]
     [ApiController]
-    public class ProductController : ControllerBase {
+    public class ProductController : ControllerBase 
+    {
         
         private readonly ApplicationDbContext _context;
         private readonly IProductService _productService;
@@ -37,24 +41,51 @@ namespace Rookie.BackendAPI.Controllers{
         }
 
         [HttpGet]
-        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProduct(ProductCriteriaDto productCriteriaDto, 
-        CancellationToken cancellationToken)
+        //[AllowAnonymous]
+        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
-            var product = _productService.GetAllByName(productCriteriaDto.Search);
-            var productQuery = ProductFilter(product, productCriteriaDto) ;
-            var pageProduct = await product.AsNoTracking().PaginateAsync(productCriteriaDto, cancellationToken);
-            return new PagedResponseDto<ProductDto>();
+            var product = _productService.GetAllByNameAndPage(productCriteriaDto.Search);
+            var productQuery =  ProductFilter(await product, productCriteriaDto) ;
+            var pageProducts = await productQuery.AsNoTracking().PaginateAsync(productCriteriaDto);
+            var productDto = _mapper.Map<IEnumerable<ProductDto>>(pageProducts.Items);
+            return new PagedResponseDto<ProductDto>{
+                CurrentPage = pageProducts.CurrentPage,
+                TotalItems = pageProducts.TotalItems,
+                TotalPages = pageProducts.TotalPages,
+                SortOrder = productCriteriaDto.SortOrder,
+                SortColumn = productCriteriaDto.SortColumn,
+                Limit = productCriteriaDto.Limit,
+                Page = productCriteriaDto.Page,
+                Items = productDto
+            };
         }
 
-        private IQueryable<Product> ProductFilter(
+        [HttpGet("{nameProduct}")]
+        public  ActionResult<ProductDto> GetProductByName(string nameProduct)
+        {
+            var product = _productService.GetAllByName(nameProduct);
+
+            var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
+            return Ok(productDto);
+        }
+
+        [HttpPost("Category")]
+        public ActionResult<ProductDto> GetProductByCategory(string categoryName){
+            var product = _productService.GetAllByCategory(categoryName);
+
+            var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
+            return Ok(product);
+        }
+        #region Private Method
+        private  IQueryable<Product> ProductFilter(
             IQueryable<Product> productQuery,
             ProductCriteriaDto productCriteriaDto)
         {
-            if (!String.IsNullOrEmpty(productCriteriaDto.Search))
-            {
-                productQuery = productQuery.Where(p =>
-                    p.ProductName.Contains(productCriteriaDto.Search));
-            }
+            // if (!String.IsNullOrEmpty(productCriteriaDto.Search))
+            // {
+            //     productQuery = productQuery.Where(p =>
+            //         p.ProductName.Contains(productCriteriaDto.Search));
+            // }
 
             // if (productCriteriaDto.Types != null &&
             //     productCriteriaDto.Types.Count() > 0 &&
@@ -66,5 +97,6 @@ namespace Rookie.BackendAPI.Controllers{
 
             return productQuery;
         }
+        #endregion
     }
 }

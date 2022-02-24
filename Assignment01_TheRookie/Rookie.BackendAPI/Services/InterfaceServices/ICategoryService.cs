@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Rookie.BackendAPI.Models;
 
-namespace Rookie.BackendAPI.Services.IntefaceServices{
+namespace Rookie.BackendAPI.Services.InterfaceServices{
 
     public interface ICategoryService{
 

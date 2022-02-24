@@ -1,12 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Models;
-using Rookie.BackendAPI.Services.IntefaceServices;
-using Rookie.ShareClass.Dto.Product;
+using Rookie.BackendAPI.Services.InterfaceServices;
 
-namespace Rookie.BackendAPI.Services{
+namespace Rookie.BackendAPI.Services
+{
 
     public class ProductService : IProductService
     {
@@ -15,9 +17,10 @@ namespace Rookie.BackendAPI.Services{
         {
             _context = context;
         }
-        public Task<int> CreateProduct(Product product)
+
+        public async Task<int> CreateProduct(Product product)
         {
-            throw new System.NotImplementedException();
+            return 1;
         }
 
         public async Task<int> DeleteProduct(int productId)
@@ -31,9 +34,9 @@ namespace Rookie.BackendAPI.Services{
             return await _context.SaveChangesAsync();
         }
 
-        public Task<int> UpdateProduct(int productId, Product product)
+        public async Task<int> UpdateProduct(int productId, Product product)
         {
-            throw new System.NotImplementedException();
+            return 1;
         }
 
         public async Task<Product> GetAllById(int productId)
@@ -42,12 +45,28 @@ namespace Rookie.BackendAPI.Services{
             return product;
         }
 
-        public async Task<PagedResponseDto<ProductDto>>> GetAllByName(string productName)
+        public async Task<IQueryable<Product>> GetAllByNameAndPage(string productName)
         {
-            var product = _context.Products.Where(p => p.ProductName == productName).AsQueryable();
-            var productQuery = ProductFilter(product, productCriteriaDto) ;
-            var pageProduct = await product.AsNoTracking().PaginateAsync(productCriteriaDto, cancellationToken);
-            return new PagedResponseDto<ProductDto>;
+            var product = _context.Products.Where(p => p.ProductName == productName);
+            
+            return await Task.FromResult(product);
+        }
+
+        public List<Product> GetAllByName(string productName)
+        {
+           var product = _context.Products.Where(p => p.ProductName == productName).ToList();
+           return product;
+        }
+
+        public List<Product> GetAllByCategory(string productCategory)
+        {
+            var product = (from p in _context.Products 
+                          join c in _context.Categories 
+                          on p.CateId equals c.CategoryId
+                          where c.CategoryName == productCategory
+                          select p).ToList();
+
+            return product;
         }
     }
 }
