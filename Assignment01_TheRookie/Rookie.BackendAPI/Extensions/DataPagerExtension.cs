@@ -14,8 +14,7 @@ namespace Rookie.BackendAPI.Extensions
     {
         public static async Task<PagedModelDto<TModel>> PaginateAsync<TModel>(
             this IQueryable<TModel> query,
-            BaseQueryCriteriaDto criteriaDto,
-            CancellationToken cancellationToken)
+            BaseQueryCriteriaDto criteriaDto)
             where TModel : class
         {
 
@@ -37,10 +36,9 @@ namespace Rookie.BackendAPI.Extensions
 
             paged.Items = await query
                         .Skip(startRow)
-                        .Take(paged.PageSize)
-                        .ToListAsync(cancellationToken);
+                        .Take(paged.PageSize).ToListAsync();
 
-            paged.TotalItems = await query.CountAsync(cancellationToken);
+            paged.TotalItems = await query.CountAsync();
             paged.TotalPages = (int)Math.Ceiling(paged.TotalItems / (double)paged.PageSize);
 
             return paged;

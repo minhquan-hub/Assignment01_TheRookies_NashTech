@@ -15,6 +15,7 @@ using System.Linq;
 using Rookie.BackendAPI.Models;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Rookie.BackendAPI.Controllers
 {
@@ -40,12 +41,12 @@ namespace Rookie.BackendAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProduct([FromQuery]ProductCriteriaDto productCriteriaDto, 
-        CancellationToken cancellationToken)
+        //[AllowAnonymous]
+        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProduct([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
             var product = _productService.GetAllByName(productCriteriaDto.Search);
             var productQuery =  ProductFilter(await product, productCriteriaDto) ;
-            var pageProducts = await productQuery.AsNoTracking().PaginateAsync(productCriteriaDto, cancellationToken);
+            var pageProducts = await productQuery.AsNoTracking().PaginateAsync(productCriteriaDto);
             var productDto = _mapper.Map<IEnumerable<ProductDto>>(pageProducts.Items);
             return new PagedResponseDto<ProductDto>{
                 CurrentPage = pageProducts.CurrentPage,
@@ -60,15 +61,15 @@ namespace Rookie.BackendAPI.Controllers
         }
 
         #region Private Method
-        private IQueryable<Product> ProductFilter(
+        private  IQueryable<Product> ProductFilter(
             IQueryable<Product> productQuery,
             ProductCriteriaDto productCriteriaDto)
         {
-            if (!String.IsNullOrEmpty(productCriteriaDto.Search))
-            {
-                productQuery = productQuery.Where(p =>
-                    p.ProductName.Contains(productCriteriaDto.Search));
-            }
+            // if (!String.IsNullOrEmpty(productCriteriaDto.Search))
+            // {
+            //     productQuery = productQuery.Where(p =>
+            //         p.ProductName.Contains(productCriteriaDto.Search));
+            // }
 
             // if (productCriteriaDto.Types != null &&
             //     productCriteriaDto.Types.Count() > 0 &&

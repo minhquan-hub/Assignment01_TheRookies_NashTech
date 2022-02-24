@@ -49,11 +49,11 @@ namespace Rookie.BackendAPI.Services
         }
 
         [HttpGet]
-        public Task<IQueryable<Product>> GetAllByName(string productName)
+        public async Task<IQueryable<Product>> GetAllByName(string productName)
         {
             var product = _context.Products.Where(p => p.ProductName == productName);
             
-            return Task.FromResult(product);
+            return await Task.FromResult(product);
         }
     }
 }
