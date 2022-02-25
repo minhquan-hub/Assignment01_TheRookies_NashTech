@@ -14,10 +14,12 @@ namespace RookieShop.Backend.Controllers
             _logger = logger;
         }
 
+
         public async Task<IActionResult> Index()
         {
             return Ok();
         }
+
 
         public async Task<IActionResult> Privacy()
         {

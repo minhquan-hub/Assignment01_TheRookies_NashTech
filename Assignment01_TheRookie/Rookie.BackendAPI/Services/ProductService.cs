@@ -1,11 +1,15 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Models;
-using Rookie.BackendAPI.Services.IntefaceServices;
+using Rookie.BackendAPI.Services.InterfaceServices;
 
-namespace Rookie.BackendAPI.Services{
+namespace Rookie.BackendAPI.Services
+{
+
 
     public class ProductService : IProductService
     {
@@ -14,9 +18,10 @@ namespace Rookie.BackendAPI.Services{
         {
             _context = context;
         }
-        public Task<int> CreateProduct(Product product)
+
+        public async Task<int> CreateProduct(Product product)
         {
-            throw new System.NotImplementedException();
+            return 1;
         }
 
         public async Task<int> DeleteProduct(int productId)
@@ -30,15 +35,38 @@ namespace Rookie.BackendAPI.Services{
             return await _context.SaveChangesAsync();
         }
 
+
+        public async Task<int> UpdateProduct(int productId, Product product)
+        {
+            return 1;
+        }
         public async Task<Product> GetAllById(int productId)
         {
             var product = _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
             return product;
         }
-
-        public Task<int> UpdateProduct(int productId, Product product)
+        public async Task<IQueryable<Product>> GetAllByNameAndPage(string productName)
         {
-            throw new System.NotImplementedException();
+            var product = _context.Products.Where(p => p.ProductName == productName);
+            
+            return await Task.FromResult(product);
+        }
+
+        public List<Product> GetAllByName(string productName)
+        {
+           var product = _context.Products.Where(p => p.ProductName == productName).ToList();
+           return product;
+        }
+
+        public List<Product> GetAllByCategory(string productCategoryName)
+        {
+            var product = (from p in _context.Products 
+                          join c in _context.Categories 
+                          on p.CateId equals c.CategoryId
+                          where c.CategoryName == productCategoryName
+                          select p).ToList();
+
+            return product;
         }
     }
 }

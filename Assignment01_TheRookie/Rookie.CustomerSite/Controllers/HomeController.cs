@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Rookie.CustomerSite.Models;
+using Rookie.CustomerSite.Services;
 
 namespace CustomerSite.Controllers
 {
@@ -19,8 +20,10 @@ namespace CustomerSite.Controllers
         }
 
         //[Route("index")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            // var productService = new ProductService();
+            // var result = await productService.GetProductByCategoryAsync("Fruits");
             return View();
         }
 
