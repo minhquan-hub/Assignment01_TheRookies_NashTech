@@ -13,6 +13,6 @@ namespace Rookie.BackendAPI.Services.InterfaceServices{
         public Task<Product> GetAllById(int productId); 
         public Task<IQueryable<Product>> GetAllByNameAndPage(string productName);
         public List<Product> GetAllByName(string productName);
-        public List<Product> GetAllByCategory(string productCategory);
+        public List<Product> GetAllByCategory(string productCategoryName);
     }
 }

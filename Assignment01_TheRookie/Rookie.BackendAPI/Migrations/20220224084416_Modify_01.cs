@@ -5,9 +5,7 @@ namespace Rookie.BackendAPI.Migrations
 {
     public partial class Modify_01 : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.InsertData(
+        protected override void Up(MigrationBuilder migrationBuilder) => migrationBuilder.InsertData(
                 table: "Product",
                 columns: new[] { "product_id", "CateId", "description", "expiry_date", "manufacturing_date", "price", "product_name" },
                 values: new object[,]
@@ -45,7 +43,6 @@ namespace Rookie.BackendAPI.Migrations
                     { 35, 1, "Vegetable is very healthy", new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 50m, "Mint" },
                     { 36, 1, "Vegetable is very healthy", new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 50m, "Mint" }
                 });
-        }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
