@@ -10,6 +10,7 @@ using Rookie.BackendAPI.Services.InterfaceServices;
 namespace Rookie.BackendAPI.Services
 {
 
+
     public class ProductService : IProductService
     {
         private readonly ApplicationDbContext _context;
@@ -34,17 +35,16 @@ namespace Rookie.BackendAPI.Services
             return await _context.SaveChangesAsync();
         }
 
+
         public async Task<int> UpdateProduct(int productId, Product product)
         {
             return 1;
         }
-
         public async Task<Product> GetAllById(int productId)
         {
             var product = _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
             return product;
         }
-
         public async Task<IQueryable<Product>> GetAllByNameAndPage(string productName)
         {
             var product = _context.Products.Where(p => p.ProductName == productName);
@@ -58,12 +58,12 @@ namespace Rookie.BackendAPI.Services
            return product;
         }
 
-        public List<Product> GetAllByCategory(string productCategory)
+        public List<Product> GetAllByCategory(string productCategoryName)
         {
             var product = (from p in _context.Products 
                           join c in _context.Categories 
                           on p.CateId equals c.CategoryId
-                          where c.CategoryName == productCategory
+                          where c.CategoryName == productCategoryName
                           select p).ToList();
 
             return product;

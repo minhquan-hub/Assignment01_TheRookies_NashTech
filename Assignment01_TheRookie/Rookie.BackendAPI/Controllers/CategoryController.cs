@@ -21,7 +21,7 @@ namespace Rookie.BackendAPI.Controllers {
         }
 
         [HttpGet]
-        public  IActionResult GetCategory(){
+        public async Task<IActionResult> GetCategory(){
 
             return Ok();
         }

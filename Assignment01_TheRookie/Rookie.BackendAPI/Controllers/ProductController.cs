@@ -60,22 +60,22 @@ namespace Rookie.BackendAPI.Controllers
             };
         }
 
-        [HttpGet("{nameProduct}")]
-        public  ActionResult<ProductDto> GetProductByName(string nameProduct)
+        [HttpGet("{productName}")]
+        public  ActionResult<ProductDto> GetProductByName(string productName)
         {
-            var product = _productService.GetAllByName(nameProduct);
+            var product = _productService.GetAllByName(productName);
 
             var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
             return Ok(productDto);
         }
 
-        [HttpPost("Category")]
-        public ActionResult<ProductDto> GetProductByCategory(string categoryName){
-            var product = _productService.GetAllByCategory(categoryName);
+        // [HttpGet("Category/{productCategoryName}")]
+        // public ActionResult<ProductDto> GetProductByCategory(string productCategoryName){
+        //     var product = _productService.GetAllByCategory(productCategoryName);
 
-            var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
-            return Ok(product);
-        }
+        //     var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
+        //     return Ok(productDto);
+        // }
         #region Private Method
         private  IQueryable<Product> ProductFilter(
             IQueryable<Product> productQuery,
