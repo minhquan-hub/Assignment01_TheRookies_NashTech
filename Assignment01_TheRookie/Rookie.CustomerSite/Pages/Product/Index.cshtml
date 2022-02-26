@@ -78,7 +78,7 @@
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
-    						<h3><a asp-page="" asp-route-id="@item.ProductName">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
+    						<h3><a asp-page="./Detail" asp-route-name="@item.ProductName">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
     						<div class="d-flex">
     							<div class="pricing">
 		    						<p class="price"><span class="price-sale">@Html.DisplayFor(modelItem => item.Price)</span></p>

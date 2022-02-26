@@ -13,37 +13,31 @@ namespace Rookie.CustomerSite.Services
     {
         public async Task<PagedResponseDto<ProductDto>> GetProductAndPageAsync(string productCategoryName)
         {
-            using (var httpClient = new HttpClient())
-            {
-                var endpoints = $"https://localhost:5001/api/Product?Search={productCategoryName}&SortOrder=0&Limit=12&Page=2";
-                var jsonResponse = await httpClient.GetStringAsync(endpoints);
-                var result = JsonConvert.DeserializeObject<PagedResponseDto<ProductDto>>(jsonResponse);
-                return result;
-            }
+                var url = $"https://localhost:5001/api/Product?Search={productCategoryName}&SortOrder=0&Limit=12&Page=2";
+                return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto>>(await JsonResponse(url));
         }
 
         public async Task<IList<ProductDto>> GetProductByCategoryAsync(string productCategoryName)
         {
-            using (var httpClient = new HttpClient())
-            {
-            var endpoints = $"https://localhost:5001/api/Product/Category/{productCategoryName}";
-            var jsonResponse = await httpClient.GetStringAsync(endpoints);
-            var result = JsonConvert.DeserializeObject<List<ProductDto>>(jsonResponse);
-            return result;
-            }
+            var url = $"https://localhost:5001/api/Product/Category/{productCategoryName}";
+            return JsonConvert.DeserializeObject<List<ProductDto>>(await JsonResponse(url));
+        }
+
+        public async Task<ProductDto> GetProductById(int id)
+        {
+                var url = $"https://localhost:5001/api/Product/{id}";
+                return JsonConvert.DeserializeObject<ProductDto>(await JsonResponse(url));
         }
 
         public async Task<IList<ProductDto>> GetProductByNameAsync(string productName)
         {
-            using (var httpClient = new HttpClient()){
-                var a = $"https://localhost:5001/api/Product/{productName}";
-                Console.WriteLine(a);
-                var jsonResponse = await httpClient.GetStringAsync(a); 
-                Console.WriteLine(jsonResponse);
-                var result = JsonConvert.DeserializeObject<List<ProductDto>>(jsonResponse);
-                return result;
-            }
-            
+                var url = $"https://localhost:5001/api/Product/{productName}";
+                return JsonConvert.DeserializeObject<List<ProductDto>>(await JsonResponse(url));
+        }
+
+        public async Task<string> JsonResponse(string url){
+            using var httpClient = new HttpClient();
+            return await httpClient.GetStringAsync(url);
         }
 
     }

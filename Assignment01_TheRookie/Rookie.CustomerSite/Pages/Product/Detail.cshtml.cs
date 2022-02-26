@@ -31,11 +31,11 @@ namespace Rookie.CustomerSite.Pages.Product
         //     ProductVM = _mapper.Map<IList<ProductVM>>(productDto);
         // }
 
-        public async Task OnGet(string productName){
-           if(productName == null){
-               productName = "Ginger";
+        public async Task OnGet(string name){
+           if(name == null){
+               name = "Ginger";
            }
-           var productDto = await  _productService.GetProductByNameAsync(productName);
+           var productDto = await  _productService.GetProductByNameAsync(name);
             ProductVM = _mapper.Map<ProductVM>(productDto.FirstOrDefault());
         }
     }
