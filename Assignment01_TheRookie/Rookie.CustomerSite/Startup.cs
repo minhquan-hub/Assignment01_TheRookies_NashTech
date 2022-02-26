@@ -62,13 +62,13 @@ namespace Rookie.CustomerSite
                 //     name: "ShopDefault",
                 //     pattern: "{controller=Shop}/{action=Index}/{id?}");
 
-                // endpoints.MapControllerRoute(
-                //     name: "HomeDefault",
-                //     pattern: "index",
-                //     defaults: new {
-                //         controller = "Home",
-                //         action = "Index"
-                //     });
+                endpoints.MapControllerRoute(
+                    name: "HomeDefault",
+                    pattern: "index",
+                    defaults: new {
+                        controller = "Home",
+                        action = "Index"
+                    });
 
                 // endpoints.MapControllerRouSte(
                 //     name: "Shop",

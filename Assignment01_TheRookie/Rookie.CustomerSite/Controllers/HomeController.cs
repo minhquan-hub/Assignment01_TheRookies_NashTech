@@ -20,10 +20,9 @@ namespace CustomerSite.Controllers
         }
 
         //[Route("index")]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            // var productService = new ProductService();
-            // var result = await productService.GetProductByCategoryAsync("Fruits");
+           
             return View();
         }
 
