@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Rookie.ShareClass.Dto;
 
-namespace RookieShop.Shared.Dto
+namespace Rookie.ShareClass.Dto
 {
     public class PagedResponseDto<TModel> : BaseQueryCriteriaDto
     {

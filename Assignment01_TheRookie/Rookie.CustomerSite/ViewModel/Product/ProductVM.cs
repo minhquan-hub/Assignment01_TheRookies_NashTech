@@ -1,6 +1,6 @@
 using System;
 
-namespace Rookie.CustomerSite.ViewModel
+namespace Rookie.CustomerSite.ViewModel.Product
 {
     public class ProductVM
     {
