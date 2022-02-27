@@ -29,6 +29,7 @@ namespace Rookie.CustomerSite
             services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 

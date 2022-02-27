@@ -5,6 +5,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Rookie.CustomerSite.Services.InterfaceServices;
+using Rookie.CustomerSite.ViewModel.Product;
+using Rookie.CustomerSite.ViewModel.Category;
 using Rookie.CustomerSite.ViewModel;
 
 namespace Rookie.CustomerSite.Pages.Product
@@ -12,17 +14,23 @@ namespace Rookie.CustomerSite.Pages.Product
     public class ProductPageModel : PageModel
     {
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
-        public ProductPageModel(IProductService productService, IMapper mapper) 
+        public ProductPageModel(IProductService productService,ICategoryService categoryService, IMapper mapper) 
         {
             _productService = productService;
+            _categoryService = categoryService;
             _mapper = mapper;
         }
         
         [BindProperty(SupportsGet = true)]
         public string ProductName { get; set; }
+
         [BindProperty(SupportsGet = true)]
-        public IList<ProductVM> ProductVM { get; set; }
+        public PagedResponseVM<ProductVM> PagedResponseVM { get; set; }
+
+        // [BindProperty(SupportsGet = true)]
+        // public IList<CategoryVM> CategoryVM { get; set; }
         // public async Task OnPostProduct(){
         //    if(ProductName == null){
         //        ProductName = "Ginger";
@@ -35,8 +43,10 @@ namespace Rookie.CustomerSite.Pages.Product
            if(ProductName == null){
                ProductName = "Ginger";
            }
-           var productDto = await  _productService.GetProductByNameAsync(ProductName);
-            ProductVM = _mapper.Map<IList<ProductVM>>(productDto);
+           var productDto = await  _productService.GetProductAndPageAsync(ProductName);
+        //    var categoryDto = await _categoryService.GetAllCategoryAsync();
+           PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM>>(productDto);
+        //    CategoryVM = _mapper.Map<IList<CategoryVM>>(categoryDto);
         }
     }
 }
