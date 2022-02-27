@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Models;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Rookie.BackendAPI.Services{
 
@@ -38,20 +39,15 @@ namespace Rookie.BackendAPI.Services{
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<Category> GetAllById(int categoryId)
+        public List<Category> GetAllCategory()
         {
-            var category =  _context.Categories.Where(c => c.CategoryId == categoryId).FirstOrDefault();
+            var category =  (from c in _context.Categories select c).ToList();
 
             return category;
         }
         public async Task<int> UpdateCategory(int CategoryId, Category category)
         {
             return 1;
-        }
-
-        Task<Category> ICategoryService.GetAllById(int categoryId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

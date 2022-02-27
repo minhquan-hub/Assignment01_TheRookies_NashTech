@@ -16,14 +16,17 @@ namespace Rookie.BackendAPI.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.SeedProductData();
-            builder.SeedCategoryData();
-            base.OnModelCreating(builder);
+            modelBuilder.SeedProductData();
+            modelBuilder.SeedCategoryData();
+            modelBuilder.SeedImageData();
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Product> Products {get; set; }
         public DbSet<Category> Categories {get; set; }
+        public DbSet<Image> Images {get; set; }
+        public DbSet<Rating> Ratings {get; set; }
     }
 }
