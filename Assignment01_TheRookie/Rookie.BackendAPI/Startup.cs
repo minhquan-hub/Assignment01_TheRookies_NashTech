@@ -32,7 +32,6 @@ namespace Rookie.BackendAPI
         {
 
             services.AddControllers();
-            services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DatabaseConnectString")));

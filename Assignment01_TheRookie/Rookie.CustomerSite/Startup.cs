@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Rookie.CustomerSite.Services;
+using Rookie.CustomerSite.Services.InterfaceServices;
 
 namespace Rookie.CustomerSite
 {
@@ -23,7 +26,10 @@ namespace Rookie.CustomerSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages();
             services.AddControllersWithViews();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +57,35 @@ namespace Rookie.CustomerSite
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                // endpoints.MapControllerRoute(
+                //     name: "ShopDefault",
+                //     pattern: "{controller=Shop}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "HomeDefault",
+                    pattern: "index",
+                    defaults: new {
+                        controller = "Home",
+                        action = "Index"
+                    });
+
+                // endpoints.MapControllerRouSte(
+                //     name: "Shop",
+                //     pattern: "shop",
+                //     defaults: new { 
+                //         controller = "Shop",
+                //         action = "Index"
+                //     });
+                // endpoints.MapControllerRoute(
+                //     name: "WishList",
+                //     pattern: "wishlist",
+                //     defaults: new { 
+                //         controller = "Shop",
+                //         action = "WishList"
+                //     });    
+
+                endpoints.MapRazorPages();
             });
         }
     }
