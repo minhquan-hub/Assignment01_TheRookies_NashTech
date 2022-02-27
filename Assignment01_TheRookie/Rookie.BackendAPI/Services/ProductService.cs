@@ -35,30 +35,42 @@ namespace Rookie.BackendAPI.Services
             return await _context.SaveChangesAsync();
         }
 
-
         public async Task<int> UpdateProduct(int productId, Product product)
         {
             return 1;
         }
-        public async Task<Product> GetAllById(int productId)
-        {
-            var product = _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
-            return product;
-        }
-        public async Task<IQueryable<Product>> GetAllByNameAndPage(string productName)
+        
+        public async Task<IQueryable<Product>> GetAllProductByNameAndPage(string productName)
         {
             var product = _context.Products.Where(p => p.ProductName == productName);
             
             return await Task.FromResult(product);
         }
 
-        public List<Product> GetAllByName(string productName)
+        public async Task<IQueryable<Product>> GetAllProductByCategoryAndPage(string productCategoryName)
+        {
+            var productByCategory = from p in _context.Products 
+                          join c in _context.Categories 
+                          on p.CateId equals c.CategoryId
+                          where c.CategoryName == productCategoryName
+                          select p;
+
+            return await Task.FromResult(productByCategory);;
+        }
+
+        public List<Product> GetAllProductByName(string productName)
         {
            var product = _context.Products.Where(p => p.ProductName == productName).ToList();
            return product;
         }
 
-        public List<Product> GetAllByCategory(string productCategoryName)
+        public Product GetProductById(int productId)
+        {
+            var product =  _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
+            return product;
+        }
+
+        public List<Product> GetAllProductByCategory(string productCategoryName)
         {
             var product = (from p in _context.Products 
                           join c in _context.Categories 

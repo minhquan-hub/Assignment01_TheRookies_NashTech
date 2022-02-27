@@ -40,11 +40,12 @@ namespace Rookie.BackendAPI.Controllers
             _productService = productService;
         }
 
+        // GET: https://localhost:5001/api/Product?Search=Mint&SortOrder=0&SortColumn=3&Limit=12&Page=2
         [HttpGet]
         //[AllowAnonymous]
         public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
-            var product = _productService.GetAllByNameAndPage(productCriteriaDto.Search);
+            var product = _productService.GetAllProductByNameAndPage(productCriteriaDto.Search);
             var productQuery =  ProductFilter(await product, productCriteriaDto) ;
             var pageProducts = await productQuery.AsNoTracking().PaginateAsync(productCriteriaDto);
             var productDto = _mapper.Map<IEnumerable<ProductDto>>(pageProducts.Items);
@@ -60,22 +61,55 @@ namespace Rookie.BackendAPI.Controllers
             };
         }
 
+        //GET: https://localhost:5001/api/Product/Category?Search=Vegatables&SortOrder=0&SortColumn=2&Limit=12&Page=2
+        [HttpPost("Category")]
+        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProductByCategoryAndPage(ProductCriteriaDto productCriteriaDto)
+        {
+            var product = _productService.GetAllProductByCategoryAndPage(productCriteriaDto.Search);
+            var productQuery =  ProductFilter(await product, productCriteriaDto) ;
+            var pageProducts = await productQuery.AsNoTracking().PaginateAsync(productCriteriaDto);
+            var productDto = _mapper.Map<IEnumerable<ProductDto>>(pageProducts.Items);
+            return new PagedResponseDto<ProductDto>{
+                CurrentPage = pageProducts.CurrentPage,
+                TotalItems = pageProducts.TotalItems,
+                TotalPages = pageProducts.TotalPages,
+                Search = productCriteriaDto.Search,
+                SortOrder = productCriteriaDto.SortOrder,
+                SortColumn = productCriteriaDto.SortColumn,
+                Limit = productCriteriaDto.Limit,
+                Page = productCriteriaDto.Page,
+                Items = productDto
+            };
+        }
+        
+
+        //GET: https://localhost:5001/api/Product/Mint
         [HttpGet("{productName}")]
         public  ActionResult<ProductDto> GetProductByName(string productName)
         {
-            var product = _productService.GetAllByName(productName);
-
+            var product = _productService.GetAllProductByName(productName);
             var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
             return Ok(productDto);
         }
 
+        //GET: https://localhost:5001/api/Product/id/1
+        [HttpPost("id/{productId}")]
+        public ActionResult<ProductDto> GetProductById(int productId){
+            var product = _productService.GetProductById(productId);
+            var productDto = _mapper.Map<ProductDto>(product);
+            return Ok(productDto);
+        }
+
+        //GET: https://localhost:5001/api/Product/Category/Fruits
         // [HttpGet("Category/{productCategoryName}")]
         // public ActionResult<ProductDto> GetProductByCategory(string productCategoryName){
-        //     var product = _productService.GetAllByCategory(productCategoryName);
-
+        //     var product = _productService.GetAllProductByCategory(productCategoryName);
         //     var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
         //     return Ok(productDto);
         // }
+
+
+
         #region Private Method
         private  IQueryable<Product> ProductFilter(
             IQueryable<Product> productQuery,
