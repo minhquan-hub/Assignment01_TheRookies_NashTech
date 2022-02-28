@@ -35,8 +35,10 @@ namespace Rookie.BackendAPI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DatabaseConnectString")));
+
             services.AddScoped<IProductService,ProductService>();
             services.AddScoped<ICategoryService,CategoryService>();
+            services.AddScoped<IRatingService, RatingService>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

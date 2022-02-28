@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Services.InterfaceServices;
 using Rookie.ShareClass.Dto.Product;
-using RookieShop.Shared.Dto;
+using Rookie.ShareClass.Dto;
 using Rookie.BackendAPI.Extensions;
 using System.Linq;
 using Rookie.BackendAPI.Models;
@@ -41,9 +41,9 @@ namespace Rookie.BackendAPI.Controllers
         }
 
         // GET: https://localhost:5001/api/Product?Search=Mint&SortOrder=0&SortColumn=3&Limit=12&Page=2
-        [HttpGet]
+        [HttpPost]
         //[AllowAnonymous]
-        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
+        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProductAndPage(ProductCriteriaDto productCriteriaDto)
         {
             var product = _productService.GetAllProductByNameAndPage(productCriteriaDto.Search);
             var productQuery =  ProductFilter(await product, productCriteriaDto) ;
@@ -93,7 +93,7 @@ namespace Rookie.BackendAPI.Controllers
         }
 
         //GET: https://localhost:5001/api/Product/id/1
-        [HttpPost("id/{productId}")]
+        [HttpGet("id/{productId}")]
         public ActionResult<ProductDto> GetProductById(int productId){
             var product = _productService.GetProductById(productId);
             var productDto = _mapper.Map<ProductDto>(product);

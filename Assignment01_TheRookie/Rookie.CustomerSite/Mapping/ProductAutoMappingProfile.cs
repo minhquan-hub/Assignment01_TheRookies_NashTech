@@ -1,8 +1,8 @@
 using AutoMapper;
+using Rookie.CustomerSite.ViewModel.Product;
 using Rookie.CustomerSite.ViewModel;
 using Rookie.ShareClass.Dto;
 using Rookie.ShareClass.Dto.Product;
-using RookieShop.Shared.Dto;
 
 namespace Rookie.CustomerSite.Mapping
 {

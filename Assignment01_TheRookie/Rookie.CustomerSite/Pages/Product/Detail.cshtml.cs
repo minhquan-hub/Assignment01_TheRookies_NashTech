@@ -5,7 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Rookie.CustomerSite.Services.InterfaceServices;
-using Rookie.CustomerSite.ViewModel;
+using Rookie.CustomerSite.ViewModel.Product;
 
 namespace Rookie.CustomerSite.Pages.Product
 {
@@ -31,12 +31,12 @@ namespace Rookie.CustomerSite.Pages.Product
         //     ProductVM = _mapper.Map<IList<ProductVM>>(productDto);
         // }
 
-        public async Task OnGet(string name){
-           if(name == null){
-               name = "Ginger";
+        public async Task OnGet(int id){
+           if(id == 0){
+               id = 3;
            }
-           var productDto = await  _productService.GetProductByNameAsync(name);
-            ProductVM = _mapper.Map<ProductVM>(productDto.FirstOrDefault());
+           var productDto = await  _productService.GetProductById(id);
+            ProductVM = _mapper.Map<ProductVM>(productDto);
         }
     }
 }

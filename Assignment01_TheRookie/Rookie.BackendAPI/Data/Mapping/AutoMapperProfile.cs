@@ -1,5 +1,6 @@
 using AutoMapper;
 using Rookie.BackendAPI.Models;
+using Rookie.ShareClass.Dto.Category;
 using Rookie.ShareClass.Dto.Product;
 
 namespace Rookie.BackendAPI.Data.Mapping
@@ -9,6 +10,7 @@ namespace Rookie.BackendAPI.Data.Mapping
         public AutoMapperProfile()  
         {  
             CreateMap<Product, ProductDto>();
+            CreateMap<Category, CategoryDto>();
                 
         }  
     }

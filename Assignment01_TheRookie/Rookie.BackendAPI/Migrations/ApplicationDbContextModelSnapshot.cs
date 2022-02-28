@@ -198,6 +198,333 @@ namespace Rookie.BackendAPI.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Rookie.BackendAPI.Models.Image", b =>
+                {
+                    b.Property<string>("ImageID")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("image_id");
+
+                    b.Property<string>("Image1")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("image_01");
+
+                    b.Property<string>("Image2")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("image_02");
+
+                    b.Property<string>("Image3")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("image_03");
+
+                    b.Property<string>("Image4")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("image_04");
+
+                    b.Property<string>("Image5")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("image_05");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ImageID");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
+
+                    b.ToTable("Image");
+
+                    b.HasData(
+                        new
+                        {
+                            ImageID = "I01",
+                            Image1 = "/images/bg_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            ImageID = "I02",
+                            Image1 = "/images/bg_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            ImageID = "I03",
+                            Image1 = "/images/bg_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 3
+                        },
+                        new
+                        {
+                            ImageID = "I04",
+                            Image1 = "/images/product-4.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 4
+                        },
+                        new
+                        {
+                            ImageID = "I05",
+                            Image1 = "/images/image_5.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 5
+                        },
+                        new
+                        {
+                            ImageID = "I06",
+                            Image1 = "/images/product-8.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 6
+                        },
+                        new
+                        {
+                            ImageID = "I07",
+                            Image1 = "/images/product-3.jpg",
+                            Image2 = "/images/product-7.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 7
+                        },
+                        new
+                        {
+                            ImageID = "I08",
+                            Image1 = "/images/image_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 8
+                        },
+                        new
+                        {
+                            ImageID = "I09",
+                            Image1 = "/images/image_5.jpg",
+                            Image2 = "/images/product-4.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 9
+                        },
+                        new
+                        {
+                            ImageID = "I10",
+                            Image1 = "/images/product-1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 10
+                        },
+                        new
+                        {
+                            ImageID = "I11",
+                            Image1 = "/images/product-4.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 11
+                        },
+                        new
+                        {
+                            ImageID = "I12",
+                            Image1 = "/images/product-3.jpg",
+                            Image2 = "/images/product-5.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 12
+                        },
+                        new
+                        {
+                            ImageID = "I13",
+                            Image1 = "/images/product-6.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-7.jpg",
+                            ProductId = 13
+                        },
+                        new
+                        {
+                            ImageID = "I14",
+                            Image1 = "/images/category-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 14
+                        },
+                        new
+                        {
+                            ImageID = "I15",
+                            Image1 = "/images/product-1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 15
+                        },
+                        new
+                        {
+                            ImageID = "I16",
+                            Image1 = "/images/image_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 16
+                        },
+                        new
+                        {
+                            ImageID = "I17",
+                            Image1 = "/images/image_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 17
+                        },
+                        new
+                        {
+                            ImageID = "I18",
+                            Image1 = "/images/product-1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 18
+                        },
+                        new
+                        {
+                            ImageID = "I19",
+                            Image1 = "/images/product-1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 19
+                        },
+                        new
+                        {
+                            ImageID = "I20",
+                            Image1 = "/images/product-1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 20
+                        },
+                        new
+                        {
+                            ImageID = "I21",
+                            Image1 = "/images/product-1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 21
+                        },
+                        new
+                        {
+                            ImageID = "I22",
+                            Image1 = "/images/product-1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 22
+                        },
+                        new
+                        {
+                            ImageID = "I23",
+                            Image1 = "/images/category-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 23
+                        },
+                        new
+                        {
+                            ImageID = "I24",
+                            Image1 = "/images/category-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 24
+                        },
+                        new
+                        {
+                            ImageID = "I25",
+                            Image1 = "/images/category-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 25
+                        },
+                        new
+                        {
+                            ImageID = "I26",
+                            Image1 = "/images/category-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 26
+                        },
+                        new
+                        {
+                            ImageID = "I27",
+                            Image1 = "/images/category-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 27
+                        },
+                        new
+                        {
+                            ImageID = "I28",
+                            Image1 = "/images/product-3.jpg",
+                            Image2 = "/images/product-7.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 28
+                        },
+                        new
+                        {
+                            ImageID = "I29",
+                            Image1 = "/images/product-3.jpg",
+                            Image2 = "/images/product-7.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 29
+                        },
+                        new
+                        {
+                            ImageID = "I30",
+                            Image1 = "/images/product-3.jpg",
+                            Image2 = "/images/product-7.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 30
+                        },
+                        new
+                        {
+                            ImageID = "I31",
+                            Image1 = "/images/product-3.jpg",
+                            Image2 = "/images/product-7.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 31
+                        },
+                        new
+                        {
+                            ImageID = "I32",
+                            Image1 = "/images/product-3.jpg",
+                            Image2 = "/images/product-7.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 32
+                        },
+                        new
+                        {
+                            ImageID = "I33",
+                            Image1 = "/images/image_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 33
+                        },
+                        new
+                        {
+                            ImageID = "I34",
+                            Image1 = "/images/image_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 34
+                        },
+                        new
+                        {
+                            ImageID = "I35",
+                            Image1 = "/images/image_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 35
+                        },
+                        new
+                        {
+                            ImageID = "I36",
+                            Image1 = "/images/image_1.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = 36
+                        });
+                });
+
             modelBuilder.Entity("Rookie.BackendAPI.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -600,6 +927,38 @@ namespace Rookie.BackendAPI.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Rookie.BackendAPI.Models.Rating", b =>
+                {
+                    b.Property<string>("RateId")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("rate_id");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RateNumber")
+                        .HasColumnType("int")
+                        .HasColumnName("rate_number");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("RateId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Rating");
+
+                    b.HasData(
+                        new
+                        {
+                            RateId = "R1",
+                            ProductId = 24,
+                            RateNumber = 0
+                        });
+                });
+
             modelBuilder.Entity("Rookie.BackendAPI.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -716,6 +1075,17 @@ namespace Rookie.BackendAPI.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Rookie.BackendAPI.Models.Image", b =>
+                {
+                    b.HasOne("Rookie.BackendAPI.Models.Product", "Product")
+                        .WithOne("Image")
+                        .HasForeignKey("Rookie.BackendAPI.Models.Image", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Rookie.BackendAPI.Models.Product", b =>
                 {
                     b.HasOne("Rookie.BackendAPI.Models.Category", "Category")
@@ -725,6 +1095,24 @@ namespace Rookie.BackendAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Rookie.BackendAPI.Models.Rating", b =>
+                {
+                    b.HasOne("Rookie.BackendAPI.Models.Product", "Product")
+                        .WithMany("Ratings")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Rookie.BackendAPI.Models.Product", b =>
+                {
+                    b.Navigation("Image");
+
+                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }

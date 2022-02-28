@@ -29,5 +29,8 @@ namespace Rookie.BackendAPI.Models{
 
         [Required, ForeignKey("CateId"), Column("cate_id")]
         public Category Category { get; set; }
+
+        public Image Image { get; set; }
+        public List<Rating> Ratings { get; set;}
     }
 }
