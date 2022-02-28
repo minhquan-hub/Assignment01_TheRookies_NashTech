@@ -30,6 +30,7 @@ namespace Rookie.CustomerSite
             services.AddControllersWithViews();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IRatingService, RatingService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 

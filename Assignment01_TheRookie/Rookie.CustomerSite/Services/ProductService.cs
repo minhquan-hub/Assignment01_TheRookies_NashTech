@@ -50,7 +50,7 @@ namespace Rookie.CustomerSite.Services
             var jsonResponse = await httpClient.GetStringAsync(url);
             if(string.IsNullOrEmpty(jsonResponse))
             {
-                throw new Exception("The client get don't have the data");
+                throw new Exception("The client product get don't have the data");
             }
             return jsonResponse;
         }
@@ -70,7 +70,7 @@ namespace Rookie.CustomerSite.Services
                 var response = await httpClient.SendAsync(httpRequestMessage);
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 if(string.IsNullOrEmpty(jsonResponse)){
-                    throw new Exception("The client post don't have the data");
+                    throw new Exception("The client product post don't have the data");
                 }
                 return jsonResponse;
         }

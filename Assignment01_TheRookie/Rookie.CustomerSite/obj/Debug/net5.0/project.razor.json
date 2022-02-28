@@ -15736,6 +15736,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.CustomerSite\\Pages\\Shared\\Components\\RatingClient\\Default.cshtml",
+      "TargetPath": "Pages\\Shared\\Components\\RatingClient\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.CustomerSite\\Pages\\_ViewStart.cshtml",
       "TargetPath": "Pages\\_ViewStart.cshtml",
       "FileKind": "mvc"

@@ -14,7 +14,7 @@
     						<h3><a asp-area="" asp-page="/Product/Detail" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
     						<div class="d-flex">
     							<div class="pricing">
-		    						<p class="price"><span class="price-sale">@Html.DisplayFor(modelItem => item.Price)</span></p>
+		    						<p class="price"><span class="price-sale">$@Html.DisplayFor(modelItem => item.Price)</span></p>
 		    					</div>
 	    					</div>
 	    					<div class="bottom-area d-flex px-3">

@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Rookie.CustomerSite.Services.InterfaceServices;
 using Rookie.CustomerSite.ViewModel.Product;
+using Rookie.CustomerSite.ViewModel.Rating;
+using Rookie.ShareClass.Dto.Rating;
 
 namespace Rookie.CustomerSite.Pages.Product
 {
     public class DetailPageModel : PageModel
     {
         private readonly IProductService _productService;
+        private readonly IRatingService _ratingService;
         private readonly IMapper _mapper;
-        public DetailPageModel(IProductService productService, IMapper mapper) 
+        public DetailPageModel(IProductService productService, IRatingService ratingService, IMapper mapper) 
         {
             _productService = productService;
+            _ratingService = ratingService;
             _mapper = mapper;
         }
         
@@ -23,13 +27,17 @@ namespace Rookie.CustomerSite.Pages.Product
         // public string ProductName { get; set; }
         [BindProperty(SupportsGet = true)]
         public ProductVM ProductVM { get; set; }
-        // public async Task OnPostProduct(){
-        //    if(ProductName == null){
-        //        ProductName = "Ginger";
-        //    }
-        //    var productDto = await  _productService.GetProductByNameAsync(ProductName);
-        //     ProductVM = _mapper.Map<IList<ProductVM>>(productDto);
-        // }
+        public async Task OnGetRating(int number, int productid)
+        {
+            var ratingVM = new RatingVM{
+                ProductId = productid,
+                UserId = "",
+                RateNumber = number
+            };
+            var ratingDto = _mapper.Map<RatingDto>(ratingVM);
+            await _ratingService.InsertRatingAsync(ratingDto);
+            await OnGet(productid);
+        }
 
         public async Task OnGet(int id){
            if(id == 0){
