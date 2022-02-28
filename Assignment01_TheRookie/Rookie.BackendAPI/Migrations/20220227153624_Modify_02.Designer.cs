@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rookie.BackendAPI.Data;
 
 namespace Rookie.BackendAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220227153624_Modify_02")]
+    partial class Modify_02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -949,14 +951,6 @@ namespace Rookie.BackendAPI.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Rating");
-
-                    b.HasData(
-                        new
-                        {
-                            RateId = "R1",
-                            ProductId = 24,
-                            RateNumber = 0
-                        });
                 });
 
             modelBuilder.Entity("Rookie.BackendAPI.Models.User", b =>
