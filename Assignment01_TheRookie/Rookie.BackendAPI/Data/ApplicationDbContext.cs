@@ -21,6 +21,7 @@ namespace Rookie.BackendAPI.Data
             modelBuilder.SeedProductData();
             modelBuilder.SeedCategoryData();
             modelBuilder.SeedImageData();
+            modelBuilder.SeedRatingData();
             base.OnModelCreating(modelBuilder);
         }
 

@@ -7,7 +7,12 @@ namespace Rookie.BackendAPI.Data.SeedData
     {
         public static void SeedRatingData(this ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<Rating>().HasData(
+                new Rating{
+                    RateId = "R1",
+                    ProductId = 24
+                }
+            );
         }
     }
 }

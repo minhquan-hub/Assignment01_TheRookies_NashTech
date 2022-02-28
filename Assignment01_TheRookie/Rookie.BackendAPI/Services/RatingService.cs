@@ -17,11 +17,11 @@ namespace Rookie.BackendAPI.Services
         }
         public void InsertRating(RatingDto ratingDto)
         {
-            var rating = _context.Ratings.LastOrDefault();
+            var rating = _context.Ratings.OrderBy(r => r.RateId).LastOrDefault();
             var InsertRating = new Rating {
                 RateId = CreateRateId(rating.RateId),
                 ProductId = ratingDto.ProductId,
-                UserId = CreateRateId(ratingDto.UserId)
+                RateNumber = ratingDto.RateNumber
             };
             _context.Ratings.Add(InsertRating);
             if(_context.SaveChanges() == 0){
@@ -32,7 +32,7 @@ namespace Rookie.BackendAPI.Services
         public string CreateRateId(string rateIdOld)
         {
             var createIdString1 = rateIdOld.Substring(1);
-            var rateIdParse = int.Parse(createIdString1);
+            var rateIdParse = int.Parse(createIdString1)+1;
             return "R"+ rateIdParse.ToString();
         }
         
