@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Rookie.CustomerSite.ViewModel.Category;
+using Rookie.ShareClass.Dto.Category;
 
 namespace Rookie.CustomerSite.Services.InterfaceServices
 {
     public interface ICategoryService
     {
-        public Task<IList<CategoryVM>>  GetAllCategoryAsync();
+        public Task<IList<CategoryDto>>  GetAllCategoryAsync();
     }
 }
