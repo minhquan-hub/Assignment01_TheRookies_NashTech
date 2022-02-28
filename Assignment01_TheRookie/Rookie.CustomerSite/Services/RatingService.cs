@@ -16,8 +16,15 @@ namespace Rookie.CustomerSite.Services
 
         public async Task JsonResponseByGet(string url)
         {
-            using var httpClient = new HttpClient();
-            var jsonResponse = await httpClient.GetAsync(url);
+            try
+            {
+                using var httpClient = new HttpClient();
+                var jsonResponse = await httpClient.GetAsync(url);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At JsonResponseByGet of RatingService: {ex.Message}");
+            }
         }
     }
 }

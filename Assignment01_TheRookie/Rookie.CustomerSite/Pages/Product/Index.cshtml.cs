@@ -40,14 +40,17 @@ namespace Rookie.CustomerSite.Pages.Product
         //     ProductVM = _mapper.Map<IList<ProductVM>>(productDto);
         // }
 
-        public async Task OnGetProductCategoryName(string categorynameclient){
+        public async Task OnGetProductCategoryName(string categorynameclient)
+        {
             var productDto = await  _productService.GetProductByCategoryAndPageAsync(categorynameclient);
             PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM>>(productDto);
             await ShowCategoryName();
         }
 
-        public async Task OnGet(){
-           if(ProductName == null){
+        public async Task OnGet()
+        {
+           if(ProductName == null)
+           {
                ProductName = "Ginger";
            }
            var productDto = await  _productService.GetProductAndPageAsync(ProductName);

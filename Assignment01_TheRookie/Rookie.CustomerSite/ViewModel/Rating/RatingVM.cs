@@ -4,7 +4,6 @@ namespace Rookie.CustomerSite.ViewModel.Rating
     {
         public int ProductId { get; set; }
         public string UserId { get; set; }
-        public int RateNumber { get; set;
-        }
+        public int RateNumber { get; set;}
     }
 }

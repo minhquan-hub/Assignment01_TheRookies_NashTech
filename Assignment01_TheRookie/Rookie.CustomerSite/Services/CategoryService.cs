@@ -11,6 +11,7 @@ namespace Rookie.CustomerSite.Services
 {
     public class CategoryService : ICategoryService
     {
+        // Metho: Get
         public async Task<IList<CategoryDto>> GetAllCategoryAsync()
         {
             string url = "https://localhost:5001/api/Category";
@@ -19,11 +20,16 @@ namespace Rookie.CustomerSite.Services
 
         public async Task<string> JsonResponseByGet(string url)
         {
-            using var httpClient = new HttpClient();
-            var jsonResponse = await httpClient.GetStringAsync(url);
-            if(string.IsNullOrEmpty(jsonResponse))
-            {
-                throw new Exception("The client product get don't have the data");
+            var jsonResponse = "";
+            try{
+                using var httpClient = new HttpClient();
+                jsonResponse = await httpClient.GetStringAsync(url);
+                if(string.IsNullOrEmpty(jsonResponse))
+                {
+                    throw new Exception("The client category get don't have the data");
+                }
+            }catch(Exception ex){
+                throw new Exception(ex.Message);
             }
             return jsonResponse;
         }

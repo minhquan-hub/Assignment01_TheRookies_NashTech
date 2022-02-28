@@ -27,6 +27,8 @@ namespace Rookie.CustomerSite.Pages.Product
         // public string ProductName { get; set; }
         [BindProperty(SupportsGet = true)]
         public ProductVM ProductVM { get; set; }
+        
+        // Insert data rating product
         public async Task OnGetRating(int number, int productid)
         {
             var ratingVM = new RatingVM{
@@ -39,8 +41,11 @@ namespace Rookie.CustomerSite.Pages.Product
             await OnGet(productid);
         }
 
-        public async Task OnGet(int id){
-           if(id == 0){
+        // Take data product by id
+        public async Task OnGet(int id)
+        {
+           if(id == 0)
+           {
                id = 3;
            }
            var productDto = await  _productService.GetProductById(id);
