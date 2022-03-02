@@ -13585,7 +13585,7 @@
           {
             "Kind": "MVC.ViewComponent",
             "Name": "product-vm",
-            "TypeName": "System.Collections.Generic.List<Rookie.CustomerSite.ViewModel.Product.ProductVM>",
+            "TypeName": "System.Collections.Generic.List<Rookie.CustomerSite.ViewModel.Product.ProductVM<Rookie.CustomerSite.ViewModel.Image.ImageVM>>",
             "Metadata": {
               "Common.PropertyName": "productVM"
             }
@@ -15658,11 +15658,6 @@
     {
       "FilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.CustomerSite\\Views\\Shop\\Index.cshtml",
       "TargetPath": "Views\\Shop\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.CustomerSite\\Pages\\Product\\UploadImage.cshtml",
-      "TargetPath": "Pages\\Product\\UploadImage.cshtml",
       "FileKind": "mvc"
     },
     {
