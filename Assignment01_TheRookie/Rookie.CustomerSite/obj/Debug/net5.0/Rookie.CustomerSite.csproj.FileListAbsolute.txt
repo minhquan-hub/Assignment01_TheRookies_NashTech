@@ -56,3 +56,6 @@ F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Pages\Product\Detail.cshtml.g.cs
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Pages\Shared\Components\ShowProduct\Default.cshtml.g.cs
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\bin\Debug\net5.0\CloudinaryDotNet.dll
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\bin\Debug\net5.0\Microsoft.Extensions.WebEncoders.dll
+F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Pages\Product\UploadImage.cshtml.g.cs
