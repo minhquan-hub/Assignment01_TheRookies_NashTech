@@ -10,7 +10,7 @@ namespace Rookie.BackendAPI.Data.Mapping
     {
         public AutoMapperProfile()  
         {  
-            CreateMap<Product, ProductDto>();
+            CreateMap<Product, ProductDto<ImageDto>>();
             CreateMap<Category, CategoryDto>();
             CreateMap<Image, ImageDto>();
         }  

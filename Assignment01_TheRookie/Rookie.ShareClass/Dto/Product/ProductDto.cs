@@ -3,7 +3,7 @@ using Rookie.ShareClass.Dto.Image;
 
 namespace Rookie.ShareClass.Dto.Product {
 
-    public class ProductDto 
+    public class ProductDto<TModel> 
     {
         
         public int ProductId { get; set; }
@@ -12,6 +12,6 @@ namespace Rookie.ShareClass.Dto.Product {
         public decimal Price { get; set; }
         public DateTime ManufacturingDate { get; set; }
         public DateTime ExpiryDate { get; set; }
-        public ImageDto Image { get; set; }
+        public TModel Image { get; set; }
     }
 }

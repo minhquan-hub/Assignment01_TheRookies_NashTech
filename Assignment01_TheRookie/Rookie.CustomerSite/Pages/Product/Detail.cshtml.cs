@@ -5,6 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Rookie.CustomerSite.Services.InterfaceServices;
+using Rookie.CustomerSite.ViewModel.Image;
 using Rookie.CustomerSite.ViewModel.Product;
 using Rookie.CustomerSite.ViewModel.Rating;
 using Rookie.ShareClass.Dto.Rating;
@@ -26,7 +27,7 @@ namespace Rookie.CustomerSite.Pages.Product
         // [BindProperty(SupportsGet = true)]
         // public string ProductName { get; set; }
         [BindProperty(SupportsGet = true)]
-        public ProductVM ProductVM { get; set; }
+        public ProductVM<ImageVM> ProductVM { get; set; }
         
         // Insert data rating product
         public async Task OnGetRating(int number, int productid)
@@ -49,7 +50,7 @@ namespace Rookie.CustomerSite.Pages.Product
                id = 3;
            }
            var productDto = await  _productService.GetProductById(id);
-            ProductVM = _mapper.Map<ProductVM>(productDto);
+            ProductVM = _mapper.Map<ProductVM<ImageVM>>(productDto);
         }
     }
 }
