@@ -6,7 +6,7 @@
 @foreach (var item in Model){
                     <div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
-    					<a asp-area="" asp-page="/Product/Detail" asp-route-id="@item.ProductId" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
+    					<a asp-area="" asp-page="/Product/Detail" asp-route-id="@item.ProductId" class="img-prod"><img class="img-fluid" src="@item.ImageVM.Image1" alt="Colorlib Template">
     						<span class="status">30%</span>
     						<div class="overlay"></div>
     					</a>
