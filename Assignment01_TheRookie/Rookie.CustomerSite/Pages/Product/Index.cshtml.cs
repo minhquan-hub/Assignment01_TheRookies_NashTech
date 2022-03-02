@@ -49,11 +49,11 @@ namespace Rookie.CustomerSite.Pages.Product
 
         public async Task OnGet()
         {
-           if(ProductName == null)
-           {
-               ProductName = "Ginger";
-           }
-           var productDto = await  _productService.GetProductAndPageAsync(ProductName);
+        //    if(ProductName == null)
+        //    {
+        //        ProductName = "Ginger";
+        //    }
+           var productDto = await  _productService.GetAllProduct();
            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM>>(productDto);
            await ShowCategoryName();
         }

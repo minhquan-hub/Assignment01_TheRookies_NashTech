@@ -15661,6 +15661,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.CustomerSite\\Pages\\Product\\UploadImage.cshtml",
+      "TargetPath": "Pages\\Product\\UploadImage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.CustomerSite\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
