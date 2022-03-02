@@ -17,7 +17,7 @@ namespace Rookie.BackendAPI.Services
         }
         public void InsertRating(RatingDto ratingDto)
         {
-            var rating = _context.Ratings.OrderBy(r => r.RateId).LastOrDefault();
+            var rating = _context.Ratings.OrderBy(r => r.RateId).Last();
             var InsertRating = new Rating {
                 RateId = CreateRateId(rating.RateId),
                 ProductId = ratingDto.ProductId,

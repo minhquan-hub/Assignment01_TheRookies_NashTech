@@ -8,8 +8,6 @@ namespace Rookie.CustomerSite.Mapping
 {
     public class ProductAutoMappingProfile : Profile
     {
-        
-
         public ProductAutoMappingProfile()
         {
             CreateMap<ProductDto, ProductVM>().ReverseMap();

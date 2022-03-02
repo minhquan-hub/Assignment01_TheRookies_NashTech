@@ -12,6 +12,7 @@ namespace Rookie.CustomerSite.Services
 {
     public class ProductService : IProductService
     {
+        // Method: Post
         public async Task<PagedResponseDto<ProductDto>> GetProductAndPageAsync(string productName)
         {
             var url = $"https://localhost:5001/api/Product";
@@ -20,12 +21,15 @@ namespace Rookie.CustomerSite.Services
              
         }
 
-        public async Task<PagedResponseDto<ProductDto>> GetProductByCategoryAndPageAsync(string productCategoryName){
+        // Method: Post
+        public async Task<PagedResponseDto<ProductDto>> GetProductByCategoryAndPageAsync(string productCategoryName)
+        {
             var url = $"https://localhost:5001/api/Product/Category";
             string jsoncontent = "{\"search\":\""+productCategoryName+"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
             return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto>>(await JsonResponseByPost(url,jsoncontent));
         }
 
+        // Method: Get
         public async Task<IList<ProductDto>> GetProductByCategoryAsync(string productCategoryName)
         {
             var url = $"https://localhost:5001/api/Product/Category/{productCategoryName}";
@@ -38,6 +42,7 @@ namespace Rookie.CustomerSite.Services
             return JsonConvert.DeserializeObject<ProductDto>(await JsonResponseByGet(url));
         }
 
+        // Method: Get
         public async Task<IList<ProductDto>> GetProductByNameAsync(string productName)
         {
             var url = $"https://localhost:5001/api/Product/{productName}";
@@ -46,33 +51,50 @@ namespace Rookie.CustomerSite.Services
 
         public async Task<string> JsonResponseByGet(string url)
         {
-            using var httpClient = new HttpClient();
-            var jsonResponse = await httpClient.GetStringAsync(url);
-            if(string.IsNullOrEmpty(jsonResponse))
+            var jsonResponse = "";
+            try
             {
-                throw new Exception("The client get don't have the data");
+                using var httpClient = new HttpClient();
+                jsonResponse = await httpClient.GetStringAsync(url);
+                if(string.IsNullOrEmpty(jsonResponse))
+                {
+                    throw new Exception("The client product get don't have the data");
+                }
             }
+            catch(Exception ex)
+            {
+                throw new Exception($"At JsonResponseByGet ProductService: {ex.Message}");
+            }
+            
             return jsonResponse;
         }
 
         public async Task<string> JsonResponseByPost(string url, string jsoncontent)
         {
-            using var httpClient = new HttpClient();
+            var jsonResponse = "";
+            try
+            {
+                using var httpClient = new HttpClient();
 
                 var httpRequestMessage = new HttpRequestMessage();
                 httpRequestMessage.Method = HttpMethod.Post;
                 httpRequestMessage.RequestUri = new Uri(url);
-
                 
                 var httpContent = new StringContent(jsoncontent, Encoding.UTF8, "application/json");
                 httpRequestMessage.Content = httpContent;
 
                 var response = await httpClient.SendAsync(httpRequestMessage);
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                if(string.IsNullOrEmpty(jsonResponse)){
-                    throw new Exception("The client post don't have the data");
+                jsonResponse = await response.Content.ReadAsStringAsync();
+                if(string.IsNullOrEmpty(jsonResponse))
+                {
+                    throw new Exception("The client product post don't have the data");
                 }
-                return jsonResponse;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At JsonResponseByPost of ProductService: {ex.Message}");
+            }
+            return jsonResponse;
         }
 
     }

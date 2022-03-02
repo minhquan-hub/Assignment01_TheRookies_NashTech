@@ -28,11 +28,11 @@
     				<div class="rating d-flex">
 							<p class="text-left mr-4">
 								<a href="#" class="mr-2">5.0</a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
+								<a asp-page="./Detail" asp-page-handler="rating" asp-route-number="1" asp-route-productid="@Model.ProductVM.ProductId"><span class="ion-ios-star-outline"></span></a>
+								<a asp-page="./Detail" asp-page-handler="rating" asp-route-number="2" asp-route-productid="@Model.ProductVM.ProductId"><span class="ion-ios-star-outline"></span></a>
+								<a asp-page="./Detail" asp-page-handler="rating" asp-route-number="3" asp-route-productid="@Model.ProductVM.ProductId"><span class="ion-ios-star-outline"></span></a>
+								<a asp-page="./Detail" asp-page-handler="rating" asp-route-number="4" asp-route-productid="@Model.ProductVM.ProductId"><span class="ion-ios-star-outline"></span></a>
+								<a asp-page="./Detail" asp-page-handler="rating" asp-route-number="5" asp-route-productid="@Model.ProductVM.ProductId"><span class="ion-ios-star-outline"></span></a>
 							</p>
 							<p class="text-left mr-4">
 								<a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
@@ -83,17 +83,17 @@
     	</div>
     </section>
 
-    <section class="ftco-section">
+     @* <section class="ftco-section">
     	<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ftco-animate">
           	<span class="subheading">Products</span>
             <h2 class="mb-4">Related Products</h2>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-          </div>
+          </div> 
         </div>   		
-    	</div>
-    	<div class="container">
+    	</div> 
+    	 <div class="container">
     		<div class="row">
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
@@ -209,8 +209,8 @@
     				</div>
     			</div>
     		</div>
-    	</div>
-    </section>
+    	</div> 
+     </section>  *@
 
 		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
       <div class="container py-4">

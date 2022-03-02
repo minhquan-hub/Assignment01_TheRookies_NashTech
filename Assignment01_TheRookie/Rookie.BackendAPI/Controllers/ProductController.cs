@@ -16,6 +16,7 @@ using Rookie.BackendAPI.Models;
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using Rookie.ShareClass.Dto.Image;
 
 namespace Rookie.BackendAPI.Controllers
 {
@@ -28,27 +29,53 @@ namespace Rookie.BackendAPI.Controllers
         
         private readonly ApplicationDbContext _context;
         private readonly IProductService _productService;
+        private readonly IImageService _imageService;
         private readonly IMapper _mapper;
         // private readonly IFileStorageService _fileStorageService;
         
-        public ProductController(
-            ApplicationDbContext context,
-            IMapper mapper, IProductService productService)
+        public ProductController(ApplicationDbContext context,IMapper mapper, IProductService productService, IImageService imageService)
         {
             _context = context;
             _mapper = mapper;
             _productService = productService;
+            _imageService = imageService;
         }
 
         // GET: https://localhost:5001/api/Product?Search=Mint&SortOrder=0&SortColumn=3&Limit=12&Page=2
         [HttpPost]
         //[AllowAnonymous]
-        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProductAndPage(ProductCriteriaDto productCriteriaDto)
+        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetAllProductByNameAndPage(ProductCriteriaDto productCriteriaDto)
         {
-            var product = _productService.GetAllProductByNameAndPage(productCriteriaDto.Search);
-            var productQuery =  ProductFilter(await product, productCriteriaDto) ;
+            var product =  await _productService.GetAllProductByNameAndPage(productCriteriaDto.Search);
+            var productQuery =  ProductFilter(product, productCriteriaDto) ;
             var pageProducts = await productQuery.AsNoTracking().PaginateAsync(productCriteriaDto);
-            var productDto = _mapper.Map<IEnumerable<ProductDto>>(pageProducts.Items);
+            // var productDto = _mapper.Map<IEnumerable<ProductDto>>(pageProducts.Items);
+            // foreach (var item in productDto)
+            // {
+            //     var image =  _imageService.GetImageByProductId(item.ProductId);
+            //     var imageDto = _mapper.Map<ImageDto>(image);
+            //     item.Image = imageDto;
+            // }
+            var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
+            return new PagedResponseDto<ProductDto>{
+                CurrentPage = pageProducts.CurrentPage,
+                TotalItems = pageProducts.TotalItems,
+                TotalPages = pageProducts.TotalPages,
+                SortOrder = productCriteriaDto.SortOrder,
+                SortColumn = productCriteriaDto.SortColumn,
+                Limit = productCriteriaDto.Limit,
+                Page = productCriteriaDto.Page,
+                Items = productDto
+            };
+        }
+
+        [HttpPost("AllProduct")]
+        //[AllowAnonymous]
+        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetAllProductAndPage(ProductCriteriaDto productCriteriaDto)
+        {
+            var product = _productService.GetAllProductAndPage();
+            var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
+            var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
             return new PagedResponseDto<ProductDto>{
                 CurrentPage = pageProducts.CurrentPage,
                 TotalItems = pageProducts.TotalItems,
@@ -68,7 +95,7 @@ namespace Rookie.BackendAPI.Controllers
             var product = _productService.GetAllProductByCategoryAndPage(productCriteriaDto.Search);
             var productQuery =  ProductFilter(await product, productCriteriaDto) ;
             var pageProducts = await productQuery.AsNoTracking().PaginateAsync(productCriteriaDto);
-            var productDto = _mapper.Map<IEnumerable<ProductDto>>(pageProducts.Items);
+            var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
             return new PagedResponseDto<ProductDto>{
                 CurrentPage = pageProducts.CurrentPage,
                 TotalItems = pageProducts.TotalItems,
@@ -88,7 +115,7 @@ namespace Rookie.BackendAPI.Controllers
         public  ActionResult<ProductDto> GetProductByName(string productName)
         {
             var product = _productService.GetAllProductByName(productName);
-            var productDto =  _mapper.Map<IEnumerable<ProductDto>>(product);
+            var productDto =  MapProductDtoAndInsertImage(product);
             return Ok(productDto);
         }
 
@@ -97,6 +124,7 @@ namespace Rookie.BackendAPI.Controllers
         public ActionResult<ProductDto> GetProductById(int productId){
             var product = _productService.GetProductById(productId);
             var productDto = _mapper.Map<ProductDto>(product);
+            productDto.Image = _mapper.Map<ImageDto>(_imageService.GetImageByProductId(productDto.ProductId));
             return Ok(productDto);
         }
 
@@ -108,9 +136,19 @@ namespace Rookie.BackendAPI.Controllers
         //     return Ok(productDto);
         // }
 
-
-
         #region Private Method
+        private IEnumerable<ProductDto> MapProductDtoAndInsertImage(IList<Product> product)
+        {
+            var productDto = _mapper.Map<IEnumerable<ProductDto>>(product);
+            foreach (var item in productDto)
+            {
+                var image =  _imageService.GetImageByProductId(item.ProductId);
+                var imageDto = _mapper.Map<ImageDto>(image);
+                item.Image = imageDto;
+            }
+            return productDto;
+        }
+
         private  IQueryable<Product> ProductFilter(
             IQueryable<Product> productQuery,
             ProductCriteriaDto productCriteriaDto)
