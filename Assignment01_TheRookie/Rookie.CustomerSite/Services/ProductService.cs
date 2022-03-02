@@ -79,7 +79,6 @@ namespace Rookie.CustomerSite.Services
                 var httpRequestMessage = new HttpRequestMessage();
                 httpRequestMessage.Method = HttpMethod.Post;
                 httpRequestMessage.RequestUri = new Uri(url);
-
                 
                 var httpContent = new StringContent(jsoncontent, Encoding.UTF8, "application/json");
                 httpRequestMessage.Content = httpContent;

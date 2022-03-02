@@ -6,7 +6,7 @@ namespace Rookie.BackendAPI.Models
     [Table("Rating")]
     public class Rating 
     {
-        [Key, Column("rate_id")]
+        [Key, Column("rate_id", Order=0)]
         public string RateId { get; set; }
 
         public int ProductId { get; set; }

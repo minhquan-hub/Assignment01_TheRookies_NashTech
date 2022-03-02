@@ -39,6 +39,7 @@ namespace Rookie.BackendAPI
             services.AddScoped<IProductService,ProductService>();
             services.AddScoped<ICategoryService,CategoryService>();
             services.AddScoped<IRatingService, RatingService>();
+            services.AddScoped<IImageService, ImageService>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

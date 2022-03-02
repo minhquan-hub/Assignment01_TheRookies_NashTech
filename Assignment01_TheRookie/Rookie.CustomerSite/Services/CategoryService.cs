@@ -21,15 +21,18 @@ namespace Rookie.CustomerSite.Services
         public async Task<string> JsonResponseByGet(string url)
         {
             var jsonResponse = "";
-            try{
+            try
+            {
                 using var httpClient = new HttpClient();
                 jsonResponse = await httpClient.GetStringAsync(url);
                 if(string.IsNullOrEmpty(jsonResponse))
                 {
                     throw new Exception("The client category get don't have the data");
                 }
-            }catch(Exception ex){
-                throw new Exception(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At CategoryService: {ex.Message}");
             }
             return jsonResponse;
         }
