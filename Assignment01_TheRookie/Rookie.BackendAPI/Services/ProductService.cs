@@ -28,13 +28,20 @@ namespace Rookie.BackendAPI.Services
 
         public async Task<int> DeleteProduct(int productId)
         {
-            var product = _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
+            try
+            {
+                var product = _context.Products.Where(p => p.ProductId.Equals(productId)).FirstOrDefault();
             if(product == null)
             {
                 throw new Exception("At DeleteProduct() of ProdutCategoy: Can't find product you want to remove");
             }
             _context.Products.Remove(product);
             return await _context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At DeleteProduct() of ProductService: {ex.Message}");
+            }
         }
 
         public async Task<int> UpdateProduct(int productId, Product product)
@@ -44,48 +51,96 @@ namespace Rookie.BackendAPI.Services
 
         public IQueryable<Product> GetAllProductAndPage()
         {
-            var product = from p in _context.Products select p;
-            return product;
+            try
+            {
+                var product = from p in _context.Products select p;
+                return product;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At GetAllProductAndPage() of ProductService: {ex.Message}");
+            }
+            
         }
         
         public async Task<IQueryable<Product>> GetAllProductByNameAndPage(string productName)
         {
-            var product = _context.Products.Where(p => p.ProductName == productName);
-            return await Task.FromResult(product);
+            try
+            {
+                var product = _context.Products.Where(p => p.ProductName == productName);
+                return await Task.FromResult(product);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At GetAllProductByNameAndPage() of ProductService: {ex.Message}");
+            }
+            
         }
 
         public async Task<IQueryable<Product>> GetAllProductByCategoryAndPage(string productCategoryName)
         {
-            var productByCategory = from p in _context.Products 
+            try
+            {
+                var productByCategory = from p in _context.Products 
                           join c in _context.Categories 
                           on p.CateId equals c.CategoryId
                           where c.CategoryName == productCategoryName
                           select p;
 
-            return await Task.FromResult(productByCategory);;
+                return await Task.FromResult(productByCategory);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At GetAllProductByCategoryAndPage() of ProductService: {ex.Message}");
+            }
+            
         }
 
         public List<Product> GetAllProductByName(string productName)
         {
-           var product = _context.Products.Where(p => p.ProductName == productName).ToList();
-           return product;
+           try
+           {
+               var product = _context.Products.Where(p => p.ProductName == productName).ToList();
+               return product;
+           }
+           catch(Exception ex)
+           {
+               throw new Exception($"At GetAllProductByName() of ProductService: {ex.Message}");
+           }
+           
         }
 
         public Product GetProductById(int productId)
         {
-            var product =  _context.Products.Where(p => p.ProductId == productId).FirstOrDefault();
-            return product;
+            try
+            {
+                var product =  _context.Products.Where(p => p.ProductId.Equals(productId)).FirstOrDefault();
+                return product;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At GetProductById() of ProductService: {ex.Message}");
+            }
+            
         }
 
         public List<Product> GetAllProductByCategory(string productCategoryName)
         {
-            var product = (from p in _context.Products 
+            try
+            {
+                var product = (from p in _context.Products 
                           join c in _context.Categories 
                           on p.CateId equals c.CategoryId
                           where c.CategoryName == productCategoryName
                           select p).ToList();
 
-            return product;
+                return product;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At GetAllProductByCategory() of ProductService: {ex.Message}");
+            }
+            
         }
     }
 }

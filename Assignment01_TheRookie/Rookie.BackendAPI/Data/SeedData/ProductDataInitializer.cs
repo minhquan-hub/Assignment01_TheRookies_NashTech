@@ -7,328 +7,490 @@ namespace Rookie.BackendAPI.Data.SeedData {
         public static void SeedProductData(this ModelBuilder modelBuilder){
             modelBuilder.Entity<Product>().HasData(
                 new Product{
-                    ProductId = 1,
+                    ProductId = "P4001",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 32,
-                    CateId = 1 
+                    CateId = "C3001" 
                 },
                 new Product{
-                    ProductId = 2,
+                    ProductId = "P4002",
                     ProductName = "Ginger",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 24,
-                    CateId = 2
+                    CateId = "C3002"
                 },
                 new Product{
-                    ProductId = 3,
+                    ProductId = "P4003",
                     ProductName = "Celery",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 30,
-                    CateId = 4
+                    CateId = "C3004"
                 },
                 new Product{
-                    ProductId = 4,
+                    ProductId = "P4004",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 5,
+                    ProductId = "P4005",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 32,
-                    CateId = 1 
+                    CateId = "C3002" 
                 },
                 new Product{
-                    ProductId = 6,
+                    ProductId = "P4006",
                     ProductName = "Ginger",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 24,
-                    CateId = 2
+                    CateId = "C3002"
                 },
                 new Product{
-                    ProductId = 7,
+                    ProductId = "P4007",
                     ProductName = "Celery",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 30,
-                    CateId = 4
+                    CateId = "C3004"
                 },
                 new Product{
-                    ProductId = 8,
+                    ProductId = "P4008",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 9,
+                    ProductId = "P4009",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 32,
-                    CateId = 1 
+                    CateId = "C3002" 
                 },
                 new Product{
-                    ProductId = 10,
+                    ProductId = "P4010",
                     ProductName = "Ginger",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 24,
-                    CateId = 2
+                    CateId = "C3002"
                 },
                 new Product{
-                    ProductId = 11,
+                    ProductId = "P4011",
                     ProductName = "Celery",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 30,
-                    CateId = 4
+                    CateId = "C3004"
                 },
                 new Product{
-                    ProductId = 12,
+                    ProductId = "P4012",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 13,
+                    ProductId = "P4013",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 32,
-                    CateId = 1 
+                    CateId = "C3002" 
                 },
                 new Product{
-                    ProductId = 14,
+                    ProductId = "P4014",
                     ProductName = "Ginger",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 24,
-                    CateId = 2
+                    CateId = "C3002"
                 },
                 new Product{
-                    ProductId = 15,
+                    ProductId = "P4015",
                     ProductName = "Celery",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 30,
-                    CateId = 4
+                    CateId = "C3004"
                 },
                 new Product{
-                    ProductId = 16,
+                    ProductId = "P4016",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 17,
+                    ProductId = "P4017",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 32,
-                    CateId = 1 
+                    CateId = "C3001" 
                 },
                 new Product{
-                    ProductId = 18,
+                    ProductId = "P4018",
                     ProductName = "Ginger",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 24,
-                    CateId = 2
+                    CateId = "C3002"
                 },
                 new Product{
-                    ProductId = 19,
+                    ProductId = "P4019",
                     ProductName = "Celery",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 30,
-                    CateId = 4
+                    CateId = "C3004"
                 },
                 new Product{
-                    ProductId = 20,
+                    ProductId = "P4020",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 21,
+                    ProductId = "P4021",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 22,
+                    ProductId = "P4022",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 23,
+                    ProductId = "P4023",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 24,
+                    ProductId = "P4024",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 25,
+                    ProductId = "P4025",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 26,
+                    ProductId = "P4026",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 27,
+                    ProductId =  "P4027",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 28,
+                    ProductId = "P4028",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 29,
+                    ProductId = "P4029",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 30,
+                    ProductId = "P4030",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 31,
+                    ProductId = "P4031",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 32,
+                    ProductId = "P4032",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 33,
+                    ProductId = "P4033",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 34,
+                    ProductId = "P4034",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 35,
+                    ProductId = "P4035",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
                 },
                 new Product{
-                    ProductId = 36,
+                    ProductId = "P4036",
                     ProductName = "Mint",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
                     Price = 50,
-                    CateId = 1
+                    CateId = "C3001"
+                },
+                new Product{
+                    ProductId = "P4037",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4038",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4039",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4040",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4041",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4042",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4043",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4044",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4045",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4046",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4047",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4048",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4049",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4050",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4051",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4052",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4053",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
+                },
+                new Product{
+                    ProductId = "P4054",
+                    ProductName = "Apple",
+                    Description = "Vegetable is very healthy",
+                    ManufacturingDate = DateTime.Parse("2022-02-22"),
+                    ExpiryDate = DateTime.Parse("2022-04-13"),
+                    Price = 48,
+                    CateId = "C3002"
                 }
             );
         }

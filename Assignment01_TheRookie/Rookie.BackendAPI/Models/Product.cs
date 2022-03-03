@@ -8,8 +8,8 @@ namespace Rookie.BackendAPI.Models{
     [Table("Product")]
     public class Product {
 
-        [Key, Column("product_id")]
-        public int ProductId { get; set; }
+        [Key, Column("product_id", TypeName = "varchar(10)")]
+        public string ProductId { get; set; }
 
         [Required, Column("product_name", TypeName = "varchar(255)")]
         public string ProductName { get; set; }
@@ -25,7 +25,7 @@ namespace Rookie.BackendAPI.Models{
         [Column("price", TypeName = "decimal")]
         public decimal Price { get; set; }
 
-        public int CateId { get; set; }
+        public string CateId { get; set; }
 
         [Required, ForeignKey("CateId"), Column("cate_id")]
         public Category Category { get; set; }
