@@ -45,12 +45,12 @@ namespace Rookie.CustomerSite.Services
 
         public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProduct(){
             var url = "https://localhost:5001/api/Product/AllProduct";
-            string jsonContent = "{\"search\":\"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
+            string jsonContent = "{\"search\":\"string\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
             return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByPost(url,jsonContent));
         }
 
         // Method: Get
-        public async Task<ProductDto<ImageDto>> GetProductById(int id)
+        public async Task<ProductDto<ImageDto>> GetProductById(string id)
         {
             var url = $"https://localhost:5001/api/Product/id/{id}";
             return JsonConvert.DeserializeObject<ProductDto<ImageDto>>(await JsonResponseByGet(url));

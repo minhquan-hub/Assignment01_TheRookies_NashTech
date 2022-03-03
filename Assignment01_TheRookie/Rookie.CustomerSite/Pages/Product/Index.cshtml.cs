@@ -48,6 +48,13 @@ namespace Rookie.CustomerSite.Pages.Product
             await ShowCategoryName();
         }
 
+        public async Task OnPostProductByName()
+        {
+            var pageResponseDto = await  _productService.GetProductAndPageAsync(ProductName);
+            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
+            await ShowCategoryName();
+        }
+
         public async Task OnGet()
         {
         //    if(ProductName == null)
