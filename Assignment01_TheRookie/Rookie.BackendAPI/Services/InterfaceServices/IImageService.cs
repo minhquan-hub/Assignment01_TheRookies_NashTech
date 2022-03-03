@@ -5,6 +5,6 @@ namespace Rookie.BackendAPI.Services.InterfaceServices
 {
     public interface IImageService
     {
-        public Image GetImageByProductId(int productId);
+        public Image GetImageByProductId(string productId);
     }
 }

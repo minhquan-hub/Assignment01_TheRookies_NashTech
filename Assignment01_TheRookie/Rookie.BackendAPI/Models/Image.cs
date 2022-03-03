@@ -6,9 +6,11 @@ namespace Rookie.BackendAPI.Models
     [Table("Image")]
     public class Image
     {
-        [Key, Column("image_id")]
+        [Key, Column("image_id", TypeName = "varchar(10)")]
         public string ImageID { get; set; }
-        public int ProductId { get; set; }
+
+        [Required]
+        public string ProductId { get; set; }
 
         [ForeignKey("ProductId"), Column("product_id")]
         public Product Product { get; set; }

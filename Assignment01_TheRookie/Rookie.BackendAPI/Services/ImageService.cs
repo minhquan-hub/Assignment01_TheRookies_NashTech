@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Rookie.BackendAPI.Data;
@@ -13,10 +14,17 @@ namespace Rookie.BackendAPI.Services
         {
             _context = context;
         }
-        public Image GetImageByProductId(int productId)
+        public Image GetImageByProductId(string productId)
         {
-            var image = _context.Images.Where(i => i.ProductId == productId).FirstOrDefault();
-            return image;
+            try
+            {
+                var image = _context.Images.Where(i => i.ProductId.Equals(productId)).FirstOrDefault();
+                return image;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"At GetImageByProductId() of ImageService: {ex.Message}");
+            }
         }
     }
 }

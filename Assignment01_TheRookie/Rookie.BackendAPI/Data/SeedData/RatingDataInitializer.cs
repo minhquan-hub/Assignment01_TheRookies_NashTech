@@ -9,8 +9,8 @@ namespace Rookie.BackendAPI.Data.SeedData
         {
             modelBuilder.Entity<Rating>().HasData(
                 new Rating{
-                    RateId = "R1",
-                    ProductId = 24
+                    RateId = "R1001",
+                    ProductId = "P4004"
                 }
             );
         }
