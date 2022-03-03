@@ -8,6 +8,7 @@ using Rookie.CustomerSite.Services.InterfaceServices;
 using Rookie.CustomerSite.ViewModel.Product;
 using Rookie.CustomerSite.ViewModel.Category;
 using Rookie.CustomerSite.ViewModel;
+using Rookie.CustomerSite.ViewModel.Image;
 
 namespace Rookie.CustomerSite.Pages.Product
 {
@@ -27,7 +28,7 @@ namespace Rookie.CustomerSite.Pages.Product
         public string ProductName { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public PagedResponseVM<ProductVM> PagedResponseVM { get; set; }
+        public PagedResponseVM<ProductVM<ImageVM>> PagedResponseVM { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public IList<CategoryVM> CategoryVM { get; set; }
@@ -42,19 +43,20 @@ namespace Rookie.CustomerSite.Pages.Product
 
         public async Task OnGetProductCategoryName(string categorynameclient)
         {
-            var productDto = await  _productService.GetProductByCategoryAndPageAsync(categorynameclient);
-            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM>>(productDto);
+            var pageResponseDto = await  _productService.GetProductByCategoryAndPageAsync(categorynameclient);
+            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
             await ShowCategoryName();
         }
 
         public async Task OnGet()
         {
-           if(ProductName == null)
-           {
-               ProductName = "Ginger";
-           }
-           var productDto = await  _productService.GetProductAndPageAsync(ProductName);
-           PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM>>(productDto);
+        //    if(ProductName == null)
+        //    {
+        //        ProductName = "Ginger";
+        //    }
+           var pageResponseDto = await  _productService.GetAllProduct();
+           PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
+
            await ShowCategoryName();
         }
 

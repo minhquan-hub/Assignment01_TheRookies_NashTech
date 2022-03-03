@@ -13585,7 +13585,7 @@
           {
             "Kind": "MVC.ViewComponent",
             "Name": "product-vm",
-            "TypeName": "System.Collections.Generic.List<Rookie.CustomerSite.ViewModel.Product.ProductVM>",
+            "TypeName": "System.Collections.Generic.List<Rookie.CustomerSite.ViewModel.Product.ProductVM<Rookie.CustomerSite.ViewModel.Image.ImageVM>>",
             "Metadata": {
               "Common.PropertyName": "productVM"
             }

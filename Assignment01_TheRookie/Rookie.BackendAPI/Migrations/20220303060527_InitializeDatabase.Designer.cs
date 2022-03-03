@@ -10,8 +10,8 @@ using Rookie.BackendAPI.Data;
 namespace Rookie.BackendAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220227153624_Modify_02")]
-    partial class Modify_02
+    [Migration("20220303060527_InitializeDatabase")]
+    partial class InitializeDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -154,11 +154,9 @@ namespace Rookie.BackendAPI.Migrations
 
             modelBuilder.Entity("Rookie.BackendAPI.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("category_id")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("CategoryId")
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("category_id");
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -176,25 +174,25 @@ namespace Rookie.BackendAPI.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = 1,
+                            CategoryId = "C3001",
                             CategoryName = "Vegatables",
                             Description = "Vegetables are parts of plants that are consumed by humans or other animals as food"
                         },
                         new
                         {
-                            CategoryId = 2,
+                            CategoryId = "C3002",
                             CategoryName = "Fruits",
                             Description = "a fruit is the seed-bearing structure in flowering plants that is formed from the ovary after flowering"
                         },
                         new
                         {
-                            CategoryId = 3,
+                            CategoryId = "C3003",
                             CategoryName = "Juice",
                             Description = "Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables"
                         },
                         new
                         {
-                            CategoryId = 4,
+                            CategoryId = "C3004",
                             CategoryName = "Dried",
                             Description = "Dried fruit is fruit from which the majority of the original water content has been removed either naturally, through sun drying, or through the use of specialized dryers or dehydrators"
                         });
@@ -203,7 +201,7 @@ namespace Rookie.BackendAPI.Migrations
             modelBuilder.Entity("Rookie.BackendAPI.Models.Image", b =>
                 {
                     b.Property<string>("ImageID")
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("varchar(10)")
                         .HasColumnName("image_id");
 
                     b.Property<string>("Image1")
@@ -226,8 +224,9 @@ namespace Rookie.BackendAPI.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("image_05");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
 
                     b.HasKey("ImageID");
 
@@ -239,304 +238,447 @@ namespace Rookie.BackendAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ImageID = "I01",
+                            ImageID = "I2001",
                             Image1 = "/images/bg_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 1
+                            ProductId = "P4001"
                         },
                         new
                         {
-                            ImageID = "I02",
+                            ImageID = "I2002",
                             Image1 = "/images/bg_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 2
+                            ProductId = "P4002"
                         },
                         new
                         {
-                            ImageID = "I03",
+                            ImageID = "I2003",
                             Image1 = "/images/bg_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 3
+                            ProductId = "P4003"
                         },
                         new
                         {
-                            ImageID = "I04",
+                            ImageID = "I2004",
                             Image1 = "/images/product-4.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 4
+                            ProductId = "P4004"
                         },
                         new
                         {
-                            ImageID = "I05",
+                            ImageID = "I2005",
                             Image1 = "/images/image_5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 5
+                            ProductId = "P4005"
                         },
                         new
                         {
-                            ImageID = "I06",
+                            ImageID = "I2006",
                             Image1 = "/images/product-8.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 6
+                            ProductId = "P4006"
                         },
                         new
                         {
-                            ImageID = "I07",
+                            ImageID = "I2007",
                             Image1 = "/images/product-3.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 7
+                            ProductId = "P4007"
                         },
                         new
                         {
-                            ImageID = "I08",
+                            ImageID = "I2008",
                             Image1 = "/images/image_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 8
+                            ProductId = "P4008"
                         },
                         new
                         {
-                            ImageID = "I09",
+                            ImageID = "I2009",
                             Image1 = "/images/image_5.jpg",
                             Image2 = "/images/product-4.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 9
+                            ProductId = "P4009"
                         },
                         new
                         {
-                            ImageID = "I10",
+                            ImageID = "I2010",
                             Image1 = "/images/product-1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 10
+                            ProductId = "P4010"
                         },
                         new
                         {
-                            ImageID = "I11",
+                            ImageID = "I2011",
                             Image1 = "/images/product-4.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 11
+                            ProductId = "P4011"
                         },
                         new
                         {
-                            ImageID = "I12",
+                            ImageID = "I2012",
                             Image1 = "/images/product-3.jpg",
                             Image2 = "/images/product-5.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 12
+                            ProductId = "P4012"
                         },
                         new
                         {
-                            ImageID = "I13",
+                            ImageID = "I2013",
                             Image1 = "/images/product-6.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-7.jpg",
-                            ProductId = 13
+                            ProductId = "P4013"
                         },
                         new
                         {
-                            ImageID = "I14",
+                            ImageID = "I2014",
                             Image1 = "/images/category-2.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 14
+                            ProductId = "P4014"
                         },
                         new
                         {
-                            ImageID = "I15",
+                            ImageID = "I2015",
                             Image1 = "/images/product-1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 15
+                            ProductId = "P4015"
                         },
                         new
                         {
-                            ImageID = "I16",
+                            ImageID = "I2016",
                             Image1 = "/images/image_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 16
+                            ProductId = "P4016"
                         },
                         new
                         {
-                            ImageID = "I17",
+                            ImageID = "I2017",
                             Image1 = "/images/image_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 17
+                            ProductId = "P4017"
                         },
                         new
                         {
-                            ImageID = "I18",
+                            ImageID = "I2018",
                             Image1 = "/images/product-1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 18
+                            ProductId = "P4018"
                         },
                         new
                         {
-                            ImageID = "I19",
+                            ImageID = "I2019",
                             Image1 = "/images/product-1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 19
+                            ProductId = "P4019"
                         },
                         new
                         {
-                            ImageID = "I20",
+                            ImageID = "I2020",
                             Image1 = "/images/product-1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 20
+                            ProductId = "P4020"
                         },
                         new
                         {
-                            ImageID = "I21",
+                            ImageID = "I2021",
                             Image1 = "/images/product-1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 21
+                            ProductId = "P4021"
                         },
                         new
                         {
-                            ImageID = "I22",
+                            ImageID = "I2022",
                             Image1 = "/images/product-1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 22
+                            ProductId = "P4022"
                         },
                         new
                         {
-                            ImageID = "I23",
+                            ImageID = "I2023",
                             Image1 = "/images/category-2.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 23
+                            ProductId = "P4023"
                         },
                         new
                         {
-                            ImageID = "I24",
+                            ImageID = "I2024",
                             Image1 = "/images/category-2.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 24
+                            ProductId = "P4024"
                         },
                         new
                         {
-                            ImageID = "I25",
+                            ImageID = "I2025",
                             Image1 = "/images/category-2.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 25
+                            ProductId = "P4025"
                         },
                         new
                         {
-                            ImageID = "I26",
+                            ImageID = "I2026",
                             Image1 = "/images/category-2.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 26
+                            ProductId = "P4026"
                         },
                         new
                         {
-                            ImageID = "I27",
+                            ImageID = "I2027",
                             Image1 = "/images/category-2.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 27
+                            ProductId = "P4027"
                         },
                         new
                         {
-                            ImageID = "I28",
+                            ImageID = "I2028",
                             Image1 = "/images/product-3.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 28
+                            ProductId = "P4028"
                         },
                         new
                         {
-                            ImageID = "I29",
+                            ImageID = "I2029",
                             Image1 = "/images/product-3.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 29
+                            ProductId = "P4029"
                         },
                         new
                         {
-                            ImageID = "I30",
+                            ImageID = "I2030",
                             Image1 = "/images/product-3.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 30
+                            ProductId = "P4030"
                         },
                         new
                         {
-                            ImageID = "I31",
+                            ImageID = "I2031",
                             Image1 = "/images/product-3.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 31
+                            ProductId = "P4031"
                         },
                         new
                         {
-                            ImageID = "I32",
+                            ImageID = "I2032",
                             Image1 = "/images/product-3.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 32
+                            ProductId = "P4032"
                         },
                         new
                         {
-                            ImageID = "I33",
+                            ImageID = "I2033",
                             Image1 = "/images/image_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 33
+                            ProductId = "P4033"
                         },
                         new
                         {
-                            ImageID = "I34",
+                            ImageID = "I2034",
                             Image1 = "/images/image_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 34
+                            ProductId = "P4034"
                         },
                         new
                         {
-                            ImageID = "I35",
+                            ImageID = "I2035",
                             Image1 = "/images/image_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 35
+                            ProductId = "P4035"
                         },
                         new
                         {
-                            ImageID = "I36",
+                            ImageID = "I2036",
                             Image1 = "/images/image_1.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
-                            ProductId = 36
+                            ProductId = "P4036"
+                        },
+                        new
+                        {
+                            ImageID = "I2037",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4037"
+                        },
+                        new
+                        {
+                            ImageID = "I2038",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4038"
+                        },
+                        new
+                        {
+                            ImageID = "I2039",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4039"
+                        },
+                        new
+                        {
+                            ImageID = "I2040",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4040"
+                        },
+                        new
+                        {
+                            ImageID = "I2041",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4041"
+                        },
+                        new
+                        {
+                            ImageID = "I2042",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4042"
+                        },
+                        new
+                        {
+                            ImageID = "I2043",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4043"
+                        },
+                        new
+                        {
+                            ImageID = "I2044",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4044"
+                        },
+                        new
+                        {
+                            ImageID = "I2045",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4045"
+                        },
+                        new
+                        {
+                            ImageID = "I2046",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4046"
+                        },
+                        new
+                        {
+                            ImageID = "I2047",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4047"
+                        },
+                        new
+                        {
+                            ImageID = "I2048",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4048"
+                        },
+                        new
+                        {
+                            ImageID = "I2049",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4049"
+                        },
+                        new
+                        {
+                            ImageID = "I2050",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4050"
+                        },
+                        new
+                        {
+                            ImageID = "I2051",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4051"
+                        },
+                        new
+                        {
+                            ImageID = "I2052",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4052"
+                        },
+                        new
+                        {
+                            ImageID = "I2053",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4053"
+                        },
+                        new
+                        {
+                            ImageID = "I2054",
+                            Image1 = "/images/product-2.jpg",
+                            Image2 = "/images/product-3.jpg",
+                            Image3 = "/images/product-6.jpg",
+                            ProductId = "P4054"
                         });
                 });
 
             modelBuilder.Entity("Rookie.BackendAPI.Models.Product", b =>
                 {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("product_id")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("ProductId")
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("product_id");
 
-                    b.Property<int>("CateId")
-                        .HasColumnType("int");
+                    b.Property<string>("CateId")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -569,8 +711,8 @@ namespace Rookie.BackendAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = 1,
-                            CateId = 1,
+                            ProductId = "P4001",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -579,8 +721,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 2,
-                            CateId = 2,
+                            ProductId = "P4002",
+                            CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -589,8 +731,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 3,
-                            CateId = 4,
+                            ProductId = "P4003",
+                            CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -599,8 +741,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 4,
-                            CateId = 1,
+                            ProductId = "P4004",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -609,8 +751,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 5,
-                            CateId = 1,
+                            ProductId = "P4005",
+                            CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -619,8 +761,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 6,
-                            CateId = 2,
+                            ProductId = "P4006",
+                            CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -629,8 +771,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 7,
-                            CateId = 4,
+                            ProductId = "P4007",
+                            CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -639,8 +781,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 8,
-                            CateId = 1,
+                            ProductId = "P4008",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -649,8 +791,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 9,
-                            CateId = 1,
+                            ProductId = "P4009",
+                            CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -659,8 +801,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 10,
-                            CateId = 2,
+                            ProductId = "P4010",
+                            CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -669,8 +811,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 11,
-                            CateId = 4,
+                            ProductId = "P4011",
+                            CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -679,8 +821,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 12,
-                            CateId = 1,
+                            ProductId = "P4012",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -689,8 +831,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 13,
-                            CateId = 1,
+                            ProductId = "P4013",
+                            CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -699,8 +841,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 14,
-                            CateId = 2,
+                            ProductId = "P4014",
+                            CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -709,8 +851,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 15,
-                            CateId = 4,
+                            ProductId = "P4015",
+                            CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -719,8 +861,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 16,
-                            CateId = 1,
+                            ProductId = "P4016",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -729,8 +871,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 17,
-                            CateId = 1,
+                            ProductId = "P4017",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -739,8 +881,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 18,
-                            CateId = 2,
+                            ProductId = "P4018",
+                            CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -749,8 +891,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 19,
-                            CateId = 4,
+                            ProductId = "P4019",
+                            CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -759,8 +901,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 20,
-                            CateId = 1,
+                            ProductId = "P4020",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -769,8 +911,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 21,
-                            CateId = 1,
+                            ProductId = "P4021",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -779,8 +921,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 22,
-                            CateId = 1,
+                            ProductId = "P4022",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -789,8 +931,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 23,
-                            CateId = 1,
+                            ProductId = "P4023",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -799,8 +941,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 24,
-                            CateId = 1,
+                            ProductId = "P4024",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -809,8 +951,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 25,
-                            CateId = 1,
+                            ProductId = "P4025",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -819,8 +961,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 26,
-                            CateId = 1,
+                            ProductId = "P4026",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -829,8 +971,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 27,
-                            CateId = 1,
+                            ProductId = "P4027",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -839,8 +981,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 28,
-                            CateId = 1,
+                            ProductId = "P4028",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -849,8 +991,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 29,
-                            CateId = 1,
+                            ProductId = "P4029",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -859,8 +1001,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 30,
-                            CateId = 1,
+                            ProductId = "P4030",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -869,8 +1011,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 31,
-                            CateId = 1,
+                            ProductId = "P4031",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -879,8 +1021,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 32,
-                            CateId = 1,
+                            ProductId = "P4032",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -889,8 +1031,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 33,
-                            CateId = 1,
+                            ProductId = "P4033",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -899,8 +1041,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 34,
-                            CateId = 1,
+                            ProductId = "P4034",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -909,8 +1051,8 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 35,
-                            CateId = 1,
+                            ProductId = "P4035",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -919,24 +1061,205 @@ namespace Rookie.BackendAPI.Migrations
                         },
                         new
                         {
-                            ProductId = 36,
-                            CateId = 1,
+                            ProductId = "P4036",
+                            CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Mint"
+                        },
+                        new
+                        {
+                            ProductId = "P4037",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4038",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4039",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4040",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4041",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4042",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4043",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4044",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4045",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4046",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4047",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4048",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4049",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4050",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4051",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4052",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4053",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
+                        },
+                        new
+                        {
+                            ProductId = "P4054",
+                            CateId = "C3002",
+                            Description = "Vegetable is very healthy",
+                            ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 48m,
+                            ProductName = "Apple"
                         });
                 });
 
             modelBuilder.Entity("Rookie.BackendAPI.Models.Rating", b =>
                 {
                     b.Property<string>("RateId")
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("varchar(10)")
                         .HasColumnName("rate_id");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
 
                     b.Property<int>("RateNumber")
                         .HasColumnType("int")
@@ -951,6 +1274,14 @@ namespace Rookie.BackendAPI.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Rating");
+
+                    b.HasData(
+                        new
+                        {
+                            RateId = "R1001",
+                            ProductId = "P4004",
+                            RateNumber = 0
+                        });
                 });
 
             modelBuilder.Entity("Rookie.BackendAPI.Models.User", b =>

@@ -6,10 +6,10 @@ namespace Rookie.BackendAPI.Models
     [Table("Rating")]
     public class Rating 
     {
-        [Key, Column("rate_id", Order=0)]
+        [Key, Column("rate_id", TypeName = "varchar(10)")]
         public string RateId { get; set; }
 
-        public int ProductId { get; set; }
+        public string ProductId { get; set; }
         [Required, ForeignKey("ProductId"), Column("product_id")]
         public Product Product { get; set; }
 

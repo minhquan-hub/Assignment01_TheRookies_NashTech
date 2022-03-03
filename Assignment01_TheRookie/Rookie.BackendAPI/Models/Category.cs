@@ -9,8 +9,8 @@ namespace Rookie.BackendAPI.Models
     [Table("Category")]
     public class Category{
 
-        [Required, Column("category_id")]
-        public int CategoryId { get; set; }
+        [Required, Column("category_id", TypeName = "varchar(10)")]
+        public string CategoryId { get; set; }
 
         [Required, Column("category_name", TypeName = "varchar(255)")]
         public string CategoryName { get; set; }

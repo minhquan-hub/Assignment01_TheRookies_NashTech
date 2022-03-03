@@ -7,47 +7,54 @@ using Newtonsoft.Json;
 using Rookie.CustomerSite.Services.InterfaceServices;
 using Rookie.ShareClass.Dto.Product;
 using Rookie.ShareClass.Dto;
+using Rookie.ShareClass.Dto.Image;
 
 namespace Rookie.CustomerSite.Services
 {
     public class ProductService : IProductService
     {
         // Method: Post
-        public async Task<PagedResponseDto<ProductDto>> GetProductAndPageAsync(string productName)
+        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductAndPageAsync(string productName)
         {
             var url = $"https://localhost:5001/api/Product";
-            string jsoncontent = "{\"search\":\""+productName+"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
-            return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto>>(await JsonResponseByPost(url,jsoncontent));
-             
+            string jsonContent = "{\"search\":\""+productName+"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
+            return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByPost(url,jsonContent));
         }
 
         // Method: Post
-        public async Task<PagedResponseDto<ProductDto>> GetProductByCategoryAndPageAsync(string productCategoryName)
+        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductByCategoryAndPageAsync(string productCategoryName)
         {
-            var url = $"https://localhost:5001/api/Product/Category";
-            string jsoncontent = "{\"search\":\""+productCategoryName+"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
-            return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto>>(await JsonResponseByPost(url,jsoncontent));
+            var url = "https://localhost:5001/api/Product/Category";
+            string jsonContent = "{\"search\":\""+productCategoryName+"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
+            return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByPost(url,jsonContent));
         }
 
         // Method: Get
-        public async Task<IList<ProductDto>> GetProductByCategoryAsync(string productCategoryName)
-        {
-            var url = $"https://localhost:5001/api/Product/Category/{productCategoryName}";
-            return JsonConvert.DeserializeObject<List<ProductDto>>(await JsonResponseByGet(url));
-        }
-
-        public async Task<ProductDto> GetProductById(int id)
-        {
-            var url = $"https://localhost:5001/api/Product/id/{id}";
-            return JsonConvert.DeserializeObject<ProductDto>(await JsonResponseByGet(url));
-        }
-
-        // Method: Get
-        public async Task<IList<ProductDto>> GetProductByNameAsync(string productName)
+        public async Task<IList<ProductDto<ImageDto>>> GetProductByNameAsync(string productName)
         {
             var url = $"https://localhost:5001/api/Product/{productName}";
-            return JsonConvert.DeserializeObject<List<ProductDto>>(await JsonResponseByGet(url));
+            return JsonConvert.DeserializeObject<List<ProductDto<ImageDto>>>(await JsonResponseByGet(url));
         }
+
+        // Method: Get
+        public async Task<IList<ProductDto<ImageDto>>> GetProductByCategoryAsync(string productCategoryName)
+        {
+            var url = $"https://localhost:5001/api/Product/Category/{productCategoryName}";
+            return JsonConvert.DeserializeObject<List<ProductDto<ImageDto>>>(await JsonResponseByGet(url));
+        }
+
+        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProduct(){
+            var url = "https://localhost:5001/api/Product/AllProduct";
+            string jsonContent = "{\"search\":\"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
+            return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByPost(url,jsonContent));
+        }
+
+        // Method: Get
+        public async Task<ProductDto<ImageDto>> GetProductById(int id)
+        {
+            var url = $"https://localhost:5001/api/Product/id/{id}";
+            return JsonConvert.DeserializeObject<ProductDto<ImageDto>>(await JsonResponseByGet(url));
+        }       
 
         public async Task<string> JsonResponseByGet(string url)
         {
