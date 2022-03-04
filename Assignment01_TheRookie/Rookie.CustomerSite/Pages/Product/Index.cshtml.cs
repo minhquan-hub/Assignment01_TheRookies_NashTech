@@ -33,13 +33,8 @@ namespace Rookie.CustomerSite.Pages.Product
         [BindProperty(SupportsGet = true)]
         public IList<CategoryVM> CategoryVM { get; set; }
 
-        // public async Task OnPostProduct(){
-        //    if(ProductName == null){
-        //        ProductName = "Ginger";
-        //    }
-        //    var productDto = await  _productService.GetProductByNameAsync(ProductName);
-        //     ProductVM = _mapper.Map<IList<ProductVM>>(productDto);
-        // }
+        [BindProperty(SupportsGet = true)]
+        public IList<ProductVM<ImageVM>> ProductVM { get; set; }
 
         public async Task OnGetProductCategoryName(string categorynameclient)
         {
@@ -48,13 +43,16 @@ namespace Rookie.CustomerSite.Pages.Product
             await ShowCategoryName();
         }
 
+        public async Task OnPostProductByName()
+        {
+            var pageResponseDto = await  _productService.GetProductByNameAsync(ProductName);
+            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
+            await ShowCategoryName();
+        }
+
         public async Task OnGet()
         {
-        //    if(ProductName == null)
-        //    {
-        //        ProductName = "Ginger";
-        //    }
-           var pageResponseDto = await  _productService.GetAllProduct();
+           var pageResponseDto = await  _productService.GetAllProductAsync();
            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
 
            await ShowCategoryName();

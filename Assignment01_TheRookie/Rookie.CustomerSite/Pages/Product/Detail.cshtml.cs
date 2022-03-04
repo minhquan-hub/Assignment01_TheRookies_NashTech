@@ -24,13 +24,11 @@ namespace Rookie.CustomerSite.Pages.Product
             _mapper = mapper;
         }
         
-        // [BindProperty(SupportsGet = true)]
-        // public string ProductName { get; set; }
         [BindProperty(SupportsGet = true)]
         public ProductVM<ImageVM> ProductVM { get; set; }
         
         // Insert data rating product
-        public async Task OnGetRating(int number, int productid)
+        public async Task OnGetRating(int number, string productid)
         {
             var ratingVM = new RatingVM{
                 ProductId = productid,
@@ -43,13 +41,9 @@ namespace Rookie.CustomerSite.Pages.Product
         }
 
         // Take data product by id
-        public async Task OnGet(int id)
+        public async Task OnGet(string id)
         {
-           if(id == 0)
-           {
-               id = 3;
-           }
-           var productDto = await  _productService.GetProductById(id);
+           var productDto = await  _productService.GetProductByIdAsync(id);
             ProductVM = _mapper.Map<ProductVM<ImageVM>>(productDto);
         }
     }

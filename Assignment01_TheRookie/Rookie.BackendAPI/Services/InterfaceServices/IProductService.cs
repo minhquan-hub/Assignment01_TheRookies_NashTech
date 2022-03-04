@@ -11,10 +11,10 @@ namespace Rookie.BackendAPI.Services.InterfaceServices{
         public Task<int> DeleteProduct(int productId); 
         public Task<int> UpdateProduct(int productId, Product product); 
         public IQueryable<Product> GetAllProductAndPage();
-        public Task<IQueryable<Product>> GetAllProductByNameAndPage(string productName);
-        public Task<IQueryable<Product>> GetAllProductByCategoryAndPage(string productCategoryName);        
-        public List<Product> GetAllProductByName(string productName);
-        public Product GetProductById(int productId);
+        public IQueryable<Product> GetAllProductByNameAndPage(string productName);
+        public IQueryable<Product> GetAllProductByCategoryAndPage(string productCategoryName);        
+        public IQueryable<Product> GetAllProductByName(string productName);
+        public Product GetProductById(string productId);
         public List<Product> GetAllProductByCategory(string productCategoryName);
     }
 }
