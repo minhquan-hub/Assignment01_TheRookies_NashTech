@@ -11,7 +11,7 @@ namespace Rookie.CustomerSite.Services
 {
     public class CategoryService : ICategoryService
     {
-        // Metho: Get
+        // Method: Get
         public async Task<IList<CategoryDto>> GetAllCategoryAsync()
         {
             string url = "https://localhost:5001/api/Category";

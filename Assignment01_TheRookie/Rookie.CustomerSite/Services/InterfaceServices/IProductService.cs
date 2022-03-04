@@ -11,10 +11,8 @@ namespace Rookie.CustomerSite.Services.InterfaceServices
     {
         public Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductAndPageAsync(string productName);
         public Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductByCategoryAndPageAsync(string productCategoryName);
-        public Task<IList<ProductDto<ImageDto>>> GetProductByNameAsync(string productName);
-        public Task<IList<ProductDto<ImageDto>>> GetProductByCategoryAsync(string productCategoryName);
-        public Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProduct();
-        public Task<ProductDto<ImageDto>> GetProductById(int id);
+        public Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductByNameAsync(string productName);        public Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProductAsync();
+        public Task<ProductDto<ImageDto>> GetProductByIdAsync(string id);
         
     }
 }

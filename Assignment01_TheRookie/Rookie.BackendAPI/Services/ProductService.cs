@@ -63,12 +63,12 @@ namespace Rookie.BackendAPI.Services
             
         }
         
-        public async Task<IQueryable<Product>> GetAllProductByNameAndPage(string productName)
+        public IQueryable<Product> GetAllProductByNameAndPage(string productName)
         {
             try
             {
                 var product = _context.Products.Where(p => p.ProductName == productName);
-                return await Task.FromResult(product);
+                return product;
             }
             catch(Exception ex)
             {
@@ -77,7 +77,7 @@ namespace Rookie.BackendAPI.Services
             
         }
 
-        public async Task<IQueryable<Product>> GetAllProductByCategoryAndPage(string productCategoryName)
+        public IQueryable<Product> GetAllProductByCategoryAndPage(string productCategoryName)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace Rookie.BackendAPI.Services
                           where c.CategoryName == productCategoryName
                           select p;
 
-                return await Task.FromResult(productByCategory);
+                return productByCategory;
             }
             catch(Exception ex)
             {
@@ -96,11 +96,11 @@ namespace Rookie.BackendAPI.Services
             
         }
 
-        public List<Product> GetAllProductByName(string productName)
+        public IQueryable<Product> GetAllProductByName(string productName)
         {
            try
            {
-               var product = _context.Products.Where(p => p.ProductName == productName).ToList();
+               var product = _context.Products.Where(p => p.ProductName == productName);
                return product;
            }
            catch(Exception ex)
@@ -110,7 +110,7 @@ namespace Rookie.BackendAPI.Services
            
         }
 
-        public Product GetProductById(int productId)
+        public Product GetProductById(string productId)
         {
             try
             {

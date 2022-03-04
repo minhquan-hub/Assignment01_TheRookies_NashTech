@@ -237,7 +237,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2001",
-                            Image1 = "/images/bg_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4001"
@@ -245,7 +245,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2002",
-                            Image1 = "/images/bg_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4002"
@@ -253,7 +253,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2003",
-                            Image1 = "/images/bg_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4003"
@@ -261,7 +261,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2004",
-                            Image1 = "/images/product-4.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4004"
@@ -269,7 +269,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2005",
-                            Image1 = "/images/image_5.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4005"
@@ -293,7 +293,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2008",
-                            Image1 = "/images/image_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4008"
@@ -301,7 +301,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2009",
-                            Image1 = "/images/image_5.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-4.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4009"
@@ -325,7 +325,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2012",
-                            Image1 = "/images/product-3.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-5.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4012"
@@ -333,7 +333,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2013",
-                            Image1 = "/images/product-6.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-7.jpg",
                             ProductId = "P4013"
@@ -341,7 +341,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2014",
-                            Image1 = "/images/category-2.jpg",
+                            Image1 = "/images/product-11.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4014"
@@ -357,7 +357,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2016",
-                            Image1 = "/images/image_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4016"
@@ -365,7 +365,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2017",
-                            Image1 = "/images/image_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4017"
@@ -389,7 +389,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2020",
-                            Image1 = "/images/product-1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4020"
@@ -397,7 +397,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2021",
-                            Image1 = "/images/product-1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4021"
@@ -405,7 +405,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2022",
-                            Image1 = "/images/product-1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4022"
@@ -413,7 +413,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2023",
-                            Image1 = "/images/category-2.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4023"
@@ -421,7 +421,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2024",
-                            Image1 = "/images/category-2.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4024"
@@ -429,7 +429,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2025",
-                            Image1 = "/images/category-2.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4025"
@@ -437,7 +437,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2026",
-                            Image1 = "/images/category-2.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4026"
@@ -445,7 +445,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2027",
-                            Image1 = "/images/category-2.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4027"
@@ -453,7 +453,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2028",
-                            Image1 = "/images/product-3.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4028"
@@ -461,7 +461,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2029",
-                            Image1 = "/images/product-3.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4029"
@@ -469,7 +469,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2030",
-                            Image1 = "/images/product-3.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4030"
@@ -477,7 +477,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2031",
-                            Image1 = "/images/product-3.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4031"
@@ -485,7 +485,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2032",
-                            Image1 = "/images/product-3.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-7.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4032"
@@ -493,7 +493,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2033",
-                            Image1 = "/images/image_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4033"
@@ -501,7 +501,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2034",
-                            Image1 = "/images/image_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4034"
@@ -509,7 +509,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2035",
-                            Image1 = "/images/image_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4035"
@@ -517,7 +517,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2036",
-                            Image1 = "/images/image_1.jpg",
+                            Image1 = "/images/product-5.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4036"
@@ -525,7 +525,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2037",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4037"
@@ -533,7 +533,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2038",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4038"
@@ -541,7 +541,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2039",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4039"
@@ -549,7 +549,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2040",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4040"
@@ -557,7 +557,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2041",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4041"
@@ -565,7 +565,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2042",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4042"
@@ -573,7 +573,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2043",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4043"
@@ -581,7 +581,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2044",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4044"
@@ -589,7 +589,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2045",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4045"
@@ -597,7 +597,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2046",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4046"
@@ -605,7 +605,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2047",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4047"
@@ -613,7 +613,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2048",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4048"
@@ -621,7 +621,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2049",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4049"
@@ -629,7 +629,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2050",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4050"
@@ -637,7 +637,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2051",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4051"
@@ -645,7 +645,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2052",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4052"
@@ -653,7 +653,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2053",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4053"
@@ -661,7 +661,7 @@ namespace Rookie.BackendAPI.Migrations
                         new
                         {
                             ImageID = "I2054",
-                            Image1 = "/images/product-2.jpg",
+                            Image1 = "/images/product-10.jpg",
                             Image2 = "/images/product-3.jpg",
                             Image3 = "/images/product-6.jpg",
                             ProductId = "P4054"
@@ -715,7 +715,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -745,7 +745,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -755,7 +755,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -785,7 +785,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -795,7 +795,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -825,7 +825,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -835,7 +835,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -865,7 +865,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -875,7 +875,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -905,7 +905,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -915,7 +915,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -925,7 +925,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -935,7 +935,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -945,7 +945,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -955,7 +955,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -965,7 +965,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -975,7 +975,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -985,7 +985,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -995,7 +995,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -1005,7 +1005,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -1015,7 +1015,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -1025,7 +1025,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -1035,7 +1035,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -1045,7 +1045,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -1055,7 +1055,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
@@ -1065,7 +1065,7 @@ namespace Rookie.BackendAPI.Migrations
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
-                            ProductName = "Mint"
+                            ProductName = "Tomato"
                         },
                         new
                         {
