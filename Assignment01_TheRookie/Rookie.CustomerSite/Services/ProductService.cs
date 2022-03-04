@@ -30,27 +30,21 @@ namespace Rookie.CustomerSite.Services
         }
 
         // Method: Get
-        public async Task<IList<ProductDto<ImageDto>>> GetProductByNameAsync(string productName)
+        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductByNameAsync(string productName)
         {
-            var url = $"https://localhost:5001/api/Product/{productName}";
-            return JsonConvert.DeserializeObject<List<ProductDto<ImageDto>>>(await JsonResponseByGet(url));
+            var url = "https://localhost:5001/api/Product";
+            string jsonContent = "{\"search\":\""+productName+"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
+            return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByPost(url,jsonContent));
         }
 
-        // Method: Get
-        public async Task<IList<ProductDto<ImageDto>>> GetProductByCategoryAsync(string productCategoryName)
-        {
-            var url = $"https://localhost:5001/api/Product/Category/{productCategoryName}";
-            return JsonConvert.DeserializeObject<List<ProductDto<ImageDto>>>(await JsonResponseByGet(url));
-        }
-
-        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProduct(){
+        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProductAsync(){
             var url = "https://localhost:5001/api/Product/AllProduct";
             string jsonContent = "{\"search\":\"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
             return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByPost(url,jsonContent));
         }
 
         // Method: Get
-        public async Task<ProductDto<ImageDto>> GetProductById(int id)
+        public async Task<ProductDto<ImageDto>> GetProductByIdAsync(string id)
         {
             var url = $"https://localhost:5001/api/Product/id/{id}";
             return JsonConvert.DeserializeObject<ProductDto<ImageDto>>(await JsonResponseByGet(url));
