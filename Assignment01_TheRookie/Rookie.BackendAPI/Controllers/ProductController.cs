@@ -39,7 +39,8 @@ namespace Rookie.BackendAPI.Controllers
             _imageService = imageService;
         }
 
-        // Get: https://localhost:5001/api/Product?Search=Mint&SortOrder=0&SortColumn=3&Limit=12&Page=2
+        
+        // POST: https://localhost:5001/api/Product
         [HttpPost]
         //[AllowAnonymous]
         public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostAllProductByNameAndPage(ProductCriteriaDto productCriteriaDto)
@@ -59,6 +60,7 @@ namespace Rookie.BackendAPI.Controllers
             };
         }
 
+        // POST: https://localhost:5001/api/Product/AllProduct
         [HttpPost("AllProduct")]
         //[AllowAnonymous]
        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostAllProductAndPage(ProductCriteriaDto productCriteriaDto)
@@ -78,12 +80,12 @@ namespace Rookie.BackendAPI.Controllers
             };
         }
 
-        //GET: https://localhost:5001/api/Product/Category?Search=Vegatables&SortOrder=0&SortColumn=2&Limit=12&Page=2
+        
+        //POST: https://localhost:5001/api/Product/Category
         [HttpPost("Category")]
         public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostProductByCategoryAndPage(ProductCriteriaDto productCriteriaDto)
         {
             var product = _productService.GetAllProductByCategoryAndPage(productCriteriaDto.Search);
-            //var productQuery =  ProductFilter(await product, productCriteriaDto) ;
             var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
             var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
             return new PagedResponseDto<ProductDto<ImageDto>>{
@@ -99,10 +101,14 @@ namespace Rookie.BackendAPI.Controllers
             };
         }
         
-        //GET: https://localhost:5001/api/Product/id/1
+        //GET: https://localhost:5001/api/Product/id/P4029
         [HttpGet("id/{productId}")]
-        [ProducesResponseType(200)]
-        public ActionResult<ProductDto<ImageDto>> GetProductById(string productId){
+        public ActionResult<ProductDto<ImageDto>> GetProductById(string productId)
+        {
+            if(productId == null)
+            {
+                return NotFound();
+            }
             var product = _productService.GetProductById(productId);
             var productDto = _mapper.Map<ProductDto<ImageDto>>(product);
             productDto.Image = _mapper.Map<ImageDto>(_imageService.GetImageByProductId(productDto.ProductId));
