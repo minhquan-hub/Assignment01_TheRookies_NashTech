@@ -12,6 +12,7 @@ using Rookie.BackendAPI.Data.Mapping;
 using Rookie.BackendAPI.Models;
 using Rookie.BackendAPI.Services;
 using Rookie.BackendAPI.Services.InterfaceServices;
+using Rookie.ShareClass.Dto;
 using Rookie.ShareClass.Dto.Image;
 using Rookie.ShareClass.Dto.Product;
 using Rookie.Testing.BackendAPITest.Mock.MockIQueryable;
@@ -36,24 +37,6 @@ namespace Rookie.Testing.ControllerTest
             }
        }
 
-    //    [Fact]
-    //     public async Task PostAllProductByNameAndPage_ProductName_ReturnProductNameCorrect()
-    //     {
-    //         // Arrange
-    //         var productName = "Apple";
-    //         var productCriteriaDto = new ProductCriteriaDto{
-    //             Search = productName,
-    //             SortOrder = 0, 
-    //             SortColumn = "2",
-    //             Limit = 12,
-    //             Page = 2
-    //         };
-    //         // Act
-    //         var product = await _sut.PostAllProductByNameAndPage(productCriteriaDto);
-            
-    //         // Assert
-    //         Assert.Equals(productName, product.Items.ProductName);
-    //     }
 
             [Fact]
             public void GetProductById_CheckProductIdAndName_ReturnProductDto()
@@ -76,10 +59,11 @@ namespace Rookie.Testing.ControllerTest
                     Image2 = "/images/product-3.jpg",
                     Image3 = "/images/product-6.jpg"
                 };
+
                var mockProductService = new MockProductService().MockGetProductById(productModel);
                var mockImageService = new MockImageService().MockGetImageByProductId(imageModel);
-
                var productController = new ProductController(_mapper,mockProductService.Object, mockImageService.Object); 
+
                 // Act
                 var productResult =  productController.GetProductById("P4019");
 
@@ -104,15 +88,71 @@ namespace Rookie.Testing.ControllerTest
                     Types = new int[] {0}
                 };
                 
-                var productIQueryable = new FakeDataProduct(); 
-
-                var mockProductService = new MockProductService().MockGetAllProductByNameAndPage(productIQueryable.ProductIQueryable);
+                var fakeProductIQueryable = new FakeDataProduct(); 
+                var mockProductService = new MockProductService().MockGetAllProductByNameAndPage(fakeProductIQueryable.ProductIQueryable);
                 var mockImageService = new MockImageService().MockGetImageByProductId(new Image());
-
                 var productController = new ProductController(_mapper, mockProductService.Object, mockImageService.Object);
+
                 // Act
                 var productResult = await productController.PostAllProductByNameAndPage(productCriteriaDtoModel);
+
                 // Assert
+                var returnValue = Assert.IsType<PagedResponseDto<ProductDto<ImageDto>>>(productResult.Value);
+                Assert.Equal(productCriteriaDtoModel.Search, returnValue.Items.FirstOrDefault().ProductName);
             }
+
+            [Fact]
+            public async Task PostAllProductAndPage_CheckCountProductAndReturnType_ReturnPagedResponseDto()
+            {
+                // Arrange
+                var productCriteriaDtoModel = new ProductCriteriaDto{
+                    Search = "",
+                    SortOrder = 0,
+                    SortColumn = "3",
+                    Limit = 3,
+                    Page = 2,
+                    Types = new int[] {0}
+                };
+
+                var fakeProductIQueryable = new FakeDataProduct();
+                var mockProductService = new MockProductService().MockGetAllProductAndPage(fakeProductIQueryable.ProductIQueryable);
+                var mockImageService = new MockImageService().MockGetImageByProductId(new Image());
+                var productController = new ProductController(_mapper, mockProductService.Object, mockImageService.Object);
+
+                // Act
+                var productResult = await productController.PostAllProductAndPage(productCriteriaDtoModel);
+
+                // Assert
+                var returnValue = Assert.IsType<PagedResponseDto<ProductDto<ImageDto>>>(productResult.Value);
+                Assert.Equal(productCriteriaDtoModel.Limit, returnValue.Items.Count());
+                Assert.IsType<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>>(productResult);
+            }
+
+            [Fact]
+            public async Task PostProductByCategoryAndPage_CheckProductName_ReturnPagedResponseDto()
+            {
+                // Arrange
+                var productCriteriaDtoModel = new ProductCriteriaDto{
+                    Search = "Vegatables",
+                    SortOrder = 0,
+                    SortColumn = "3",
+                    Limit = 3,
+                    Page = 2,
+                    Types = new int[] {0}
+                };
+
+                var fakeProductIQueryable = new FakeDataProduct(); 
+                var mockProductService = new MockProductService().MockGetAllProductByNameAndPage(fakeProductIQueryable.ProductIQueryable);
+                var mockImageService = new MockImageService().MockGetImageByProductId(new Image());
+                var productController = new ProductController(_mapper, mockProductService.Object, mockImageService.Object);
+
+                // Act
+                var productResult = await productController.PostProductByCategoryAndPage(productCriteriaDtoModel);
+
+                //Assert
+                var returnValue = Assert.IsType<PagedResponseDto<ProductDto<ImageDto>>>(productResult.Value);
+                //Assert.Equal("Tomato", returnValue.Items.FirstOrDefault().ProductName);
+            }
+
     }
 }
