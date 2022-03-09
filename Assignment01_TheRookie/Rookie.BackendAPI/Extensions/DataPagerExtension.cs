@@ -33,18 +33,11 @@ namespace Rookie.BackendAPI.Extensions
             }
 
             var startRow = (paged.CurrentPage - 1) * paged.PageSize;
-
-            // paged.Items = await query
-            //             .Skip(startRow)
-            //             .Take(paged.PageSize).ToListAsync();
-
             paged.Items = await Task.FromResult(query
                         .Skip(startRow)
                         .Take(paged.PageSize).ToList());
 
             paged.TotalItems = await Task.FromResult(query.Count());
-
-            // paged.TotalItems = await query.CountAsync();
             paged.TotalPages = (int)Math.Ceiling(paged.TotalItems / (double)paged.PageSize);
 
             return paged;
