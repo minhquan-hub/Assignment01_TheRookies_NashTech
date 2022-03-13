@@ -9,6 +9,8 @@ using Rookie.CustomerSite.ViewModel.Product;
 using Rookie.CustomerSite.ViewModel.Category;
 using Rookie.CustomerSite.ViewModel;
 using Rookie.CustomerSite.ViewModel.Image;
+using Rookie.ShareClass.Dto;
+using Rookie.ShareClass.Dto.Product;
 
 namespace Rookie.CustomerSite.Pages.Product
 {
@@ -36,25 +38,24 @@ namespace Rookie.CustomerSite.Pages.Product
         [BindProperty(SupportsGet = true)]
         public IList<ProductVM<ImageVM>> ProductVM { get; set; }
 
-        public async Task OnGetProductCategoryName(string categorynameclient)
+        public async Task OnGetProductCategoryNameAsync(string categorynameclient)
         {
             var pageResponseDto = await  _productService.GetProductByCategoryAndPageAsync(categorynameclient);
             PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
             await ShowCategoryName();
         }
 
-        public async Task OnPostProductByName()
+        public async Task OnPostProductByNameAsync()
         {
-            var pageResponseDto = await  _productService.GetProductByNameAsync(ProductName);
+            var pageResponseDto = await  _productService.GetProductByNameAndPageAsync(ProductName);
             PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
             await ShowCategoryName();
         }
 
-        public async Task OnGet()
+        public async Task OnGetAsync()
         {
-           var pageResponseDto = await  _productService.GetAllProductAsync();
+          var pageResponseDto = await _productService.GetAllProductAsync();
            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
-
            await ShowCategoryName();
         }
 
