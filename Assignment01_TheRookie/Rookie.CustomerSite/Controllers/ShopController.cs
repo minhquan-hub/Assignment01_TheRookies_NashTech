@@ -18,22 +18,10 @@ namespace CustomerSite.Controllers
             _logger = logger;
         }
 
-        [Route("shop")]
-        public IActionResult Index()
-        {
-            return View("/Views/Shop/Index.cshtml");
-        }
-
         [Route("wishlist")]
         public IActionResult Wishlist()
         {
             return View("/Views/Shop/WishList.cshtml");
-        }
-
-        [Route("product-single")]
-        public IActionResult ProductSingle()
-        {
-            return View("/Views/Shop/ProductSingle.cshtml");
         }
 
         [Route("cart")]

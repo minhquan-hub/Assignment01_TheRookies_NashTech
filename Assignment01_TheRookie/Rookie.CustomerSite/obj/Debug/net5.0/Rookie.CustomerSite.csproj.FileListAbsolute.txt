@@ -43,8 +43,6 @@ F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Views\Information\Contact.cshtml.g.cs
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Views\Shop\Cart.cshtml.g.cs
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Views\Shop\CheckOut.cshtml.g.cs
-F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Views\Shop\Index.cshtml.g.cs
-F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Views\Shop\ProductSingle.cshtml.g.cs
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\obj\Debug\net5.0\Razor\Views\Shop\WishList.cshtml.g.cs
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\bin\Debug\net5.0\AutoMapper.dll
 F:\STORAGE_APPLICATION\G\Git\Assignment01_Real\Assignment01_TheRookies_NashTech\Assignment01_TheRookie\Rookie.CustomerSite\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

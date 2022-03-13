@@ -41,7 +41,7 @@ namespace Rookie.BackendAPI.Controllers
         // POST: https://localhost:5001/api/Product
         [HttpPost]
         //[AllowAnonymous]
-        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostAllProductByNameAndPage(ProductCriteriaDto productCriteriaDto)
+        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetAllProductByNameAndPage(ProductCriteriaDto productCriteriaDto)
         {
             var product =   _productService.GetAllProductByNameAndPage(productCriteriaDto.Search);
             var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
@@ -58,10 +58,10 @@ namespace Rookie.BackendAPI.Controllers
             };
         }
 
-        // POST: https://localhost:5001/api/Product/AllProduct
-        [HttpPost("AllProduct")]
+        // GET: https://localhost:5001/api/Product?Limit=12&Page=2
+        [HttpGet("AllProduct")]
         //[AllowAnonymous]
-       public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostAllProductAndPage(ProductCriteriaDto productCriteriaDto)
+       public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetAllProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
             var product = _productService.GetAllProductAndPage();
             var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
@@ -78,9 +78,9 @@ namespace Rookie.BackendAPI.Controllers
             };
         }
 
-        //POST: https://localhost:5001/api/Product/Category
-        [HttpPost("Category")]
-        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostProductByCategoryAndPage(ProductCriteriaDto productCriteriaDto)
+        // GET: https://localhost:5001/api/Product/Category?Search=Fruits&SortColumn=3&Limit=12&Page=2
+        [HttpGet("Category")]
+        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetProductByCategoryAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
             var product = _productService.GetAllProductByCategoryAndPage(productCriteriaDto.Search);
             var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
