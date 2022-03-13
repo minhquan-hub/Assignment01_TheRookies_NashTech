@@ -61,7 +61,7 @@ namespace Rookie.BackendAPI.Controllers
             };
         }
 
-        [HttpPost("AllProduct")]
+        [HttpGet("AllProduct")]
         //[AllowAnonymous]
        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostAllProductAndPage(ProductCriteriaDto productCriteriaDto)
         {
