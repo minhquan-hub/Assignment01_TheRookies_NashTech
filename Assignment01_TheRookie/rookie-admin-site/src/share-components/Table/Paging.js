@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Table.css";
+import { Link } from "react-router-dom"
 
 const Paging = ({ currentPage = 1, totalPage = 1, handleChange }) => {
     const prePageStyle = currentPage !== 1 ? 'pagination__link' : 'pagination__link link-disable';

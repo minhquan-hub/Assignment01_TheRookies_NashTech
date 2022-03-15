@@ -96,19 +96,6 @@ namespace Rookie.BackendAPI.Services
             
         }
 
-        public IQueryable<Product> GetAllProductByName(string productName)
-        {
-           try
-           {
-               var product = _context.Products.Where(p => p.ProductName == productName);
-               return product;
-           }
-           catch(Exception ex)
-           {
-               throw new Exception($"At GetAllProductByName() of ProductService: {ex.Message}");
-           }
-           
-        }
 
         public Product GetProductById(string productId)
         {
@@ -120,25 +107,6 @@ namespace Rookie.BackendAPI.Services
             catch(Exception ex)
             {
                 throw new Exception($"At GetProductById() of ProductService: {ex.Message}");
-            }
-            
-        }
-
-        public List<Product> GetAllProductByCategory(string productCategoryName)
-        {
-            try
-            {
-                var product = (from p in _context.Products 
-                          join c in _context.Categories 
-                          on p.CateId equals c.CategoryId
-                          where c.CategoryName == productCategoryName
-                          select p).ToList();
-
-                return product;
-            }
-            catch(Exception ex)
-            {
-                throw new Exception($"At GetAllProductByCategory() of ProductService: {ex.Message}");
             }
             
         }

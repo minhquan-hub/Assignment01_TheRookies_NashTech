@@ -26,7 +26,7 @@ const FileUpload = (props) => {
             <label className="col-4 col-form-label d-flex">
                 {props.label}
             </label>
-            <div className="col-8">
+            <div className="col-4 align-self-center">
                 <input  type="file" 
                         onChange={handleOnChange} 
                         formEncType='multipart/form-data' 

@@ -1,5 +1,7 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 import {
     VegetableType,
@@ -14,13 +16,13 @@ import {
 
 const Info = ({ product, handleClose }) => {
     const getProductTypeName = (id) => {
-        return id == VegetableType ? VegetableTypeLabel : FruitsTypeLabel;
+        return id === VegetableType ? VegetableTypeLabel : FruitsTypeLabel;
     };
 
 
     return (
         <>
-            <Modal 
+            <Modal
                 show={true}
                 onHide={handleClose}
                 dialogClassName="modal-90w"
@@ -31,19 +33,19 @@ const Info = ({ product, handleClose }) => {
                     </Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body >
                     <div>
-                        <div className="row -intro-y">
+                        <div className="d-flex  -intro-y">
                             <div className="col-4">Id:</div>
-                            <div>{product.id}</div>
+                            <div >{product.productId}</div>
                         </div>
 
-                        <div className="row -intro-y">
+                        <div className="d-flex -intro-y">
                             <div className="col-4">Name:</div>
-                            <div>{product.name}</div>
+                            <div>{product.productName}</div>
                         </div>
 
-                        <div className="row -intro-y">
+                        <div className="d-flex -intro-y">
                             <div className="col-4">Type:</div>
                             <div>{getProductTypeName(product.type)}</div>
                         </div>

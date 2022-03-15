@@ -9,9 +9,9 @@ namespace Rookie.CustomerSite.Services.InterfaceServices
 {
     public interface IProductService
     {
-        public Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductAndPageAsync(string productName);
         public Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductByCategoryAndPageAsync(string productCategoryName);
-        public Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductByNameAsync(string productName);        public Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProductAsync();
+        public Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductByNameAndPageAsync(string productName);        
+        public Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProductAsync();
         public Task<ProductDto<ImageDto>> GetProductByIdAsync(string id);
         
     }

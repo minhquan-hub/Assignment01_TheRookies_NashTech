@@ -4,7 +4,7 @@ import qs from "qs";
 import RequestService from "../../../services/request";
 import Endpoints from "../../../Constants/endpoints";
 
-export function createProductRequest(productFrom) {
+export function CreateProductRequest(productFrom) {
     const formData = new FormData();
 
     Object.keys(productFrom).forEach(key => {
@@ -14,10 +14,7 @@ export function createProductRequest(productFrom) {
     return RequestService.axios.post(Endpoints.product, formData);
 }
 
-export function getProductRequest(query) {
-    console.log(query);
-    var data = RequestService.axios.get(Endpoints.product);
-    console.log(data);
+export function GetProductRequest(query) {
     return RequestService.axios.get(Endpoints.product, {
         params: query,
         paramsSerializer: params => qs.stringify(params)

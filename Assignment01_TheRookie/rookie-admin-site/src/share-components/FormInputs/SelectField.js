@@ -21,7 +21,7 @@ const SelectField = (props) => {
                     )}
                 </label>
 
-                <div className="col">
+                <div className="col-4 align-self-center">
                     <select className="custom-select" onChange={handleChange}>
                         <option selected hidden>Open this select menu</option>
                         {

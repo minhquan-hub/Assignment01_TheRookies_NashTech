@@ -4,6 +4,8 @@ import {Route, Switch} from 'react-router-dom';
 import {CREATE_PRODUCT, PRODUCT, EDIT_PRODUCT} from '../../Constants/pages'
 
 const ListProduct = lazy(() => import("./List"));
+const UpdateProduct = lazy(() => import("./Update"));
+const CreateProduct = lazy(() => import("./Create"));
 
 const Product = () => {
     return (
@@ -12,9 +14,10 @@ const Product = () => {
                 <ListProduct/>
             </Route>
             <Route exact path={CREATE_PRODUCT}>
-
+                <CreateProduct/>
             </Route>
             <Route exact path={EDIT_PRODUCT}>
+                <UpdateProduct/>
             </Route>
         </Switch>
     )
