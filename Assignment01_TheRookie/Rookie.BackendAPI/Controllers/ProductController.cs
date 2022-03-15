@@ -38,32 +38,12 @@ namespace Rookie.BackendAPI.Controllers
             _imageService = imageService;
         }
 
-        // POST: https://localhost:5001/api/Product
-        [HttpPost]
-        //[AllowAnonymous]
-        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetAllProductByNameAndPage(ProductCriteriaDto productCriteriaDto)
-        {
-            var product =   _productService.GetAllProductByNameAndPage(productCriteriaDto.Search);
-            var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
-            var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
-            return new PagedResponseDto<ProductDto<ImageDto>>{
-                CurrentPage = pageProducts.CurrentPage,
-                TotalItems = pageProducts.TotalItems,
-                TotalPages = pageProducts.TotalPages,
-                SortOrder = productCriteriaDto.SortOrder,
-                SortColumn = productCriteriaDto.SortColumn,
-                Limit = productCriteriaDto.Limit,
-                Page = productCriteriaDto.Page,
-                Items = productDto
-            };
-        }
-
-        // GET: https://localhost:5001/api/Product?Limit=12&Page=2
+        // GET: https://localhost:5001/api/Product/AllProduct?Search=Apple&SortColumn=3&Limit=12&Page=2
         [HttpGet("AllProduct")]
         //[AllowAnonymous]
        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetAllProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
-            var product = _productService.GetAllProductAndPage();
+            var product = _productService.GetAllProductAndPage(productCriteriaDto.Search);
             var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
             var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
             return new PagedResponseDto<ProductDto<ImageDto>>{

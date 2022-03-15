@@ -20,17 +20,9 @@ namespace Rookie.CustomerSite.Services
             return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByGet(url));
         }
 
-        // Method: Post
-        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductByNameAndPageAsync(string productName)
-        {
-             var url = "https://localhost:5001/api/Product";
-            string jsonContent = "{\"search\":\""+productName+"\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
-            return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByPost(url,jsonContent));
-        }
-
         // Method: Get
-        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProductAsync(){
-            var url = "https://localhost:5001/api/Product/AllProduct?Limit=12&Page=2";
+        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProductAsync(string productName){
+            var url = $"https://localhost:5001/api/Product/AllProduct?Search={productName}&SortOrder=1&SortColumn=3&Limit=12&Page=2";
             return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByGet(url));
         }
 
