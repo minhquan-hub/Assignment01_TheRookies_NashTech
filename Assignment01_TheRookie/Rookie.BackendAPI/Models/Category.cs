@@ -17,5 +17,8 @@ namespace Rookie.BackendAPI.Models
 
         [Column("description", TypeName = "ntext")]
         public string Description { get; set; }
+
+        [Column("is_delete")]
+        public bool IsDelete { get; set; }
     }
 }

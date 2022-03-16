@@ -12,6 +12,7 @@ namespace Rookie.ShareClass.Dto.Product {
         public decimal Price { get; set; }
         public DateTime ManufacturingDate { get; set; }
         public DateTime ExpiryDate { get; set; }
+        public string CateId { get; set; }
         public TModel Image { get; set; }
     }
 }

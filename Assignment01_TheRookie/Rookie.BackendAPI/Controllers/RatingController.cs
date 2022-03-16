@@ -12,12 +12,10 @@ namespace RookieShop.Backend.Controllers
     [ApiController]
     public class RatingController : ControllerBase
     {
-        private readonly ILogger<RatingController> _logger;
         private readonly IRatingService _ratingService;
 
-        public RatingController(ILogger<RatingController> logger, IRatingService ratingService)
+        public RatingController(IRatingService ratingService)
         {
-            _logger = logger;
             _ratingService = ratingService;
         }
 

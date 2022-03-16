@@ -38,8 +38,20 @@ namespace Rookie.BackendAPI.Controllers
             _imageService = imageService;
         }
 
+        [HttpPost]
+        public ActionResult PostProduct([FromForm]ProductCreateRequest productCreateRequest){
+            if(!string.IsNullOrEmpty(productCreateRequest.ProductName)
+            && productCreateRequest.ManufacturingDate != DateTime.MinValue
+            && productCreateRequest.ExpiryDate != DateTime.MinValue 
+            && !string.IsNullOrEmpty(productCreateRequest.CateId))
+            {
+                _productService.CreateProduct(productCreateRequest);
+            }
+            return Ok();
+        }
+
         // GET: https://localhost:5001/api/Product/AllProduct?Search=Apple&SortColumn=3&Limit=12&Page=2
-        [HttpGet("AllProduct")]
+        [HttpGet("allproduct")]
         //[AllowAnonymous]
        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetAllProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
@@ -59,7 +71,7 @@ namespace Rookie.BackendAPI.Controllers
         }
 
         // GET: https://localhost:5001/api/Product/Category?Search=Fruits&SortColumn=3&Limit=12&Page=2
-        [HttpGet("Category")]
+        [HttpGet("category")]
         public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetProductByCategoryAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
             var product = _productService.GetAllProductByCategoryAndPage(productCriteriaDto.Search);
@@ -82,7 +94,7 @@ namespace Rookie.BackendAPI.Controllers
         [HttpGet("id/{productId}")]
         public ActionResult<ProductDto<ImageDto>> GetProductById(string productId)
         {
-            if(productId == null)
+            if(string.IsNullOrEmpty(productId))
             {
                 return NotFound();
             }
@@ -90,6 +102,31 @@ namespace Rookie.BackendAPI.Controllers
             var productDto = _mapper.Map<ProductDto<ImageDto>>(product);
             productDto.Image = _mapper.Map<ImageDto>(_imageService.GetImageByProductId(productDto.ProductId));
             return Ok(productDto);
+        }
+
+        // PUT: https://localhost:5001/api/Product/P4014
+        [HttpPut("{productId}")]
+        public ActionResult PutProduct(string productId,[FromForm]ProductCreateRequest productCreateRequest){
+            if(string.IsNullOrEmpty(productId))
+            {
+                return NotFound();
+            }
+
+            _productService.UpdateProduct(productId, productCreateRequest);
+            return Ok();
+        }
+
+        // DELETE: https://localhost:5001/api/Product/P4014
+        [HttpDelete("{productId}")]
+        public ActionResult DeleteProduct(string productId){
+            if(string.IsNullOrEmpty(productId))
+            {
+                return NotFound();
+            }
+            
+            _productService.DeleteProduct(productId);
+
+            return Ok();
         }
 
         #region Private Method
