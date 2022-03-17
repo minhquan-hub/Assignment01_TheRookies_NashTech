@@ -1,30 +1,39 @@
 using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Rookie.CustomerSite.Services.InterfaceServices;
+using Rookie.ShareClass.Constants;
 using Rookie.ShareClass.Dto.Rating;
+using RookieShop.Shared.Constants;
 
 namespace Rookie.CustomerSite.Services
 {
     public class RatingService : IRatingService
     {
-        public async Task InsertRatingAsync(RatingDto ratingDto)
+        public IHttpClientFactory _httpClientFactory;
+        public RatingService(IHttpClientFactory httpClientFactory)
         {
-            string url = $"https://localhost:5001/api/Rating?ProductId={ratingDto.ProductId}&RateNumber={ratingDto.RateNumber}";
-            await JsonResponseByGet(url);
+            _httpClientFactory = httpClientFactory;
         }
-
-        public async Task JsonResponseByGet(string url)
+        // Method: Post
+        public async Task InsertRatingAsync(RatingDto ratingDto)
         {
             try
             {
-                using var httpClient = new HttpClient();
-                var jsonResponse = await httpClient.GetAsync(url);
+                var postRatingEndPoints = $"{EndPointConstants.POST_RATING}";
+                var jsoncontent = JsonConvert.SerializeObject(ratingDto);
+
+                var client = _httpClientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
+                var stringContent = new StringContent(jsoncontent, Encoding.UTF8, "application/json");
+                await client.PostAsync(postRatingEndPoints, stringContent);
             }
             catch(Exception ex)
             {
-                throw new Exception($"At JsonResponseByGet of RatingService: {ex.Message}");
+                throw new Exception($"At JsonResponseByPost of ProductService: {ex.Message}");
             }
         }
+
     }
 }

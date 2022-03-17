@@ -11,6 +11,10 @@ using Rookie.CustomerSite.ViewModel;
 using Rookie.CustomerSite.ViewModel.Image;
 using Rookie.ShareClass.Dto;
 using Rookie.ShareClass.Dto.Product;
+using Rookie.ShareClass.Enum;
+using Rookie.ShareClass.Dto.Category;
+using Rookie.ShareClass.Constants;
+using Microsoft.Extensions.Configuration;
 
 namespace Rookie.CustomerSite.Pages.Product
 {
@@ -18,11 +22,13 @@ namespace Rookie.CustomerSite.Pages.Product
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly IConfiguration _config;
         private readonly IMapper _mapper;
-        public ProductPageModel(IProductService productService,ICategoryService categoryService, IMapper mapper) 
+        public ProductPageModel(IProductService productService,ICategoryService categoryService, IConfiguration config,IMapper mapper) 
         {
             _productService = productService;
             _categoryService = categoryService;
+            _config = config;
             _mapper = mapper;
         }
         
@@ -38,23 +44,28 @@ namespace Rookie.CustomerSite.Pages.Product
         [BindProperty(SupportsGet = true)]
         public IList<ProductVM<ImageVM>> ProductVM { get; set; }
 
-        public async Task OnGetProductCategoryNameAsync(string categorynameclient)
+        public async Task OnGetProductCategoryNameAsync(string categoryName)
         {
-            var pageResponseDto = await  _productService.GetProductByCategoryAndPageAsync(categorynameclient);
-            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
-            await ShowCategoryName();
-        }
-
-        public async Task OnPostProductByNameAsync()
-        {
-            var pageResponseDto = await  _productService.GetProductByNameAndPageAsync(ProductName);
+            var categoryCriteriaDto = new CategoryCriteriaDto {
+                Search = categoryName,
+                SortOrder = SortOrderEnum.Accsending,
+                Page = 1,
+                Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
+            };
+            var pageResponseDto = await  _productService.GetProductByCategoryAndPageAsync(categoryCriteriaDto);
             PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
             await ShowCategoryName();
         }
 
         public async Task OnGetAsync()
         {
-          var pageResponseDto = await _productService.GetAllProductAsync();
+           var  productCriteriaDto = new ProductCriteriaDto{
+                Search = ProductName,
+                SortOrder = SortOrderEnum.Accsending,
+                Page = 1,
+                Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
+           };
+           var pageResponseDto = await _productService.GetAllProductAndPageAsync(productCriteriaDto);
            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
            await ShowCategoryName();
         }

@@ -38,8 +38,8 @@ namespace Rookie.BackendAPI.Services
 
         public string CreateRateId(string rateIdOld)
         {
-            var createIdString1 = rateIdOld.Substring(1);
-            var rateIdParse = int.Parse(createIdString1)+1;
+            var separateIdString = rateIdOld.Substring(1);
+            var rateIdParse = int.Parse(separateIdString)+1;
             return "R"+ rateIdParse.ToString();
         }
         
