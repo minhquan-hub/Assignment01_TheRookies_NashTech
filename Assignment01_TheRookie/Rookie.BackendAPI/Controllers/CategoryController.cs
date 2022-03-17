@@ -17,7 +17,6 @@ namespace Rookie.BackendAPI.Controllers {
         
         private readonly IMapper _mapper;
         private readonly ICategoryService _categoryService;
-        // private readonly IFileStorageService _fileStorageService;
         
         public CategoryController(
             IMapper mapper,
@@ -45,7 +44,7 @@ namespace Rookie.BackendAPI.Controllers {
             return Ok(categoryDto);
         }
 
-        // PUT:
+        // PUT: https://localhost:5001/api/Category/C3001
         [HttpPut("{categoryId}")]
         public ActionResult PutCategory(string categoryId,[FromForm]CategoryCreateRequest categoryCreateRequest)
         {
@@ -57,7 +56,7 @@ namespace Rookie.BackendAPI.Controllers {
             return Ok();
         }
 
-        // DELETE: 
+        // DELETE: https://localhost:5001/api/Category/C3001
         [HttpDelete("{categoryId}")]
         public ActionResult DeleteCategory(string categoryId)
         {

@@ -29,7 +29,6 @@ namespace Rookie.BackendAPI.Controllers
         private readonly IProductService _productService;
         private readonly IImageService _imageService;
         private readonly IMapper _mapper;
-        // private readonly IFileStorageService _fileStorageService;
         
         public ProductController(IMapper mapper, IProductService productService, IImageService imageService)
         {

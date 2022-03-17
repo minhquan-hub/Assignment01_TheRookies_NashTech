@@ -20,8 +20,8 @@ namespace RookieShop.Backend.Controllers
         }
 
         //Get: https://localhost:5001/api/Rating
-        [HttpGet]
-        public ActionResult InsertRating([FromQuery]RatingDto ratingDto)
+        [HttpPost]
+        public ActionResult InsertRating([FromBody]RatingDto ratingDto)
         {
             _ratingService.InsertRating(ratingDto);
             return Ok();

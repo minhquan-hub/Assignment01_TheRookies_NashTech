@@ -24,7 +24,7 @@
     				<ul class="product-category">
     					<li><a href="#" class="active">All</a></li>
 						@foreach (var item in Model.CategoryVM){
-							<li><a  asp-page="./Index" asp-page-handler="productcategoryname" asp-route-categorynameclient="@item.CategoryName">@Html.DisplayFor(modelItem => item.CategoryName)</a></li>
+							<li><a  asp-page="./Index" asp-page-handler="productcategoryname" asp-route-categoryName="@item.CategoryName">@Html.DisplayFor(modelItem => item.CategoryName)</a></li>
 						}
             <li>
             <form asp-page="./Index" method="get" >
