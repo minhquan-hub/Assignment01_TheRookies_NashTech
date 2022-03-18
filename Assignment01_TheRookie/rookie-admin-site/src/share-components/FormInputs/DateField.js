@@ -2,6 +2,7 @@ import React, { InputHTMLAttributes } from 'react';
 import { useField } from 'formik';
 import { CalendarDateFill } from "react-bootstrap-icons";
 import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 const DateField = (props) => {
     const [{ value }, { error, touched }, { setValue }] = useField(props);
@@ -35,7 +36,7 @@ const DateField = (props) => {
                         <DatePicker
                             placeholderText={label}
                             className='border w-100 text-center is-invalid'
-                            dateFormat='MM/dd/yyyy'
+                            dateFormat='yyyy-MM-dd'
                             selected={value}
                             onChange={date => handleChangeAssignedDate(date)}
                             isClearable
@@ -45,9 +46,9 @@ const DateField = (props) => {
                             filterDate={filterDate}
                         />
 
-                        <div className="border p-2">
+                        {/* <div className="border p-2">
                             <CalendarDateFill />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

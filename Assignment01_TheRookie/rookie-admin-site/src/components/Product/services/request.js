@@ -28,7 +28,7 @@ export function UpdateProductRequest(productForm) {
         formData.append(key, productForm[key]);
     });
 
-    return RequestService.axios.put(Endpoints.productId(productForm.id ?? -1), formData);
+    return RequestService.axios.put(Endpoints.productId(productForm.productId ?? -1), formData);
 }
 
 export function DisableProductRequest(productId) {

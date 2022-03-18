@@ -165,6 +165,10 @@ namespace Rookie.BackendAPI.Migrations
                         .HasColumnType("ntext")
                         .HasColumnName("description");
 
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit")
+                        .HasColumnName("is_delete");
+
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category");
@@ -174,25 +178,29 @@ namespace Rookie.BackendAPI.Migrations
                         {
                             CategoryId = "C3001",
                             CategoryName = "Vegatables",
-                            Description = "Vegetables are parts of plants that are consumed by humans or other animals as food"
+                            Description = "Vegetables are parts of plants that are consumed by humans or other animals as food",
+                            IsDelete = false
                         },
                         new
                         {
                             CategoryId = "C3002",
                             CategoryName = "Fruits",
-                            Description = "a fruit is the seed-bearing structure in flowering plants that is formed from the ovary after flowering"
+                            Description = "a fruit is the seed-bearing structure in flowering plants that is formed from the ovary after flowering",
+                            IsDelete = false
                         },
                         new
                         {
                             CategoryId = "C3003",
                             CategoryName = "Juice",
-                            Description = "Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables"
+                            Description = "Juice is a drink made from the extraction or pressing of the natural liquid contained in fruit and vegetables",
+                            IsDelete = false
                         },
                         new
                         {
                             CategoryId = "C3004",
                             CategoryName = "Dried",
-                            Description = "Dried fruit is fruit from which the majority of the original water content has been removed either naturally, through sun drying, or through the use of specialized dryers or dehydrators"
+                            Description = "Dried fruit is fruit from which the majority of the original water content has been removed either naturally, through sun drying, or through the use of specialized dryers or dehydrators",
+                            IsDelete = false
                         });
                 });
 
@@ -687,6 +695,10 @@ namespace Rookie.BackendAPI.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("expiry_date");
 
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit")
+                        .HasColumnName("is_delete");
+
                     b.Property<DateTime>("ManufacturingDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("manufacturing_date");
@@ -713,6 +725,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
                             ProductName = "Tomato"
@@ -723,6 +736,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 24m,
                             ProductName = "Ginger"
@@ -733,6 +747,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 30m,
                             ProductName = "Celery"
@@ -743,6 +758,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -753,6 +769,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
                             ProductName = "Tomato"
@@ -763,6 +780,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 24m,
                             ProductName = "Ginger"
@@ -773,6 +791,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 30m,
                             ProductName = "Celery"
@@ -783,6 +802,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -793,6 +813,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
                             ProductName = "Tomato"
@@ -803,6 +824,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 24m,
                             ProductName = "Ginger"
@@ -813,6 +835,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 30m,
                             ProductName = "Celery"
@@ -823,6 +846,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -833,6 +857,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
                             ProductName = "Tomato"
@@ -843,6 +868,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 24m,
                             ProductName = "Ginger"
@@ -853,6 +879,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 30m,
                             ProductName = "Celery"
@@ -863,6 +890,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -873,6 +901,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 32m,
                             ProductName = "Tomato"
@@ -883,6 +912,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 24m,
                             ProductName = "Ginger"
@@ -893,6 +923,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3004",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 30m,
                             ProductName = "Celery"
@@ -903,6 +934,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -913,6 +945,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -923,6 +956,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -933,6 +967,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -943,6 +978,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -953,6 +989,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -963,6 +1000,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -973,6 +1011,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -983,6 +1022,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -993,6 +1033,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -1003,6 +1044,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -1013,6 +1055,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -1023,6 +1066,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -1033,6 +1077,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -1043,6 +1088,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -1053,6 +1099,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -1063,6 +1110,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3001",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 50m,
                             ProductName = "Tomato"
@@ -1073,6 +1121,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1083,6 +1132,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1093,6 +1143,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1103,6 +1154,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1113,6 +1165,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1123,6 +1176,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1133,6 +1187,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1143,6 +1198,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1153,6 +1209,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1163,6 +1220,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1173,6 +1231,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1183,6 +1242,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1193,6 +1253,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1203,6 +1264,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1213,6 +1275,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1223,6 +1286,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1233,6 +1297,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"
@@ -1243,6 +1308,7 @@ namespace Rookie.BackendAPI.Migrations
                             CateId = "C3002",
                             Description = "Vegetable is very healthy",
                             ExpiryDate = new DateTime(2022, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
                             ManufacturingDate = new DateTime(2022, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 48m,
                             ProductName = "Apple"

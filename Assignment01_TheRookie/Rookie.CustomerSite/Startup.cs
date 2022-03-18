@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
-using CloudinaryDotNet;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Rookie.CustomerSite.Extensions.ServiceCollection;
 using Rookie.CustomerSite.Services;
 using Rookie.CustomerSite.Services.InterfaceServices;
 
@@ -29,6 +30,9 @@ namespace Rookie.CustomerSite
         {
             services.AddRazorPages();
             services.AddControllersWithViews();
+
+            services.AddHttpContextAccessor();
+            services.AddCustomHttpClient(Configuration);
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
@@ -63,10 +67,6 @@ namespace Rookie.CustomerSite
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                // endpoints.MapControllerRoute(
-                //     name: "ShopDefault",
-                //     pattern: "{controller=Shop}/{action=Index}/{id?}");
-
                 endpoints.MapControllerRoute(
                     name: "HomeDefault",
                     pattern: "index",
@@ -74,21 +74,6 @@ namespace Rookie.CustomerSite
                         controller = "Home",
                         action = "Index"
                     });
-
-                // endpoints.MapControllerRouSte(
-                //     name: "Shop",
-                //     pattern: "shop",
-                //     defaults: new { 
-                //         controller = "Shop",
-                //         action = "Index"
-                //     });
-                // endpoints.MapControllerRoute(
-                //     name: "WishList",
-                //     pattern: "wishlist",
-                //     defaults: new { 
-                //         controller = "Shop",
-                //         action = "WishList"
-                //     });    
 
                 endpoints.MapRazorPages();
             });

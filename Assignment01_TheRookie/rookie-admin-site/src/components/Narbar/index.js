@@ -21,6 +21,9 @@ const Navbar = (props) => {
             <Link className="link" to="/product">
               <li>Product</li>
             </Link>
+            <Link className="link" to="/category">
+              <li>Category</li>
+            </Link>
           </ul>
 
           <input type="text" onChange={(e) => this.props.onSearchKey(e)}></input>

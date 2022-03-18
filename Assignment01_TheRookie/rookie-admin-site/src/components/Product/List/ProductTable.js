@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { PencilFill, XCircle } from "react-bootstrap-icons";
-import { useHistory } from "react-router";
-import ButtonIcon from "../../../share-components/ButtonIcon";
-import { NotificationManager } from "react-notifications";
+import React, { useState } from 'react';
+import { PencilFill, XCircle } from 'react-bootstrap-icons';
+import { useHistory } from 'react-router';
+import { NotificationManager } from 'react-notifications';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Table, { SortType } from "../../../share-components/Table";
-import {DisableProductRequest} from "../services/request"
+import Table, { SortType } from '../../../share-components/Table';
+import ButtonIcon from '../../../share-components/ButtonIcon';
+import {DisableProductRequest} from '../Services/request'
 import Info from '../Info';
-import { EDIT_PRODUCT_ID } from "../../../Constants/pages";
-import ConfirmModal from "../../../share-components/ConfirmModal";
+import { EDIT_PRODUCT_ID } from '../../../Constants/pages';
+import ConfirmModal from '../../../share-components/ConfirmModal';
 import {
   VegetableType,
   VegetableTypeLabel,
@@ -18,13 +19,13 @@ import {
   JuiceTypeLabel,
   DriesType,
   DriesTypeLabel,
-} from "../../../Constants/Product/ProductConstant";
+} from '../../../Constants/Product/ProductConstant';
 
 const columns = [
-  { columnName: 'prodcutid', columnValue: 'ProductID' },
-  { columnName: 'productname', columnValue: 'ProductName' },
-  { columnName: 'productprice', columnValue: 'ProductPrice' },
-  { columnName: 'type', columnValue: 'Type' },
+  { columnName: 'ID', columnValue: 'ProductID' },
+  { columnName: 'NAME', columnValue: 'ProductName' },
+  { columnName: 'PRICE', columnValue: 'ProductPrice' },
+  { columnName: 'TYPE', columnValue: 'Type' },
 ];
 
 const ProductTable = ({
@@ -38,14 +39,14 @@ const ProductTable = ({
   const [productDetail, setProductDetail] = useState(null);
   const [disableState, setDisable] = useState({
     isOpen: false,
-    id: 0,
+    productId: '',
     title: '',
     message: '',
     isDisable: true,
   });
 
-  const handleShowInfo = (id) => {
-    const product = products.items.find((item) => item.productId === id);
+  const handleShowInfo = (productId) => {
+    const product = products.items.find((item) => item.productId === productId);
 
     if (product) {
       setProductDetail(product)
@@ -53,13 +54,23 @@ const ProductTable = ({
     }
   }
 
-  const getProductTypeName = (id) => {
-    return id == VegetableTypeLabel ? VegetableTypeLabel : FruitsTypeLabel
+  const getProductTypeName = (cateId) => {
+    var category = "";
+    if(cateId === VegetableType){
+      category = VegetableTypeLabel;
+    }else if(cateId === FruitsType){
+      category = FruitsTypeLabel;
+    }else if(cateId === JuiceType){
+      category = JuiceTypeLabel;
+    }else {
+      category = DriesTypeLabel;
+    }
+    return category;
   }
 
-  const handleShowDisable = async (id) => {
+  const handleShowDisable = async (productId) => {
     setDisable({
-      id,
+      productId,
       isOpen: true,
       title: 'Are you sure',
       message: 'Do you want to disable this Product ?',
@@ -70,7 +81,7 @@ const ProductTable = ({
   const handleCloseDisable = () => {
     setDisable({
       isOpen: false,
-      id: 0,
+      productId: '',
       title: '',
       message: '',
       isDisable: true,
@@ -79,13 +90,9 @@ const ProductTable = ({
 
   const handleResult = async (result, message) => {
     if (result) {
-      handleCloseDisable()
-      await fetchData()
-      NotificationManager.success(
-        'Remove Product Successful',
-        'Remove Successful',
-        2000,
-      );
+      handleCloseDisable();
+      await fetchData();
+      alert("Remove Product Successful");
     } else {
       setDisable({
         ...disableState,
@@ -97,7 +104,7 @@ const ProductTable = ({
   }
 
   const handleConfirmDisable = async () => {
-      let isSuccess = await DisableProductRequest(disableState.id);
+      let isSuccess = await DisableProductRequest(disableState.productId);
       if (isSuccess) {
         await handleResult(true, '');
       }
@@ -108,9 +115,9 @@ const ProductTable = ({
   }
 
   const history = useHistory()
-  const handleEdit = (id) => {
-    const existProduct = products?.items.find((item) => item.productId === id);
-    history.push(EDIT_PRODUCT_ID(id), {
+  const handleEdit = (productId) => {
+    const existProduct = products?.items.find((item) => item.productId === productId);
+    history.push(EDIT_PRODUCT_ID(productId), {
       existProduct: existProduct,
     });
   }
@@ -137,13 +144,13 @@ const ProductTable = ({
               <td>{data.productId}</td>
               <td>{data.productName}</td>
               <td>${data.price}</td>
-              <td>{getProductTypeName(data.type)}</td>
+              <td>{getProductTypeName(data.cateId)}</td>
 
               <td className="d-flex">
                 <ButtonIcon onClick={() => handleEdit(data.productId)}>
                   <PencilFill className="text-black" />
                 </ButtonIcon>
-                <ButtonIcon onClick={() => handleShowDisable(data.id)}>
+                <ButtonIcon onClick={() => handleShowDisable(data.productId)}>
                   <XCircle className="text-danger mx-2" />
                 </ButtonIcon>
               </td>
@@ -161,9 +168,9 @@ const ProductTable = ({
         <div>
           <div className="text-center">{disableState.message}</div>
           {disableState.isDisable && (
-            <div>
+            <div className="text-center">
               <button
-                className="btn btn-danger mr-3"
+                className="btn btn-danger m-3"
                 onClick={handleConfirmDisable}
                 type="button"
               >

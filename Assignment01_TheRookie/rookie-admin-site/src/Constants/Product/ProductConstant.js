@@ -1,10 +1,10 @@
-export const VegetableType = 1;
-export const FruitsType = 2;
-export const JuiceType = 3;
-export const DriesType = 4;
+export const VegetableType = "C3001";
+export const FruitsType = "C3002";
+export const JuiceType = "C3003";
+export const DriesType = "C3004";
 export const AllProductType = 0;
 
-export const VegetableTypeLabel = 'Vegetable';
+export const VegetableTypeLabel = 'Vegetables';
 export const FruitsTypeLabel = 'Fruits';
 export const JuiceTypeLabel = 'Juice';
 export const DriesTypeLabel = 'Dries'

@@ -13,6 +13,10 @@ const UpdateProductContainer = () => {
       setProduct({
         productId: existProduct.productId,
         productName: existProduct.productName,
+        description: existProduct.description,
+        manufacturingDate: '2022-09-21',
+        expiryDate: '2022-10-23',
+        price: existProduct.price,
         type: existProduct.type,
         // imagePath: existProduct.imagePath,
         // imageFile: existProduct.imageFile
@@ -22,7 +26,7 @@ const UpdateProductContainer = () => {
 
   return (
     <div className='ml-5'>
-      <div className='primaryColor text-title intro-x'>
+      <div className='mt-3 primaryColor text-title intro-x'>
         Update Product {existProduct?.productName}
       </div>
 
@@ -30,7 +34,6 @@ const UpdateProductContainer = () => {
         {
           product && (<ProductForm
             initialProductForm={product}
-  
           />)
         }
       </div>

@@ -6,6 +6,7 @@ using Rookie.BackendAPI.Data;
 using Rookie.BackendAPI.Models;
 using System.Linq;
 using System.Collections.Generic;
+using Rookie.ShareClass.Dto.Category;
 
 namespace Rookie.BackendAPI.Services{
 
@@ -17,18 +18,20 @@ namespace Rookie.BackendAPI.Services{
             _context = context;
         }
         
-        public async Task<int> CreateCategory(Category createCategory)
+        public async Task CreateCategory(CategoryCreateRequest categoryCreateRequest)
         {
             try
             {
-                var newCategory = new Category {
-                CategoryId = createCategory.CategoryId,
-                CategoryName = createCategory.CategoryName,
-                Description = createCategory.Description
+                var categoryLast =  _context.Categories.OrderBy(c => c.CategoryId).Last();
+
+                var category = new Category {
+                CategoryId = CreateCategoryId(categoryLast.CategoryId),
+                CategoryName = categoryCreateRequest.CategoryName,
+                Description = categoryCreateRequest.Description
                 };
 
-                _context.Categories.Add(newCategory);
-                return await _context.SaveChangesAsync();
+                _context.Categories.Add(category);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -36,29 +39,11 @@ namespace Rookie.BackendAPI.Services{
             }
             
         }
-
-        public async Task<int> DeleteCategory(int categoryId)
-        {
-            try
-            {
-                var category = _context.Categories.Where(c => c.CategoryId.Equals(categoryId)).FirstOrDefault();
-                if(category == null){
-                    Console.WriteLine("Can't find category you want to delete");
-                }
-                _context.Categories.Remove(category);
-                return await _context.SaveChangesAsync();
-            }
-            catch(Exception ex)
-            {
-                throw new Exception($"At DeleteCategory() of CategoryService: {ex.Message}");
-            }
-            
-        }
-
         public List<Category> GetAllCategory()
         {
             try{
-                var category =  (from c in _context.Categories select c).ToList();
+                var category =  (from c in _context.Categories 
+                                where !c.IsDelete select c).ToList();
                 return category;
             }
             catch(Exception ex)
@@ -67,9 +52,43 @@ namespace Rookie.BackendAPI.Services{
             }
             
         }
-        public async Task<int> UpdateCategory(int CategoryId, Category category)
+
+        public async Task UpdateCategory(string categoryId, CategoryCreateRequest categoryCreateRequest)
         {
-            return 1;
+            var category = _context.Categories.Where(c => c.CategoryId.Equals(categoryId)).FirstOrDefault();
+
+            if(!string.IsNullOrEmpty(categoryCreateRequest.CategoryName))
+            {
+                category.CategoryName = categoryCreateRequest.CategoryName;
+                category.Description = categoryCreateRequest.Description;
+            }
+            
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
         }
+
+        public async Task DeleteCategory(string categoryId)
+        {
+            try
+            {
+                var category = _context.Categories.Where(c => c.CategoryId.Equals(categoryId)).FirstOrDefault();
+                category.IsDelete = true;
+                _context.Categories.Update(category);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"At DeleteCategory() of CategoryService: {ex.Message}");
+            }
+            
+        }
+
+        public string CreateCategoryId(string categoryIdOld)
+        {
+            var separateIdString = categoryIdOld.Substring(1);
+            var categoryIdParse = int.Parse(separateIdString)+1;
+            return "C"+ categoryIdParse.ToString();
+        }
+
     }
 }

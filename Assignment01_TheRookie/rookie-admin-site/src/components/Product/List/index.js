@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 import { FilterProductTypeOptions } from '../../../Constants/selectOptions';
 import ProductTable from './ProductTable';
-import { GetProductRequest } from '../services/request';
+import { GetProductRequest } from '../Services/request';
 import {
   ACCSENDING,
   DECSENDING,
@@ -98,8 +98,8 @@ const ListProduct = () => {
   }
 
   const fetchDataCallbackAsync = async () => {
-    let data = await GetProductRequest(query);
-    setProducts(data);
+    let result = await GetProductRequest(query);
+    setProducts(result.data);
   }
 
   useEffect(() => {
@@ -108,7 +108,7 @@ const ListProduct = () => {
       setProducts(result.data);
     }
 
-    fetchDataAsync()
+    fetchDataAsync();
   }, [query])
 
   return (
@@ -148,7 +148,7 @@ const ListProduct = () => {
 
             <button className="btn btn-success m-3">
               <Link className="text-decoration-none text-dark" type="button" to="/product/create">
-                Create new Product
+                Create New Product
               </Link>
             </button>
           </div>
