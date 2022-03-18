@@ -73,6 +73,7 @@ namespace Rookie.BackendAPI.Services{
             {
                 var category = _context.Categories.Where(c => c.CategoryId.Equals(categoryId)).FirstOrDefault();
                 category.IsDelete = true;
+                _context.Categories.Update(category);
                 await _context.SaveChangesAsync();
             }
             catch(Exception ex)

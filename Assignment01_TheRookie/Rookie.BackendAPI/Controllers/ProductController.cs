@@ -112,7 +112,7 @@ namespace Rookie.BackendAPI.Controllers
             }
 
             _productService.UpdateProduct(productId, productCreateRequest);
-            return Ok();
+            return Ok(true);
         }
 
         // DELETE: https://localhost:5001/api/Product/P4014
@@ -125,7 +125,7 @@ namespace Rookie.BackendAPI.Controllers
             
             _productService.DeleteProduct(productId);
 
-            return Ok();
+            return Ok(true);
         }
 
         #region Private Method
