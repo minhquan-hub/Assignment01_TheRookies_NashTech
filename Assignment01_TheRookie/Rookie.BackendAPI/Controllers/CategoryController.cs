@@ -32,7 +32,7 @@ namespace Rookie.BackendAPI.Controllers {
             if(!string.IsNullOrEmpty(categoryCreateRequest.CategoryName)){
                 _categoryService.CreateCategory(categoryCreateRequest);
             }
-            return Ok();
+            return Ok(true);
         }
 
         //Get: https://localhost:5001/api/Category
@@ -53,7 +53,7 @@ namespace Rookie.BackendAPI.Controllers {
                 return NotFound();
             }
             _categoryService.UpdateCategory(categoryId, categoryCreateRequest);
-            return Ok();
+            return Ok(true);
         }
 
         // DELETE: https://localhost:5001/api/Category/C3001
@@ -65,7 +65,7 @@ namespace Rookie.BackendAPI.Controllers {
                 return NotFound();
             }
             _categoryService.DeleteCategory(categoryId);
-            return Ok();
+            return Ok(true);
         }
 
     }

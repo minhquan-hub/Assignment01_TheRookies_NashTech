@@ -95,7 +95,6 @@ namespace Rookie.BackendAPI.Services
                     equals c.CategoryId
                     where c.CategoryName == productCategoryName
                     select p;
-
                 return productByCategory;
             }
             catch (Exception ex)
@@ -165,6 +164,7 @@ namespace Rookie.BackendAPI.Services
                     throw new Exception("At DeleteProduct() of ProdutCategoy: Can't find product you want to remove");
                 }
                 product.IsDelete = true;
+                _context.Products.Update(product);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
