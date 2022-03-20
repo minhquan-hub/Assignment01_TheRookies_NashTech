@@ -31,6 +31,11 @@ namespace Rookie.BackendAPI.Models{
         public Category Category { get; set; }
 
         public Image Image { get; set; }
+
         public List<Rating> Ratings { get; set;}
+
+        [Column("is_delete")]
+        public bool IsDelete { get; set; }
+
     }
 }

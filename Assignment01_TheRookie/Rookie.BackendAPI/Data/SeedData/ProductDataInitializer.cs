@@ -8,7 +8,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
             modelBuilder.Entity<Product>().HasData(
                 new Product{
                     ProductId = "P4001",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -35,7 +35,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4004",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -44,7 +44,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4005",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -71,7 +71,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4008",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -80,7 +80,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4009",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -107,7 +107,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4012",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -116,7 +116,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4013",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -143,7 +143,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4016",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -152,7 +152,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4017",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -179,7 +179,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4020",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -188,7 +188,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4021",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -197,7 +197,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4022",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -206,7 +206,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4023",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -215,7 +215,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4024",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -224,7 +224,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4025",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -233,7 +233,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4026",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -242,7 +242,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId =  "P4027",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -251,7 +251,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4028",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -260,7 +260,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4029",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -269,7 +269,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4030",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -278,7 +278,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4031",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -287,7 +287,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4032",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -296,7 +296,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4033",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -305,7 +305,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4034",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -314,7 +314,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4035",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),
@@ -323,7 +323,7 @@ namespace Rookie.BackendAPI.Data.SeedData {
                 },
                 new Product{
                     ProductId = "P4036",
-                    ProductName = "Mint",
+                    ProductName = "Tomato",
                     Description = "Vegetable is very healthy",
                     ManufacturingDate = DateTime.Parse("2022-02-22"),
                     ExpiryDate = DateTime.Parse("2022-04-13"),

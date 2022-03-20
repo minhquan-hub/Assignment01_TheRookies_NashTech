@@ -9,6 +9,12 @@ using Rookie.CustomerSite.ViewModel.Product;
 using Rookie.CustomerSite.ViewModel.Category;
 using Rookie.CustomerSite.ViewModel;
 using Rookie.CustomerSite.ViewModel.Image;
+using Rookie.ShareClass.Dto;
+using Rookie.ShareClass.Dto.Product;
+using Rookie.ShareClass.Enum;
+using Rookie.ShareClass.Dto.Category;
+using Rookie.ShareClass.Constants;
+using Microsoft.Extensions.Configuration;
 
 namespace Rookie.CustomerSite.Pages.Product
 {
@@ -16,11 +22,13 @@ namespace Rookie.CustomerSite.Pages.Product
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly IConfiguration _config;
         private readonly IMapper _mapper;
-        public ProductPageModel(IProductService productService,ICategoryService categoryService, IMapper mapper) 
+        public ProductPageModel(IProductService productService,ICategoryService categoryService, IConfiguration config,IMapper mapper) 
         {
             _productService = productService;
             _categoryService = categoryService;
+            _config = config;
             _mapper = mapper;
         }
         
@@ -33,21 +41,23 @@ namespace Rookie.CustomerSite.Pages.Product
         [BindProperty(SupportsGet = true)]
         public IList<CategoryVM> CategoryVM { get; set; }
 
-        // public async Task OnPostProduct(){
-        //    if(ProductName == null){
-        //        ProductName = "Ginger";
-        //    }
-        //    var productDto = await  _productService.GetProductByNameAsync(ProductName);
-        //     ProductVM = _mapper.Map<IList<ProductVM>>(productDto);
-        // }
+        [BindProperty(SupportsGet = true)]
+        public IList<ProductVM<ImageVM>> ProductVM { get; set; }
 
-        public async Task OnGetProductCategoryName(string categorynameclient)
+        public async Task OnGetProductCategoryNameAsync(string categoryName)
         {
-            var pageResponseDto = await  _productService.GetProductByCategoryAndPageAsync(categorynameclient);
+            var categoryCriteriaDto = new CategoryCriteriaDto {
+                Search = categoryName,
+                SortOrder = SortOrderEnum.Accsending,
+                Page = 1,
+                Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
+            };
+            var pageResponseDto = await  _productService.GetProductByCategoryAndPageAsync(categoryCriteriaDto);
             PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
             await ShowCategoryName();
         }
 
+<<<<<<< HEAD
         public async Task OnPostProductByName()
         {
             var pageResponseDto = await  _productService.GetProductAndPageAsync(ProductName);
@@ -56,14 +66,18 @@ namespace Rookie.CustomerSite.Pages.Product
         }
 
         public async Task OnGet()
+=======
+        public async Task OnGetAsync()
+>>>>>>> 22aac2b36c4a4e4499d1d4deb7d83e7139fb1427
         {
-        //    if(ProductName == null)
-        //    {
-        //        ProductName = "Ginger";
-        //    }
-           var pageResponseDto = await  _productService.GetAllProduct();
+           var  productCriteriaDto = new ProductCriteriaDto{
+                Search = ProductName,
+                SortOrder = SortOrderEnum.Accsending,
+                Page = 1,
+                Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
+           };
+           var pageResponseDto = await _productService.GetAllProductAndPageAsync(productCriteriaDto);
            PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
-
            await ShowCategoryName();
         }
 

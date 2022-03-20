@@ -1,4 +1,4 @@
-@page 
+@page "/Product"
 @model Rookie.CustomerSite.Pages.Product.ProductPageModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -24,14 +24,14 @@
     				<ul class="product-category">
     					<li><a href="#" class="active">All</a></li>
 						@foreach (var item in Model.CategoryVM){
-							<li><a  asp-page="./Index" asp-page-handler="productcategoryname" asp-route-categorynameclient="@item.CategoryName">@Html.DisplayFor(modelItem => item.CategoryName)</a></li>
+							<li><a  asp-page="./Index" asp-page-handler="productcategoryname" asp-route-categoryName="@item.CategoryName">@Html.DisplayFor(modelItem => item.CategoryName)</a></li>
 						}
             <li>
-            <form asp-page="./Index"  method="post">
+            <form asp-page="./Index" method="get" >
                 <div class="form-actions no-color">
                     <p>
-                            <input type="text" asp-for ="@Model.ProductName"  placeholder="Find Product"/>
-                            <input type="submit" asp-page-handler="productbyname" class="btn btn-primary"/>
+                      <input type="text" asp-for ="@Model.ProductName"  placeholder="Find Product"/>
+                      <input  type="submit" asp-page-handler="productbyname"  class="btn btn-primary"/>
                     </p>
                 </div>
             </form></li>
