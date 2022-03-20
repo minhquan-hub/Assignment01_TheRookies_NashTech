@@ -14,19 +14,17 @@ const UpdateProductContainer = () => {
         productId: existProduct.productId,
         productName: existProduct.productName,
         description: existProduct.description,
-        manufacturingDate: '2022-09-21',
-        expiryDate: '2022-10-23',
+        manufacturingDate: existProduct.manufacturingDate,
+        expiryDate: existProduct.expiryDate,
         price: existProduct.price,
         type: existProduct.type,
-        // imagePath: existProduct.imagePath,
-        // imageFile: existProduct.imageFile
       });
     }
   }, [existProduct]);
 
   return (
     <div className='ml-5'>
-      <div className='mt-3 primaryColor text-title intro-x'>
+      <div className='text-success text-title fs-2 intro-x'>
         Update Product {existProduct?.productName}
       </div>
 

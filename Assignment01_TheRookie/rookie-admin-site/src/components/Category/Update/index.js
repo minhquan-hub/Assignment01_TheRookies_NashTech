@@ -20,7 +20,7 @@ const UpdateCategoryContainer = () => {
 
     return (
         <div className="ml-5">
-            <div className="mt-3 primaryColor text-title intro-x">
+            <div className="text-success text-title fs-2 intro-x">
                 Update Category {existCategory?.categoryName}
             </div>
 

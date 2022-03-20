@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import { PencilFill, XCircle } from 'react-bootstrap-icons';
-import { useHistory } from 'react-router';
-import { NotificationManager } from 'react-notifications';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react'
+import { PencilFill, XCircle } from 'react-bootstrap-icons'
+import { useHistory } from 'react-router'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-import Table, { SortType } from '../../../share-components/Table';
-import ButtonIcon from '../../../share-components/ButtonIcon';
-import {DisableProductRequest} from '../Services/request'
-import Info from '../Info';
-import { EDIT_PRODUCT_ID } from '../../../Constants/pages';
-import ConfirmModal from '../../../share-components/ConfirmModal';
+import Table, { SortType } from '../../../share-components/Table'
+import ButtonIcon from '../../../share-components/ButtonIcon'
+import { DisableProductRequest } from '../services/request'
+import Info from '../Info'
+import { EDIT_PRODUCT_ID } from '../../../Constants/pages'
+import ConfirmModal from '../../../share-components/ConfirmModal'
 import {
   VegetableType,
   VegetableTypeLabel,
@@ -17,16 +16,15 @@ import {
   FruitsTypeLabel,
   JuiceType,
   JuiceTypeLabel,
-  DriesType,
   DriesTypeLabel,
-} from '../../../Constants/Product/ProductConstant';
+} from '../../../Constants/Product/ProductConstant'
 
 const columns = [
   { columnName: 'ID', columnValue: 'ProductID' },
   { columnName: 'NAME', columnValue: 'ProductName' },
   { columnName: 'PRICE', columnValue: 'ProductPrice' },
   { columnName: 'TYPE', columnValue: 'Type' },
-];
+]
 
 const ProductTable = ({
   products,
@@ -35,18 +33,18 @@ const ProductTable = ({
   sortState,
   fetchData,
 }) => {
-  const [showDetail, setShowDetail] = useState(false);
-  const [productDetail, setProductDetail] = useState(null);
+  const [showDetail, setShowDetail] = useState(false)
+  const [productDetail, setProductDetail] = useState(null)
   const [disableState, setDisable] = useState({
     isOpen: false,
     productId: '',
     title: '',
     message: '',
     isDisable: true,
-  });
+  })
 
   const handleShowInfo = (productId) => {
-    const product = products.items.find((item) => item.productId === productId);
+    const product = products.items.find((item) => item.productId === productId)
 
     if (product) {
       setProductDetail(product)
@@ -55,17 +53,17 @@ const ProductTable = ({
   }
 
   const getProductTypeName = (cateId) => {
-    var category = "";
-    if(cateId === VegetableType){
-      category = VegetableTypeLabel;
-    }else if(cateId === FruitsType){
-      category = FruitsTypeLabel;
-    }else if(cateId === JuiceType){
-      category = JuiceTypeLabel;
-    }else {
-      category = DriesTypeLabel;
+    var category = ''
+    if (cateId === VegetableType) {
+      category = VegetableTypeLabel
+    } else if (cateId === FruitsType) {
+      category = FruitsTypeLabel
+    } else if (cateId === JuiceType) {
+      category = JuiceTypeLabel
+    } else {
+      category = DriesTypeLabel
     }
-    return category;
+    return category
   }
 
   const handleShowDisable = async (productId) => {
@@ -75,7 +73,7 @@ const ProductTable = ({
       title: 'Are you sure',
       message: 'Do you want to disable this Product ?',
       isDisable: true,
-    });
+    })
   }
 
   const handleCloseDisable = () => {
@@ -85,30 +83,30 @@ const ProductTable = ({
       title: '',
       message: '',
       isDisable: true,
-    });
+    })
   }
 
   const handleResult = async (result, message) => {
     if (result) {
-      handleCloseDisable();
-      await fetchData();
-      alert("Remove Product Successful");
+      handleCloseDisable()
+      await fetchData()
+      alert('Remove Product Successful')
     } else {
       setDisable({
         ...disableState,
         title: 'Can not disable Product',
         message,
         isDisable: result,
-      });
+      })
     }
   }
 
   const handleConfirmDisable = async () => {
-      let isSuccess = await DisableProductRequest(disableState.productId);
-      if (isSuccess) {
-        await handleResult(true, '');
-      }
-    };
+    let isSuccess = await DisableProductRequest(disableState.productId)
+    if (isSuccess) {
+      await handleResult(true, '')
+    }
+  }
 
   const handleCloseDetail = () => {
     setShowDetail(false)
@@ -116,10 +114,12 @@ const ProductTable = ({
 
   const history = useHistory()
   const handleEdit = (productId) => {
-    const existProduct = products?.items.find((item) => item.productId === productId);
+    const existProduct = products?.items.find(
+      (item) => item.productId === productId,
+    )
     history.push(EDIT_PRODUCT_ID(productId), {
       existProduct: existProduct,
-    });
+    })
   }
 
   return (

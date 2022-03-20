@@ -5,7 +5,7 @@ import ProductForm from "../ProductForm";
 const CreateProductContainer = () => {
     return (
         <div className="ml-5">
-            <div className="primaryColor text-title intro-x">
+            <div className="text-success text-title fs-2 intro-x">
                 Create New Product
             </div>
 

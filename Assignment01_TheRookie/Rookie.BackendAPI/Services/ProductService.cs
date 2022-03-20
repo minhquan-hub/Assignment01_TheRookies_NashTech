@@ -95,7 +95,6 @@ namespace Rookie.BackendAPI.Services
                     equals c.CategoryId
                     where c.CategoryName == productCategoryName
                     select p;
-
                 return productByCategory;
             }
             catch (Exception ex)

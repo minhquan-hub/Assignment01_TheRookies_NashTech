@@ -38,8 +38,6 @@ namespace Rookie.BackendAPI.Controllers
         [HttpPost]
         public ActionResult PostProduct([FromForm]ProductCreateRequest productCreateRequest){
             if(!string.IsNullOrEmpty(productCreateRequest.ProductName)
-            && productCreateRequest.ManufacturingDate != DateTime.MinValue
-            && productCreateRequest.ExpiryDate != DateTime.MinValue 
             && !string.IsNullOrEmpty(productCreateRequest.CateId))
             {
                 _productService.CreateProduct(productCreateRequest);

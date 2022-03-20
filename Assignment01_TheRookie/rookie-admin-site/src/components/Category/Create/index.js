@@ -5,7 +5,7 @@ import CategoryForm from '../CategoryForm';
 const CreteCategoryContainer = () => {
     return (
         <div className="ml-5">
-            <div className="primarycolor text-title intro-x">
+            <div className="text-success text-title fs-2 intro-x">
                 Create New Category 
             </div>
 

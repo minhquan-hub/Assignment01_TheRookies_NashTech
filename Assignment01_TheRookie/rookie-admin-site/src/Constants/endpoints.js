@@ -1,9 +1,13 @@
 const Endpoints = {
     product: '/api/Product/allproduct',
-    productId: (productId) => `api/Product/${productId}`,
+    createProduct: 'api/Product',
+    productByCategory: 'api/Product/category',
+    productId: (productId) => `/api/Product/${productId}`,
 
     category: '/api/Category',
-    categoryId: (categoryId) => `api/Category/${categoryId}/`
+    categoryId: (categoryId) => `/api/Category/${categoryId}`,
+
+    cloudianry: '/quantran2102/upload'
 }
 
 export default Endpoints;

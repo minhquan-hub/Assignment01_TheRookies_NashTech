@@ -19,7 +19,7 @@ export const ProductTypeOption = [
 ];
 
 export const FilterProductTypeOptions = [
-    {id: 1, label: AllProductType, value: AllProductTypeLabel},
+    {id: 1, label: AllProductTypeLabel, value: AllProductType},
     {id: 2, label: VegetableTypeLabel, value:VegetableType},
     {id: 3, label: FruitsTypeLabel, value:FruitsType},
     {id: 4, label: JuiceTypeLabel, value:JuiceType},

@@ -1,17 +1,21 @@
-import { AxiosResponse } from "axios";
-import qs from "qs";
+import { AxiosResponse } from 'axios';
+import qs from 'qs';
 
-import RequestService from "../../../services/request";
-import Endpoints from "../../../Constants/endpoints";
+import RequestService from '../../../services/request';
+import Endpoints from '../../../Constants/endpoints';
 
-export function CreateProductRequest(productFrom) {
+export function CreateProductRequest(productForm) {
     const formData = new FormData();
-
-    Object.keys(productFrom).forEach(key => {
-        formData.append(key, productFrom[key]);
-    });
-
-    return RequestService.axios.post(Endpoints.product, formData);
+    for(let dataKey in productForm) {
+        if(dataKey === "imageCreateRequest"){
+            for(let imageKey in productForm[dataKey]){
+                formData.append(`imageCreateRequest[${imageKey}]`, productForm[dataKey][imageKey]);
+            }
+        }else{
+            formData.append(dataKey, productForm[dataKey]);
+        }
+    }
+    return RequestService.axios.post(Endpoints.createProduct, formData);
 }
 
 export function GetProductRequest(query) {
@@ -21,13 +25,25 @@ export function GetProductRequest(query) {
     });
 }
 
+export function GetProductByCategoryRequest(query) {
+    return RequestService.axios.get(Endpoints.productByCategory, {
+        params: query,
+        paramsSerializer: params => qs.stringify(params)
+    });
+}
+
 export function UpdateProductRequest(productForm) {
     const formData = new FormData();
 
-    Object.keys(productForm).forEach(key => {
-        formData.append(key, productForm[key]);
-    });
-
+    for(let dataKey in productForm) {
+        if(dataKey === "imageCreateRequest"){
+            for(let imageKey in productForm[dataKey]){
+                formData.append(`imageCreateRequest[${imageKey}]`, productForm[dataKey][imageKey]);
+            }
+        }else{
+            formData.append(dataKey, productForm[dataKey]);
+        }
+    }
     return RequestService.axios.put(Endpoints.productId(productForm.productId ?? -1), formData);
 }
 

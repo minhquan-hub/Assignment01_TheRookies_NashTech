@@ -11,11 +11,14 @@ import { PRODUCT } from '../../Constants/pages'
 import { VegetableType } from '../../Constants/Product/ProductConstant'
 import { ProductTypeOption } from '../../Constants/selectOptions'
 import FileUpload from '../../share-components/FormInputs/FileUpload'
+import UploadImage from '../../share-components/FormInputs/UploadImage' 
 import DateField from '../../share-components/FormInputs/DateField'
 import {
   CreateProductRequest,
   UpdateProductRequest,
-} from './Services/request';
+} from './services/request';
+
+
 
 const initialFormValues = {
   productName: '',
@@ -24,13 +27,22 @@ const initialFormValues = {
   manufacturingDate: '',
   expiryDate: '',
   cateId: VegetableType,
-  imageFile: undefined,
+  imageCreateRequest:{
+    image1: '',
+    image2: 'image2',
+    image3: 'image3',
+    image4: 'image4',
+    image5: 'image5',
+  },
 }
+
 
 const validationSchema = Yup.object().shape({
   productName: Yup.string().required('Required'),
   description: Yup.string().required('Required'),
   price: Yup.string().required('Required'),
+  manufacturingDate: Yup.string().required('Required'),
+  expiryDate: Yup.string().required('Required'),
   cateId: Yup.string().required('Required'),
 })
 
@@ -61,17 +73,21 @@ const ProductFormContainer = ({
     }
   }
 
+  const handleFormatDate = (form) => {
+    form.manufacturingDate = form.manufacturingDate.toISOString().split('T')[0];
+    form.expiryDate = form.expiryDate.toISOString().split('T')[0];
+    return form;
+  }
+
   const updateProductAsync = async (form) => {
-    console.log('update product async');
-    let data = await UpdateProductRequest(form.formValues);
+    let data = await UpdateProductRequest(handleFormatDate(form.formValues));
     if (data) {
       handleResult(true, data.name);
     }
   }
 
   const createProductAsync = async (form) => {
-    console.log('create product async');
-    let data = await CreateProductRequest(form.formValues);
+    let data = await CreateProductRequest(handleFormatDate(form.formValues));
     if (data) {
       handleResult(true, data.name);
     }
@@ -116,31 +132,34 @@ const ProductFormContainer = ({
             placeholder="input product price"
             isrequired
           />
-          {/* <DateField
+          <DateField
             name="manufacturingDate"
             label="Manufacturing Date"
             isrequired
+            update = {isUpdate ? true : false}
+            disabled={isUpdate ? true : false}
           />
           <DateField
            name="expiryDate"
            label="Expire Date"
            isrequired
-           /> */}
+           update = {isUpdate ? true : false}
+           disabled={isUpdate ? true : false}
+           />
           <SelectField
             name="cateId"
             label="Type"
             isrequired
             options={ProductTypeOption}
           />
-          <FileUpload
-            name="imageFile"
+          <UploadImage
+            name="imageCreateRequest.image1"
+            update = {isUpdate ? true : false}
             label="Image"
-            image={actions.values.imagePath}
           />
-
           <div className="d-flex">
             <div className="ml-auto">
-              <button className="btn btn-danger"
+              <button className="btn btn-danger m-3"
                 type="submit" disabled={loading}
               >
                 Save

@@ -23,7 +23,7 @@ const TextField = (props) => {
                     )}
                 </label>
                 <div className="col">
-                    <input className={`form-control ${validateClass()}`} {...field} {...props} />
+                    <input className={`border-secondary form-control ${validateClass()}`} {...field} {...props} />
                     {error && touched && (
                         <div className='invalid'>{error}</div>
                     )}
