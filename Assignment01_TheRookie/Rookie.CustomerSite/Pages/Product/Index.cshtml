@@ -2,10 +2,6 @@
 @model Rookie.CustomerSite.Pages.Product.ProductPageModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-@{
-
-}
-
 <div class="hero-wrap hero-bread" style="background-image: url('../images/bg_1.jpg');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -23,31 +19,37 @@
     			<div class="col-md-12 mb-5 text-center">
     				<ul class="product-category">
     					<li><a href="#" class="active">All</a></li>
-						@foreach (var item in Model.CategoryVM){
-							<li><a  asp-page="./Index" asp-page-handler="productcategoryname" asp-route-categoryName="@item.CategoryName">@Html.DisplayFor(modelItem => item.CategoryName)</a></li>
-						}
-            <li>
-            <form asp-page="./Index" method="get" >
+                @foreach (var item in Model.CategoryVM){
+                  <li><a  asp-page="./Index" asp-page-handler="productcategoryname" asp-route-categoryName="@item.CategoryName">@Html.DisplayFor(modelItem => item.CategoryName)</a></li>
+                }
+              <li>
+              <form asp-page="./Index" method="get" >
                 <div class="form-actions no-color">
-                    <p>
-                      <input type="text" asp-for ="@Model.ProductName"  placeholder="Find Product"/>
-                      <input  type="submit" asp-page-handler="productbyname"  class="btn btn-primary"/>
-                    </p>
+                  <p>
+                    <input type="text" asp-for ="@Model.ProductName"  placeholder="Find Product"/>
+                    <input  type="submit" asp-page-handler="productbyname"  class="btn btn-primary"/>
+                  </p>
                 </div>
-            </form></li>
+              </form></li>
     				</ul>
     			</div>
     		</div>
+
                 @await Component.InvokeAsync("ShowProduct", Model.PagedResponseVM.Items);
+
     		<div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">&gt;</a></li>
+                <li><a asp-page="./Index" asp-route-pageIndex="@(Model.PagedResponseVM.CurrentPage - 1)">&lt;</a></li>
+                @for(var i=1; i < Model.PagedResponseVM.TotalPages - 1; i++){
+                  @if(i == Model.PagedResponseVM.CurrentPage){
+                    <li class="active" ><a asp-page="./Index" asp-route-pageIndex="@i">@i</a></li>
+                  }else {
+                    <li class="" ><a asp-page="./Index" asp-route-pageIndex="@i">@i</a></li>
+                  }
+                }
+                <li><a asp-page="./Index" asp-route-pageIndex="@(Model.PagedResponseVM.CurrentPage + 1)">&gt;</a></li>
               </ul>
             </div>
           </div>

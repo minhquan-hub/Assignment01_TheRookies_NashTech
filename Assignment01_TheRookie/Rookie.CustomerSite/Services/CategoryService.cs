@@ -14,15 +14,20 @@ namespace Rookie.CustomerSite.Services
     public class CategoryService : ICategoryService
     {
         public IHttpClientFactory _httpClientFactory;
+
         public CategoryService(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
+
         // Method: Get
         public async Task<IList<CategoryDto>> GetAllCategoryAsync()
         {
-            var getCategoryEndPoints = $"{EndPointConstants.GET_CATEGORY}"; 
-            return JsonConvert.DeserializeObject<IList<CategoryDto>>(await JsonResponseByGet(getCategoryEndPoints));
+            var getCategoryEndPoints = $"{EndPointConstants.GET_CATEGORY}";
+            return JsonConvert
+                .DeserializeObject
+                <IList<CategoryDto>
+                >(await JsonResponseByGet(getCategoryEndPoints));
         }
 
         public async Task<string> JsonResponseByGet(string url)
@@ -30,14 +35,16 @@ namespace Rookie.CustomerSite.Services
             var jsonResponse = "";
             try
             {
-                var client = _httpClientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
+                var client =
+                    _httpClientFactory
+                        .CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
                 jsonResponse = await client.GetStringAsync(url);
-                if(string.IsNullOrEmpty(jsonResponse))
+                if (string.IsNullOrEmpty(jsonResponse))
                 {
                     throw new Exception("The client category get don't have the data");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception($"At CategoryService: {ex.Message}");
             }

@@ -37,26 +37,9 @@ namespace Rookie.CustomerSite.Services
         // Method: Get
         public async Task<ProductDto<ImageDto>> GetProductByIdAsync(string productId)
         {
-<<<<<<< HEAD
-            var url = $"https://localhost:5001/api/Product/Category/{productCategoryName}";
-            return JsonConvert.DeserializeObject<List<ProductDto<ImageDto>>>(await JsonResponseByGet(url));
-        }
 
-        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProduct(){
-            var url = "https://localhost:5001/api/Product/AllProduct";
-            string jsonContent = "{\"search\":\"string\",\"sortOrder\":0,\"sortColumn\":\"3\",\"limit\":12,\"page\":2,\"types\":[0]}";
-            return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByPost(url,jsonContent));
-        }
-
-        // Method: Get
-        public async Task<ProductDto<ImageDto>> GetProductById(string id)
-        {
-            var url = $"https://localhost:5001/api/Product/id/{id}";
-            return JsonConvert.DeserializeObject<ProductDto<ImageDto>>(await JsonResponseByGet(url));
-=======
             var getProductByIdEndPoints = $"{EndPointConstants.GET_PRODUCT_BY_ID}/{productId}";
             return JsonConvert.DeserializeObject<ProductDto<ImageDto>>(await JsonResponseByGet(getProductByIdEndPoints));
->>>>>>> 22aac2b36c4a4e4499d1d4deb7d83e7139fb1427
         }       
 
         public async Task<string> JsonResponseByGet(string url)
