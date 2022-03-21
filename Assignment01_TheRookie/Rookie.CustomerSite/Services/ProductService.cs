@@ -21,6 +21,7 @@ namespace Rookie.CustomerSite.Services
         {
             _httpClientFactory = httpClientFactory;   
         }
+        
         // Method: Get
         public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetProductByCategoryAndPageAsync(CategoryCriteriaDto categoryCriteriaDto)
         {
@@ -29,7 +30,8 @@ namespace Rookie.CustomerSite.Services
         }
 
         // Method: Get
-        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProductAndPageAsync(ProductCriteriaDto productCriteriaDto){
+        public async Task<PagedResponseDto<ProductDto<ImageDto>>> GetAllProductAndPageAsync(ProductCriteriaDto productCriteriaDto)
+        {
             var getAllProductEndPoints = $"{EndPointConstants.GET_ALL_PRODUCT}?Search={productCriteriaDto.Search}&SortOrder={productCriteriaDto.SortOrder}&SortColumn={productCriteriaDto.SortColumn}&Limit={productCriteriaDto.Limit}&Page={productCriteriaDto.Page}";
             return JsonConvert.DeserializeObject<PagedResponseDto<ProductDto<ImageDto>>>(await JsonResponseByGet(getAllProductEndPoints));
         }
@@ -51,8 +53,6 @@ namespace Rookie.CustomerSite.Services
                 {
                     throw new Exception("The client product get don't have the data");
                 }
-                
-                
             }
             catch(Exception ex)
             {
