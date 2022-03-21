@@ -24,10 +24,7 @@ namespace Rookie.CustomerSite.Services
         public async Task<IList<CategoryDto>> GetAllCategoryAsync()
         {
             var getCategoryEndPoints = $"{EndPointConstants.GET_CATEGORY}";
-            return JsonConvert
-                .DeserializeObject
-                <IList<CategoryDto>
-                >(await JsonResponseByGet(getCategoryEndPoints));
+            return JsonConvert.DeserializeObject<IList<CategoryDto>>(await JsonResponseByGet(getCategoryEndPoints));
         }
 
         public async Task<string> JsonResponseByGet(string url)
@@ -35,9 +32,7 @@ namespace Rookie.CustomerSite.Services
             var jsonResponse = "";
             try
             {
-                var client =
-                    _httpClientFactory
-                        .CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
+                var client = _httpClientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
                 jsonResponse = await client.GetStringAsync(url);
                 if (string.IsNullOrEmpty(jsonResponse))
                 {

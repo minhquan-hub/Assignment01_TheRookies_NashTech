@@ -15686,6 +15686,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.CustomerSite\\Pages\\Product\\ProductByCategory.cshtml",
+      "TargetPath": "Pages\\Product\\ProductByCategory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "f:\\STORAGE_APPLICATION\\G\\Git\\Assignment01_Real\\Assignment01_TheRookies_NashTech\\Assignment01_TheRookie\\Rookie.CustomerSite\\Views\\Shop\\CheckOut.cshtml",
       "TargetPath": "Views\\Shop\\CheckOut.cshtml",
       "FileKind": "mvc"

@@ -18,7 +18,7 @@ using Rookie.ShareClass.Enum;
 
 namespace Rookie.CustomerSite.Pages.Product
 {
-    public class ProductPageModel : PageModel
+    public class ProductByCategoryPageModel : PageModel
     {
         private readonly IProductService _productService;
 
@@ -28,9 +28,9 @@ namespace Rookie.CustomerSite.Pages.Product
 
         private readonly IMapper _mapper;
 
-        private static string prevProductName;
+        private static string prevCategoryName;
 
-        public ProductPageModel(
+        public ProductByCategoryPageModel(
             IProductService productService,
             ICategoryService categoryService,
             IConfiguration config,
@@ -51,28 +51,23 @@ namespace Rookie.CustomerSite.Pages.Product
 
         [BindProperty(SupportsGet = true)]
         public IList<CategoryVM> CategoryVM { get; set; }
-
-        [BindProperty(SupportsGet = true)]
-        public IList<ProductVM<ImageVM>> ProductVM { get; set; }
-
-        public async Task OnGetAsync(int? pageIndex)
+        public async Task OnGetAsync(string categoryName, int? pageIndex)
         {
-            if(ProductName == null){
-                ProductName = prevProductName;
+            if(categoryName == null){
+                categoryName = prevCategoryName;
             }
-            var productCriteriaDto =
-                new ProductCriteriaDto {
-                    Search = ProductName,
+            var categoryCriteriaDto =
+                new CategoryCriteriaDto {
+                    Search = categoryName,
                     SortOrder = SortOrderEnum.Accsending,
                     Page = pageIndex ?? 1,
                     Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
                 };
-            prevProductName = ProductName;
-            var pageResponseDto = await _productService.GetAllProductAndPageAsync(productCriteriaDto);
+            prevCategoryName = categoryName;
+            var pageResponseDto = await _productService.GetProductByCategoryAndPageAsync(categoryCriteriaDto);
             PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
             await ShowCategoryName();
         }
-
         public async Task ShowCategoryName()
         {
             var categoryDto = await _categoryService.GetAllCategoryAsync();
