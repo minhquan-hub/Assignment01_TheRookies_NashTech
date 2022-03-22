@@ -45,18 +45,12 @@ namespace Rookie.CustomerSite.Services
 
         public async Task<string> JsonResponseByGet(string url)
         {
-            var jsonResponse = "";
-            try
-            {   var client = _httpClientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
-                jsonResponse = await client.GetStringAsync(url);
-                if(string.IsNullOrEmpty(jsonResponse))
-                {
-                    throw new Exception("The client product get don't have the data");
-                }
-            }
-            catch(Exception ex)
+            var client = _httpClientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
+            var jsonResponse = await client.GetStringAsync(url);
+
+            if(string.IsNullOrEmpty(jsonResponse))
             {
-                throw new Exception($"At JsonResponseByGet ProductService: {ex.Message}");
+                throw new Exception("The client product don't have the data");
             }
             
             return jsonResponse;

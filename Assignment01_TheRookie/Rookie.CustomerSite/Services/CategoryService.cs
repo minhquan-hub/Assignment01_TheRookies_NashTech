@@ -29,20 +29,14 @@ namespace Rookie.CustomerSite.Services
 
         public async Task<string> JsonResponseByGet(string url)
         {
-            var jsonResponse = "";
-            try
+            var client = _httpClientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
+            var jsonResponse = await client.GetStringAsync(url);
+
+            if (string.IsNullOrEmpty(jsonResponse))
             {
-                var client = _httpClientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
-                jsonResponse = await client.GetStringAsync(url);
-                if (string.IsNullOrEmpty(jsonResponse))
-                {
-                    throw new Exception("The client category get don't have the data");
-                }
+                throw new Exception("The client category don't have the data");
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"At CategoryService: {ex.Message}");
-            }
+             
             return jsonResponse;
         }
     }
