@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -52,7 +54,7 @@ namespace Rookie.BackendAPI
                 options.AddPolicy("AllowOrigins",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000")
+                        builder.WithOrigins(Configuration["AllowOrigins"])
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
@@ -68,7 +70,13 @@ namespace Rookie.BackendAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rookie.BackendAPI v1"));
             }
-
+            app.UseExceptionHandler(error => {
+                error.Run(async context => {
+                    var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerFeature>();
+                    var exception = exceptionHandlerPathFeature.Error;
+                    await context.Response.WriteAsJsonAsync($"Something went to wrong in the {exception}" );
+                });
+            });
             app.UseHttpsRedirection();
             
             app.UseRouting();

@@ -29,7 +29,8 @@ namespace Rookie.BackendAPI.Controllers {
         [HttpPost]
         public ActionResult PostCategory([FromForm] CategoryCreateRequest categoryCreateRequest)
         {
-            if(!string.IsNullOrEmpty(categoryCreateRequest.CategoryName)){
+            if(!string.IsNullOrEmpty(categoryCreateRequest.CategoryName))
+            {
                 _categoryService.CreateCategory(categoryCreateRequest);
             }
             return Ok(true);

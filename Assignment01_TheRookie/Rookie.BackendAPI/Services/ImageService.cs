@@ -16,15 +16,9 @@ namespace Rookie.BackendAPI.Services
         }
         public Image GetImageByProductId(string productId)
         {
-            try
-            {
-                var image = _context.Images.Where(i => i.ProductId.Equals(productId)).FirstOrDefault();
-                return image;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"At GetImageByProductId() of ImageService: {ex.Message}");
-            }
+            var image = _context.Images.Where(i => i.ProductId.Equals(productId)).FirstOrDefault();
+            return image;
+            throw new Exception();
         }
     }
 }

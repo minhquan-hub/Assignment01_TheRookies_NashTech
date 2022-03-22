@@ -17,23 +17,17 @@ namespace Rookie.BackendAPI.Services
         }
         public void InsertRating(RatingDto ratingDto)
         {
-            try{
-                var rating = _context.Ratings.OrderBy(r => r.RateId).Last();
-                var InsertRating = new Rating {
-                RateId = CreateRateId(rating.RateId),
-                ProductId = ratingDto.ProductId,
-                RateNumber = ratingDto.RateNumber
-                };
-                _context.Ratings.Add(InsertRating);
-                if(_context.SaveChanges() == 0){
-                    throw new Exception("Can not insert rating into database");
-                }
+            var rating = _context.Ratings.OrderBy(r => r.RateId).Last();
+            var InsertRating = new Rating {
+                                RateId = CreateRateId(rating.RateId),
+                                ProductId = ratingDto.ProductId,
+                                RateNumber = ratingDto.RateNumber
+                                };
+
+            _context.Ratings.Add(InsertRating);
+            if(_context.SaveChanges() == 0){
+                throw new Exception("Can not insert rating into database");
             }
-            catch(Exception ex)
-            {
-                throw new Exception($"At InsertRating method of RatingService: {ex.Message}");
-            }
-            
         }
 
         public string CreateRateId(string rateIdOld)

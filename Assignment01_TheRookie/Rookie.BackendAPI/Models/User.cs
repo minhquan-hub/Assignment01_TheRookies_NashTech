@@ -5,6 +5,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Rookie.BackendAPI.Models{
     public class User : IdentityUser {
-        
+
     }
 }

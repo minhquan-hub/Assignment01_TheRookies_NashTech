@@ -16,18 +16,21 @@ namespace Rookie.BackendAPI.Services
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductService(
-            ApplicationDbContext context
-        )
+        public ProductService(ApplicationDbContext context)
         {
             _context = context;
         }
 
         public async Task CreateProduct(ProductCreateRequest productCreateRequest)
         {
-            try{
             var productLast = _context.Products.OrderBy(p => p.ProductId).Last();
             var imageLast = _context.Images.OrderBy(i => i.ImageID).Last();
+
+            if(productLast == null || imageLast == null)
+            {
+                throw new Exception("CreateProduct of ProductService");
+            }
+
             var productIdNew = CreateProductId(productLast.ProductId);
             var product = new Product{
                 ProductId = productIdNew,
@@ -53,124 +56,101 @@ namespace Rookie.BackendAPI.Services
             _context.Images.Add(image);
 
             await _context.SaveChangesAsync();
-            }
-            catch(Exception ex)
-            {
-                throw new Exception($"At CreateProduct() of ProductService: {ex.Message}");
-            }
         }
 
-        public IQueryable<Product> GetAllProductAndPage(string productName)
+        public IQueryable<Product> GetAllProduct(string productName)
         {
-            try
+            IQueryable<Product> product = null;
+            if(!string.IsNullOrEmpty(productName))
             {
-                IQueryable<Product> product = null;
-                if(!string.IsNullOrEmpty(productName))
-                {
-                     product = from p in _context.Products
-                              where (p.ProductName == productName && !p.IsDelete) select p;
-                } else
-                {
-                     product = from p in _context.Products
-                               where !p.IsDelete select p;
-                }
-                return product;
-            }
-            catch (Exception ex)
+                product = from p in _context.Products
+                        where (p.ProductName == productName && !p.IsDelete) select p;
+            } else
             {
-                throw new Exception($"At GetAllProductAndPage() of ProductService: {ex.Message}");
+                product = from p in _context.Products
+                        where !p.IsDelete select p;
             }
+
+            if (product == null)
+            {
+                throw new Exception("GetAllProduct of ProductService");
+            }
+
+            return product;
         }
 
-        public IQueryable<Product> GetAllProductByCategoryAndPage(string productCategoryName)
+        public IQueryable<Product> GetAllProductByCategory(string productCategoryName)
         {
-            try
+            var productByCategory =
+                from p in _context.Products
+                where !p.IsDelete
+                join c
+                in _context.Categories
+                on p.CateId
+                equals c.CategoryId
+                where c.CategoryName == productCategoryName
+                select p;
+
+            if (productByCategory == null)
             {
-                var productByCategory =
-                    from p in _context.Products
-                    where !p.IsDelete
-                    join c
-                    in _context.Categories
-                    on p.CateId
-                    equals c.CategoryId
-                    where c.CategoryName == productCategoryName
-                    select p;
-                return productByCategory;
+                throw new Exception("GetAllProductByCategory of ProductService");
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"At GetAllProductByCategoryAndPage() of ProductService: {ex.Message}");
-            }
+
+            return productByCategory;
         }
 
         public Product GetProductById(string productId)
         {
-            try
+            var product = _context
+                            .Products
+                            .Where(p => p.ProductId.Equals(productId) && !p.IsDelete)
+                            .FirstOrDefault();
+
+            if (product == null)
             {
-                var product =
-                    _context
-                        .Products
-                        .Where(p => p.ProductId.Equals(productId) && !p.IsDelete)
-                        .FirstOrDefault();
-                return product;
+                throw new Exception("GetProductById of ProductService");
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"At GetProductById() of ProductService: {ex.Message}");
-            }
+
+            return product;
         }
 
         public async Task UpdateProduct(string productId, ProductCreateRequest productCreateRequest)
         {
-            try
-            {
-                var product = _context.Products
+            var product = _context.Products
                             .Where(p => p.ProductId.Equals(productId) && !p.IsDelete)
                             .FirstOrDefault();
 
-                if (product == null)
-                {
-                    throw new Exception("At UpdateProduct() of ProdutCategoy: Can't find product you want to remove");
-                }
-                
-                if(!string.IsNullOrEmpty(productCreateRequest.ProductName) && !string.IsNullOrEmpty(productCreateRequest.CateId)){
-                    product.ProductName = productCreateRequest.ProductName;
-                    product.Description = productCreateRequest.Description;
-                    product.ManufacturingDate = productCreateRequest.ManufacturingDate;
-                    product.ExpiryDate = productCreateRequest.ExpiryDate;
-                    product.Price = productCreateRequest.Price;
-                    product.CateId = productCreateRequest.CateId;
-                }
-                _context.Products.Update(product);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
+            if (product == null)
             {
-                throw new Exception($"At DeleteProduct() of ProductService: {ex.Message}");
+                throw new Exception("UpdateProduct of ProductService");
             }
+
+            product.ProductName = productCreateRequest.ProductName;
+            product.Description = productCreateRequest.Description;
+            product.ManufacturingDate = productCreateRequest.ManufacturingDate;
+            product.ExpiryDate = productCreateRequest.ExpiryDate;
+            product.Price = productCreateRequest.Price;
+            product.CateId = productCreateRequest.CateId;
+
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteProduct(string productId)
         {
-            try
+            var product = _context
+                            .Products
+                            .Where(p => p.ProductId.Equals(productId) && !p.IsDelete)
+                            .FirstOrDefault();
+
+            if (product == null)
             {
-                var product =
-                    _context
-                        .Products
-                        .Where(p => p.ProductId.Equals(productId) && !p.IsDelete)
-                        .FirstOrDefault();
-                if (product == null)
-                {
-                    throw new Exception("At DeleteProduct() of ProdutCategoy: Can't find product you want to remove");
-                }
-                product.IsDelete = true;
-                _context.Products.Update(product);
-                await _context.SaveChangesAsync();
+                throw new Exception("DeleteProduct of ProductService");
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"At DeleteProduct() of ProductService: {ex.Message}");
-            }
+
+            product.IsDelete = true;
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
         }
 
         
