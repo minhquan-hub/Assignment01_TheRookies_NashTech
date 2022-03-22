@@ -36,7 +36,8 @@ namespace Rookie.BackendAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult PostProduct([FromForm]ProductCreateRequest productCreateRequest){
+        public ActionResult PostProduct([FromForm]ProductCreateRequest productCreateRequest)
+        {
             if(!string.IsNullOrEmpty(productCreateRequest.ProductName)
             && !string.IsNullOrEmpty(productCreateRequest.CateId))
             {
@@ -47,29 +48,69 @@ namespace Rookie.BackendAPI.Controllers
 
         // GET: https://localhost:5001/api/Product/AllProduct?Search=Apple&SortColumn=3&Limit=12&Page=2
         [HttpGet("allproduct")]
-        //[AllowAnonymous]
-       public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetAllProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
+        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetAllProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
-            var product = _productService.GetAllProductAndPage(productCriteriaDto.Search);
-            var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
-            var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
-            return new PagedResponseDto<ProductDto<ImageDto>>{
-                CurrentPage = pageProducts.CurrentPage,
-                TotalItems = pageProducts.TotalItems,
-                TotalPages = pageProducts.TotalPages,
-                SortOrder = productCriteriaDto.SortOrder,
-                SortColumn = productCriteriaDto.SortColumn,
-                Limit = productCriteriaDto.Limit,
-                Page = productCriteriaDto.Page,
-                Items = productDto
-            };
+            var product = _productService.GetAllProduct(productCriteriaDto.Search);
+            return await PagedResponseDtoSummary(product, productCriteriaDto);
         }
 
         // GET: https://localhost:5001/api/Product/Category?Search=Fruits&SortColumn=3&Limit=12&Page=2
         [HttpGet("category")]
         public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetProductByCategoryAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
         {
-            var product = _productService.GetAllProductByCategoryAndPage(productCriteriaDto.Search);
+            var product = _productService.GetAllProductByCategory(productCriteriaDto.Search);
+            return await PagedResponseDtoSummary(product, productCriteriaDto);
+        }
+        
+        //GET: https://localhost:5001/api/Product/id/P4029
+        [HttpGet("id/{productId}")]
+        public ActionResult<ProductDto<ImageDto>> GetProductById(string productId)
+        {
+            if(string.IsNullOrEmpty(productId))
+            {
+                return NotFound();
+            }
+
+            var product = _productService.GetProductById(productId);
+            var productDto = _mapper.Map<ProductDto<ImageDto>>(product);
+            productDto.Image = _mapper.Map<ImageDto>(_imageService.GetImageByProductId(productDto.ProductId));
+
+            return Ok(productDto);
+        }
+
+        // PUT: https://localhost:5001/api/Product/P4014
+        [HttpPut("{productId}")]
+        public ActionResult PutProduct(string productId,[FromForm]ProductCreateRequest productCreateRequest)
+        {
+            if(string.IsNullOrEmpty(productId))
+            {
+                return NotFound();
+            }
+
+            if(!string.IsNullOrEmpty(productCreateRequest.ProductName)
+            && !string.IsNullOrEmpty(productCreateRequest.CateId))
+            {
+                _productService.UpdateProduct(productId, productCreateRequest);
+            }
+            
+            return Ok(true);
+        }
+
+        // DELETE: https://localhost:5001/api/Product/P4014
+        [HttpDelete("{productId}")]
+        public ActionResult DeleteProduct(string productId)
+        {
+            if(string.IsNullOrEmpty(productId))
+            {
+                return NotFound();
+            }
+            _productService.DeleteProduct(productId);
+            return Ok(true);	
+        }
+
+        #region Private Method
+        private async Task<PagedResponseDto<ProductDto<ImageDto>>> PagedResponseDtoSummary(IQueryable<Product> product, ProductCriteriaDto productCriteriaDto)
+        {
             var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
             var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
             return new PagedResponseDto<ProductDto<ImageDto>>{
@@ -84,48 +125,7 @@ namespace Rookie.BackendAPI.Controllers
                 Items = productDto
             };
         }
-        
-        //GET: https://localhost:5001/api/Product/id/P4029
-        [HttpGet("id/{productId}")]
-        public ActionResult<ProductDto<ImageDto>> GetProductById(string productId)
-        {
-            if(string.IsNullOrEmpty(productId))
-            {
-                return NotFound();
-            }
-            var product = _productService.GetProductById(productId);
-            var productDto = _mapper.Map<ProductDto<ImageDto>>(product);
-            productDto.Image = _mapper.Map<ImageDto>(_imageService.GetImageByProductId(productDto.ProductId));
-            return Ok(productDto);
-        }
-
-        // PUT: https://localhost:5001/api/Product/P4014
-        [HttpPut("{productId}")]
-        public ActionResult PutProduct(string productId,[FromForm]ProductCreateRequest productCreateRequest){
-            if(string.IsNullOrEmpty(productId))
-            {
-                return NotFound();
-            }
-
-            _productService.UpdateProduct(productId, productCreateRequest);
-            return Ok(true);
-        }
-
-        // DELETE: https://localhost:5001/api/Product/P4014
-        [HttpDelete("{productId}")]
-        public ActionResult DeleteProduct(string productId){
-            if(string.IsNullOrEmpty(productId))
-            {
-                return NotFound();
-            }
-            
-            _productService.DeleteProduct(productId);
-
-            return Ok(true);
-        }
-
-        #region Private Method
-        private IEnumerable<ProductDto<ImageDto>> MapProductDtoAndInsertImage(IList<Product> product)
+        private  IEnumerable<ProductDto<ImageDto>> MapProductDtoAndInsertImage(IList<Product> product)
         {
             var productDto = _mapper.Map<IEnumerable<ProductDto<ImageDto>>>(product);
             foreach (var item in productDto)
