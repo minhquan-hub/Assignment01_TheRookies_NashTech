@@ -28,8 +28,6 @@ namespace Rookie.CustomerSite.Pages.Product
 
         private readonly IMapper _mapper;
 
-        private static string prevCategoryName;
-
         public ProductByCategoryPageModel(
             IProductService productService,
             ICategoryService categoryService,
@@ -44,18 +42,16 @@ namespace Rookie.CustomerSite.Pages.Product
         }
 
         [BindProperty(SupportsGet = true)]
-        public string ProductName { get; set; }
+        public string ProductNameBinding { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public PagedResponseVM<ProductVM<ImageVM>> PagedResponseVM { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public IList<CategoryVM> CategoryVM { get; set; }
+        
         public async Task OnGetAsync(string categoryName, int? pageIndex)
         {
-            if(categoryName == null){
-                categoryName = prevCategoryName;
-            }
             var categoryCriteriaDto =
                 new CategoryCriteriaDto {
                     Search = categoryName,
@@ -63,13 +59,10 @@ namespace Rookie.CustomerSite.Pages.Product
                     Page = pageIndex ?? 1,
                     Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
                 };
-            prevCategoryName = categoryName;
+
             var pageResponseDto = await _productService.GetProductByCategoryAndPageAsync(categoryCriteriaDto);
             PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM<ImageVM>>>(pageResponseDto);
-            await ShowCategoryName();
-        }
-        public async Task ShowCategoryName()
-        {
+
             var categoryDto = await _categoryService.GetAllCategoryAsync();
             CategoryVM = _mapper.Map<IList<CategoryVM>>(categoryDto);
         }

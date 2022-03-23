@@ -19,7 +19,6 @@ namespace CustomerSite.Controllers
             _logger = logger;
         }
 
-        //[Route("index")]
         public IActionResult Index()
         {
            

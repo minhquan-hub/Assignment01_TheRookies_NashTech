@@ -3,6 +3,8 @@
 @addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "VEGEFOODS";
+    var prevDisabled = !Model.PagedResponseVM.HasPreviousPage ? "btn d-flex align-items-center justify-items-center text-primary disabled" : "";
+    var nextDisabled = !Model.PagedResponseVM.HasNextPage ? "btn d-flex align-items-center justify-items-center text-primary disabled" : "";
 }
 
 <div
@@ -29,16 +31,24 @@
     <div class="row justify-content-center">
       <div class="col-md-12 mb-5 text-center">
         <ul class="product-category">
-          <li><a href="#" class="active">All</a></li>
-          @foreach (var item in Model.CategoryVM){
           <li>
-            <a
-              asp-page="./ProductByCategory"
-              asp-route-categoryName="@item.CategoryName"
+            <a 
+              asp-area=""
+              asp-page="/Product/Index"
+              asp-for="@Model.ProductNameBinding"
             >
-              @Html.DisplayFor(modelItem => item.CategoryName)
+              All
             </a>
           </li>
+          @foreach (var item in Model.CategoryVM){
+            <li>
+              <a
+                asp-page="./ProductByCategory"
+                asp-route-categoryName="@item.CategoryName"
+              >
+                @Html.DisplayFor(modelItem => item.CategoryName)
+              </a>
+            </li>
           }
           <li>
             <form asp-page="/Product/Index" method="get">
@@ -46,7 +56,7 @@
                 <p>
                   <input
                     type="text"
-                    asp-for="@Model.ProductName"
+                    asp-for="@Model.ProductNameBinding"
                     placeholder="Find Product"
                   />
                   <input type="submit" class="btn btn-primary" />
@@ -66,23 +76,37 @@
           <ul>
             <li>
               <a
+                class="@prevDisabled"
+                asp-area=""
                 asp-page="./ProductByCategory"
+                asp-route-categoryName="@Model.PagedResponseVM.Search"
                 asp-route-pageIndex="@(Model.PagedResponseVM.CurrentPage - 1)"
               >
                 &lt;
               </a>
             </li>
-            @for(var i=1; i < Model.PagedResponseVM.TotalPages+1; i++){ @if(i ==
-            Model.PagedResponseVM.CurrentPage){
-            <li class="active"><span>@i</span></li>
-            }else {
-            <li>
-              <a asp-page="./ProductByCategory" asp-route-pageIndex="@i">@i</a>
-            </li>
-            } }
+              @for(var i=1; i < Model.PagedResponseVM.TotalPages+1; i++){ 
+                @if(i == Model.PagedResponseVM.CurrentPage){
+                  <li class="active"><span>@i</span></li>
+                }else {
+                  <li>
+                    <a 
+                      asp-area=""
+                      asp-page="./ProductByCategory" 
+                      asp-route-categoryName="@Model.PagedResponseVM.Search"
+                      asp-route-pageIndex="@i"
+                    >
+                      @i
+                    </a>
+                  </li>
+                } 
+              }
             <li>
               <a
+                class="@nextDisabled"
+                asp-area=""
                 asp-page="./ProductByCategory"
+                asp-route-categoryName="@Model.PagedResponseVM.Search"
                 asp-route-pageIndex="@(Model.PagedResponseVM.CurrentPage + 1)"
               >
                 &gt;
