@@ -4,37 +4,67 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <div class="row">
-@foreach (var item in Model){
-                    <div class="col-md-6 col-lg-3 ftco-animate">
-    				<div class="product">
-						<div style="height:200px; width=200px">
-    					<a asp-area="" asp-page="/Product/Detail" asp-route-id="@item.ProductId" class="img-prod"><img class="img-fluid" src="@item.Image.Image1"  alt="Colorlib Template">
-    						<span class="status">30%</span>
-    						<div class="overlay"></div>
-    					</a>
-						</div>
-    					<div class="text py-3 pb-4 px-3 text-center">
-    						<h3><a asp-area="" asp-page="/Product/Detail" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span class="price-sale">$@Html.DisplayFor(modelItem => item.Price)</span></p>
-		    					</div>
-	    					</div>
-	    					<div class="bottom-area d-flex px-3">
-	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-	    								<span><i class="ion-ios-menu"></i></span>
-	    							</a>
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-	    								<span><i class="ion-ios-cart"></i></span>
-	    							</a>
-	    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-	    								<span><i class="ion-ios-heart"></i></span>
-	    							</a>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-                }
+  @foreach (var item in Model){
+  <div class="col-md-6 col-lg-3 ftco-animate">
+    <div class="product">
+      <div style="height:200px; width=200px">
+        <a
+          asp-area=""
+          asp-page="/Product/Detail"
+          asp-route-id="@item.ProductId"
+          class="img-prod"
+        >
+          <img
+            class="img-fluid"
+            src="@item.Image.Image1"
+            alt="Colorlib Template"
+          />
+          <div class="overlay"></div>
+        </a>
+      </div>
+      <div class="text py-3 pb-4 px-3 text-center">
+        <h3>
+          <a
+            asp-area=""
+            asp-page="/Product/Detail"
+            asp-route-id="@item.ProductId"
+          >
+            @Html.DisplayFor(modelItem => item.ProductName)
+          </a>
+        </h3>
+        <div class="d-flex">
+          <div class="pricing">
+            <p class="price">
+              <span class="price-sale">
+                $@Html.DisplayFor(modelItem => item.Price)
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="bottom-area d-flex px-3">
+          <div class="m-auto d-flex">
+            <a
+              href="#"
+              class="add-to-cart d-flex justify-content-center align-items-center text-center"
+            >
+              <span><i class="ion-ios-menu"></i></span>
+            </a>
+            <a
+              href="#"
+              class="buy-now d-flex justify-content-center align-items-center mx-1"
+            >
+              <span><i class="ion-ios-cart"></i></span>
+            </a>
+            <a
+              href="#"
+              class="heart d-flex justify-content-center align-items-center"
+            >
+              <span><i class="ion-ios-heart"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
 </div>
