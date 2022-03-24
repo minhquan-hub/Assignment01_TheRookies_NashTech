@@ -12,7 +12,6 @@
             "webRoot": "${workspaceFolder}"
         },
         
-        
         {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
@@ -53,6 +52,7 @@
                 "/Views": "${workspaceFolder}/Views"
             }
         },
+
         {
             "name": ".NET Core Attach",
             "type": "coreclr",
