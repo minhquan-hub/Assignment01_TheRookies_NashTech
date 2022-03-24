@@ -1,0 +1,29 @@
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    background-color: #DBED28;
+}
+
+#navbar ul {
+    display: flex;
+}
+
+#navbar li {
+    list-style: none;
+    display: inline_block;
+    margin: 0px 20px;
+    font-size: 22px;
+    color: #000;
+}
+
+.link {
+    text-decoration: none;
+}
+
+div.nav-details > * {
+    display: inline-block;
+    color: royalblue;
+    font-size: 22px;
+  }

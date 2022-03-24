@@ -15,35 +15,43 @@ namespace Rookie.CustomerSite.Pages.Product
     public class DetailPageModel : PageModel
     {
         private readonly IProductService _productService;
+
         private readonly IRatingService _ratingService;
+
         private readonly IMapper _mapper;
-        public DetailPageModel(IProductService productService, IRatingService ratingService, IMapper mapper) 
+
+        public DetailPageModel(
+            IProductService productService,
+            IRatingService ratingService,
+            IMapper mapper
+        )
         {
             _productService = productService;
             _ratingService = ratingService;
             _mapper = mapper;
         }
-        
+
         [BindProperty(SupportsGet = true)]
         public ProductVM<ImageVM> ProductVM { get; set; }
-        
+
         // Insert data rating product
-        public async Task OnGetRating(int number, string productid)
+        public async Task OnGetRatingAsync(int number, string productid)
         {
-            var ratingVM = new RatingVM{
-                ProductId = productid,
-                UserId = "",
-                RateNumber = number
-            };
+            var ratingVM =
+                new RatingVM {
+                    ProductId = productid,
+                    UserId = "",
+                    RateNumber = number
+                };
             var ratingDto = _mapper.Map<RatingDto>(ratingVM);
             await _ratingService.InsertRatingAsync(ratingDto);
-            await OnGet(productid);
+            await OnGetAsync(productid);
         }
 
         // Take data product by id
-        public async Task OnGet(string id)
+        public async Task OnGetAsync(string id)
         {
-           var productDto = await  _productService.GetProductByIdAsync(id);
+            var productDto = await _productService.GetProductByIdAsync(id);
             ProductVM = _mapper.Map<ProductVM<ImageVM>>(productDto);
         }
     }

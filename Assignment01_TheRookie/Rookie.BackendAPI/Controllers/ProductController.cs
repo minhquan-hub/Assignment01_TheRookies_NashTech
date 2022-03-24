@@ -1,5 +1,3 @@
-
-
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -26,11 +24,13 @@ namespace Rookie.BackendAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase 
     {
+<<<<<<< HEAD
         
+=======
+>>>>>>> develop
         private readonly IProductService _productService;
         private readonly IImageService _imageService;
         private readonly IMapper _mapper;
-        // private readonly IFileStorageService _fileStorageService;
         
         public ProductController(IMapper mapper, IProductService productService, IImageService imageService)
         {
@@ -39,53 +39,103 @@ namespace Rookie.BackendAPI.Controllers
             _imageService = imageService;
         }
 
+<<<<<<< HEAD
         
         // POST: https://localhost:5001/api/Product
+=======
+>>>>>>> develop
         [HttpPost]
-        //[AllowAnonymous]
-        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostAllProductByNameAndPage(ProductCriteriaDto productCriteriaDto)
+        public ActionResult PostProduct([FromForm]ProductCreateRequest productCreateRequest)
         {
-            var product =   _productService.GetAllProductByNameAndPage(productCriteriaDto.Search);
-            var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
-            var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
-            return new PagedResponseDto<ProductDto<ImageDto>>{
-                CurrentPage = pageProducts.CurrentPage,
-                TotalItems = pageProducts.TotalItems,
-                TotalPages = pageProducts.TotalPages,
-                SortOrder = productCriteriaDto.SortOrder,
-                SortColumn = productCriteriaDto.SortColumn,
-                Limit = productCriteriaDto.Limit,
-                Page = productCriteriaDto.Page,
-                Items = productDto
-            };
+            if(!string.IsNullOrEmpty(productCreateRequest.ProductName)
+            && !string.IsNullOrEmpty(productCreateRequest.CateId))
+            {
+                _productService.CreateProduct(productCreateRequest);
+            }
+            return Ok();
         }
 
+<<<<<<< HEAD
         // POST: https://localhost:5001/api/Product/AllProduct
         [HttpPost("AllProduct")]
         //[AllowAnonymous]
        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostAllProductAndPage(ProductCriteriaDto productCriteriaDto)
+=======
+        // GET: https://localhost:5001/api/Product/AllProduct?Search=Apple&SortColumn=3&Limit=12&Page=2
+        [HttpGet("allproduct")]
+        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetAllProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
+>>>>>>> develop
         {
-            var product = _productService.GetAllProductAndPage();
-            var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
-            var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
-            return new PagedResponseDto<ProductDto<ImageDto>>{
-                CurrentPage = pageProducts.CurrentPage,
-                TotalItems = pageProducts.TotalItems,
-                TotalPages = pageProducts.TotalPages,
-                SortOrder = productCriteriaDto.SortOrder,
-                SortColumn = productCriteriaDto.SortColumn,
-                Limit = productCriteriaDto.Limit,
-                Page = productCriteriaDto.Page,
-                Items = productDto
-            };
+            var product = _productService.GetAllProduct(productCriteriaDto.Search);
+            return await PagedResponseDtoSummary(product, productCriteriaDto);
         }
 
+<<<<<<< HEAD
         
         //POST: https://localhost:5001/api/Product/Category
         [HttpPost("Category")]
         public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostProductByCategoryAndPage(ProductCriteriaDto productCriteriaDto)
         {
             var product = _productService.GetAllProductByCategoryAndPage(productCriteriaDto.Search);
+=======
+        // GET: https://localhost:5001/api/Product/Category?Search=Fruits&SortColumn=3&Limit=12&Page=2
+        [HttpGet("category")]
+        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetProductByCategoryAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
+        {
+            var product = _productService.GetAllProductByCategory(productCriteriaDto.Search);
+            return await PagedResponseDtoSummary(product, productCriteriaDto);
+        }
+        
+        //GET: https://localhost:5001/api/Product/id/P4029
+        [HttpGet("id/{productId}")]
+        public ActionResult<ProductDto<ImageDto>> GetProductById(string productId)
+        {
+            if(string.IsNullOrEmpty(productId))
+            {
+                return NotFound();
+            }
+
+            var product = _productService.GetProductById(productId);
+            var productDto = _mapper.Map<ProductDto<ImageDto>>(product);
+            productDto.Image = _mapper.Map<ImageDto>(_imageService.GetImageByProductId(productDto.ProductId));
+
+            return Ok(productDto);
+        }
+
+        // PUT: https://localhost:5001/api/Product/P4014
+        [HttpPut("{productId}")]
+        public ActionResult PutProduct(string productId,[FromForm]ProductCreateRequest productCreateRequest)
+        {
+            if(string.IsNullOrEmpty(productId))
+            {
+                return NotFound();
+            }
+
+            if(!string.IsNullOrEmpty(productCreateRequest.ProductName)
+            && !string.IsNullOrEmpty(productCreateRequest.CateId))
+            {
+                _productService.UpdateProduct(productId, productCreateRequest);
+            }
+            
+            return Ok(true);
+        }
+
+        // DELETE: https://localhost:5001/api/Product/P4014
+        [HttpDelete("{productId}")]
+        public ActionResult DeleteProduct(string productId)
+        {
+            if(string.IsNullOrEmpty(productId))
+            {
+                return NotFound();
+            }
+            _productService.DeleteProduct(productId);
+            return Ok(true);	
+        }
+
+        #region Private Method
+        private async Task<PagedResponseDto<ProductDto<ImageDto>>> PagedResponseDtoSummary(IQueryable<Product> product, ProductCriteriaDto productCriteriaDto)
+        {
+>>>>>>> develop
             var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
             var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
             return new PagedResponseDto<ProductDto<ImageDto>>{
@@ -100,6 +150,7 @@ namespace Rookie.BackendAPI.Controllers
                 Items = productDto
             };
         }
+<<<<<<< HEAD
         
         //GET: https://localhost:5001/api/Product/id/P4029
         [HttpGet("id/{productId}")]
@@ -117,6 +168,9 @@ namespace Rookie.BackendAPI.Controllers
 
         #region Private Method
         private IEnumerable<ProductDto<ImageDto>> MapProductDtoAndInsertImage(IList<Product> product)
+=======
+        private  IEnumerable<ProductDto<ImageDto>> MapProductDtoAndInsertImage(IList<Product> product)
+>>>>>>> develop
         {
             var productDto = _mapper.Map<IEnumerable<ProductDto<ImageDto>>>(product);
             foreach (var item in productDto)

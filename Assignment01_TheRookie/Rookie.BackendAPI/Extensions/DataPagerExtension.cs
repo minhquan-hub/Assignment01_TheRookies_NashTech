@@ -33,6 +33,10 @@ namespace Rookie.BackendAPI.Extensions
             }
 
             var startRow = (paged.CurrentPage - 1) * paged.PageSize;
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
             paged.Items = await Task.FromResult(query
                         .Skip(startRow)
                         .Take(paged.PageSize).ToList());
