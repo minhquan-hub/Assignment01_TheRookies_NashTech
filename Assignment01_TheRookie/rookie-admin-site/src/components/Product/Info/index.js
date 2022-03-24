@@ -9,7 +9,6 @@ import {
   FruitsTypeLabel,
   JuiceType,
   JuiceTypeLabel,
-  DriesType,
   DriesTypeLabel,
 } from '../../../Constants/Product/ProductConstant'
 

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Redirect, useParams, useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 
 import ProductForm from '../ProductForm';
 
 const UpdateProductContainer = () => {
   const [product, setProduct] = useState(undefined);
   const {state} = useLocation();
-  const { existProduct } = state; // Read values passed on state
+  const { existProduct } = state; 
   
   useEffect(() => {
     if (existProduct) {

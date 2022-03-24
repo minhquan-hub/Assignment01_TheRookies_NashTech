@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Pen, PencilFill, XCircle } from 'react-bootstrap-icons';
+import { PencilFill, XCircle } from 'react-bootstrap-icons';
 import { useHistory } from 'react-router';
-import { Button } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from 'react-router-dom';
 
