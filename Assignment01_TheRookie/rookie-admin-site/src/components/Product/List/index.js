@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { FunnelFill } from 'react-bootstrap-icons'
-import { Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button } from 'react-bootstrap'
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
 
@@ -34,7 +33,6 @@ const ListProduct = () => {
   ])
 
   const handleType = (selected) => {
-    console.log(selected.label)
     var categoryName = selected.label
     if (categoryName === 'All') {
       setQuery({
@@ -140,13 +138,11 @@ const ListProduct = () => {
                   value={search}
                   className="form-control mr-2"
                   placeholder="Find Product"
-                  aria-describedby="button-addon2"
                 />
                 <Button
                   onClick={handleSearch}
                   variant="primary"
                   type="button"
-                  id="button-addon2"
                 >
                   Find
                 </Button>

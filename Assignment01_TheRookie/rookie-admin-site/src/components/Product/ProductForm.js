@@ -10,7 +10,6 @@ import SelectField from '../../share-components/FormInputs/SelectField'
 import { PRODUCT } from '../../Constants/pages'
 import { VegetableType } from '../../Constants/Product/ProductConstant'
 import { ProductTypeOption } from '../../Constants/selectOptions'
-import FileUpload from '../../share-components/FormInputs/FileUpload'
 import UploadImage from '../../share-components/FormInputs/UploadImage' 
 import DateField from '../../share-components/FormInputs/DateField'
 import {
@@ -59,11 +58,7 @@ const ProductFormContainer = ({
 
   const handleResult = (result, message) => {
     if (result) {
-      NotificationManager.success(
-        `${isUpdate ? 'Update' : 'Created'} Successful Product ${message}`,
-        `${isUpdate ? 'Update' : 'Create'} Successful`,
-        2000,
-      );
+      alert(`${isUpdate ? 'Update' : 'Create'} Successful Product ${message}`)
 
       setTimeout(() => {
         history.push(PRODUCT)
@@ -82,14 +77,14 @@ const ProductFormContainer = ({
   const updateProductAsync = async (form) => {
     let data = await UpdateProductRequest(handleFormatDate(form.formValues));
     if (data) {
-      handleResult(true, data.name);
+      handleResult(true, '');
     }
   }
 
   const createProductAsync = async (form) => {
     let data = await CreateProductRequest(handleFormatDate(form.formValues));
     if (data) {
-      handleResult(true, data.name);
+      handleResult(true, '');
     }
   }
 
