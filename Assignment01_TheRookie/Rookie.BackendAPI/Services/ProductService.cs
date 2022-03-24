@@ -96,30 +96,8 @@ namespace Rookie.BackendAPI.Services
                 throw new Exception("GetAllProductByCategory of ProductService");
             }
 
-<<<<<<< HEAD
-        public IQueryable<Product> GetAllProductByCategoryAndPage(string productCategoryName)
-        {
-            try
-            {
-                var productByCategory = from p in _context.Products 
-                          join c in _context.Categories 
-                          on p.CateId equals c.CategoryId
-                          where c.CategoryName == productCategoryName
-                          select p;
-
-                return productByCategory;
-            }
-            catch(Exception ex)
-            {
-                throw new Exception($"At GetAllProductByCategoryAndPage() of ProductService: {ex.Message}");
-            }
-            
-        }
-
-=======
             return productByCategory;
         }
->>>>>>> develop
 
         public Product GetProductById(string productId)
         {
@@ -135,8 +113,6 @@ namespace Rookie.BackendAPI.Services
 
             return product;
         }
-<<<<<<< HEAD
-=======
 
         public async Task UpdateProduct(string productId, ProductCreateRequest productCreateRequest)
         {
@@ -192,6 +168,5 @@ namespace Rookie.BackendAPI.Services
             var imageIdParse = int.Parse(separateIdString)+1;
             return "I"+ imageIdParse.ToString();
         }
->>>>>>> develop
     }
 }

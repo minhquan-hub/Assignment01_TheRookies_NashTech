@@ -24,10 +24,6 @@ namespace Rookie.BackendAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase 
     {
-<<<<<<< HEAD
-        
-=======
->>>>>>> develop
         private readonly IProductService _productService;
         private readonly IImageService _imageService;
         private readonly IMapper _mapper;
@@ -39,11 +35,6 @@ namespace Rookie.BackendAPI.Controllers
             _imageService = imageService;
         }
 
-<<<<<<< HEAD
-        
-        // POST: https://localhost:5001/api/Product
-=======
->>>>>>> develop
         [HttpPost]
         public ActionResult PostProduct([FromForm]ProductCreateRequest productCreateRequest)
         {
@@ -55,29 +46,14 @@ namespace Rookie.BackendAPI.Controllers
             return Ok();
         }
 
-<<<<<<< HEAD
-        // POST: https://localhost:5001/api/Product/AllProduct
-        [HttpPost("AllProduct")]
-        //[AllowAnonymous]
-       public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostAllProductAndPage(ProductCriteriaDto productCriteriaDto)
-=======
         // GET: https://localhost:5001/api/Product/AllProduct?Search=Apple&SortColumn=3&Limit=12&Page=2
         [HttpGet("allproduct")]
         public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetAllProductAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
->>>>>>> develop
         {
             var product = _productService.GetAllProduct(productCriteriaDto.Search);
             return await PagedResponseDtoSummary(product, productCriteriaDto);
         }
 
-<<<<<<< HEAD
-        
-        //POST: https://localhost:5001/api/Product/Category
-        [HttpPost("Category")]
-        public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> PostProductByCategoryAndPage(ProductCriteriaDto productCriteriaDto)
-        {
-            var product = _productService.GetAllProductByCategoryAndPage(productCriteriaDto.Search);
-=======
         // GET: https://localhost:5001/api/Product/Category?Search=Fruits&SortColumn=3&Limit=12&Page=2
         [HttpGet("category")]
         public async Task<ActionResult<PagedResponseDto<ProductDto<ImageDto>>>> GetProductByCategoryAndPage([FromQuery]ProductCriteriaDto productCriteriaDto)
@@ -135,7 +111,6 @@ namespace Rookie.BackendAPI.Controllers
         #region Private Method
         private async Task<PagedResponseDto<ProductDto<ImageDto>>> PagedResponseDtoSummary(IQueryable<Product> product, ProductCriteriaDto productCriteriaDto)
         {
->>>>>>> develop
             var pageProducts = await product.AsNoTracking().PaginateAsync(productCriteriaDto);
             var productDto = MapProductDtoAndInsertImage(pageProducts.Items);
             return new PagedResponseDto<ProductDto<ImageDto>>{
@@ -150,27 +125,7 @@ namespace Rookie.BackendAPI.Controllers
                 Items = productDto
             };
         }
-<<<<<<< HEAD
-        
-        //GET: https://localhost:5001/api/Product/id/P4029
-        [HttpGet("id/{productId}")]
-        public ActionResult<ProductDto<ImageDto>> GetProductById(string productId)
-        {
-            if(productId == null)
-            {
-                return NotFound();
-            }
-            var product = _productService.GetProductById(productId);
-            var productDto = _mapper.Map<ProductDto<ImageDto>>(product);
-            productDto.Image = _mapper.Map<ImageDto>(_imageService.GetImageByProductId(productDto.ProductId));
-            return Ok(productDto);
-        }
-
-        #region Private Method
-        private IEnumerable<ProductDto<ImageDto>> MapProductDtoAndInsertImage(IList<Product> product)
-=======
         private  IEnumerable<ProductDto<ImageDto>> MapProductDtoAndInsertImage(IList<Product> product)
->>>>>>> develop
         {
             var productDto = _mapper.Map<IEnumerable<ProductDto<ImageDto>>>(product);
             foreach (var item in productDto)
